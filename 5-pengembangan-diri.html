@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengembangan Diri - SMA Negeri 1 Cluring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e3a8a;
+            --secondary: #4f46e5;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --text-light: #1e293b;
+            --text-dark: #f8fafc;
+            --gradient-primary: linear-gradient(135deg, #1e40af, #4f46e5);
+            --shadow-light: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 15px 35px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(30, 64, 175, 0.3);
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            color: var(--text-light);
+            line-height: 1.7;
+            padding: 2.5rem;
+            min-height: 100vh;
+            transition: var(--transition);
+        }
+        body.dark-mode {
+            background: linear-gradient(135deg, #0c1427, #111827);
+            color: var(--text-dark);
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .header h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .header p {
+            opacity: 0.85;
+            font-size: 1.1rem;
+        }
+        .content {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 2.2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            margin-bottom: 2.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        body.dark-mode .content {
+            background: rgba(30, 41, 59, 0.75);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+        h2 {
+            font-size: 1.65rem;
+            margin: 1.6rem 0 1.1rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        body.dark-mode h2 {
+            color: #c7d2fe;
+        }
+        .program-item {
+            background: rgba(241, 245, 249, 0.6);
+            padding: 1.3rem;
+            border-radius: 14px;
+            margin-bottom: 1.4rem;
+            border-left: 4px solid var(--primary);
+        }
+        body.dark-mode .program-item {
+            background: rgba(26, 32, 44, 0.6);
+        }
+        .program-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.6rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        body.dark-mode .program-item h3 {
+            color: #a5b4fc;
+        }
+        p, li {
+            line-height: 1.65;
+            margin-bottom: 0.6rem;
+        }
+        ul {
+            padding-left: 1.6rem;
+            margin: 0.8rem 0 1.2rem;
+        }
+        .next-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.9rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            box-shadow: 0 6px 16px rgba(30, 64, 175, 0.35);
+            transition: var(--transition);
+        }
+        .next-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+        .back-link {
+            display: block;
+            margin-top: 1.4rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        body.dark-mode .back-link {
+            color: #a5b4fc;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .content {
+                padding: 1.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .next-btn {
+                padding: 0.7rem 1.6rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Pengembangan Diri</h1>
+            <p>SMA Negeri 1 Cluring</p>
+        </div>
+
+        <div class="content">
+            <p>Program Pengembangan Diri di SMA Negeri 1 Cluring bertujuan membentuk siswa yang percaya diri, berpikir kritis, berempati, dan memiliki keterampilan abad ke-21. Program ini dirancang holistik untuk menyeimbangkan kecerdasan intelektual, emosional, sosial, dan spiritual.</p>
+
+            <h2><i class="fas fa-seedling"></i> Program Unggulan</h2>
+
+            <div class="program-item">
+                <h3><i class="fas fa-users"></i> Pelatihan Kepemimpinan Siswa</h3>
+                <p>Setiap tahun, siswa mengikuti <strong>Leadership Camp</strong> selama 3 hari, dilengkapi simulasi manajemen organisasi, public speaking, dan pengambilan keputusan. Alumni program ini aktif di OSIS, MPK, dan organisasi eksternal.</p>
+            </div>
+
+            <div class="program-item">
+                <h3><i class="fas fa-brain"></i> Penguatan Pendidikan Karakter (PPK)</h3>
+                <p>Nilai-nilai integritas, tanggung jawab, disiplin, dan gotong royong diintegrasikan melalui pembiasaan harian, role model guru, dan evaluasi berbasis sikap.</p>
+            </div>
+
+            <div class="program-item">
+                <h3><i class="fas fa-comment-dots"></i> Komunikasi & Public Speaking</h3>
+                <p>Latihan rutin berpidato, debat, dan presentasi ilmiah dalam berbagai bahasa (Indonesia, Inggris, Arab). Siswa dilatih tampil percaya diri di depan publik sejak kelas X.</p>
+            </div>
+
+            <div class="program-item">
+                <h3><i class="fas fa-hand-holding-heart"></i> Program Sosial dan Kemanusiaan</h3>
+                <ul>
+                    <li><strong>Bakti Sosial</strong>: Kunjungan ke panti jompo, bantuan bencana, dan donor darah.</li>
+                    <li><strong>Ekspedisi Desa</strong>: Program pengabdian masyarakat di daerah terpencil.</li>
+                    <li><strong>CSR Siswa</strong>: Penggalangan dana untuk sesama siswa yang membutuhkan.</li>
+                </ul>
+            </div>
+
+            <div class="program-item">
+                <h3><i class="fas fa-spa"></i> Kesehatan Mental & Mindfulness</h3>
+                <p>Sesi yoga, meditasi, dan journaling dipandu oleh konselor terlatih. Ini bagian dari program <em>“Mindful Smaring”</em> untuk mengurangi stres akademik dan meningkatkan fokus.</p>
+            </div>
+
+            <h2><i class="fas fa-cogs"></i> Metode Pelaksanaan</h2>
+            <ul>
+                <li>Integrasi dalam ekstrakurikuler wajib (kelas X–XII)</li>
+                <li>Project-based learning (PBL) lintas mata pelajaran</li>
+                <li>Kolaborasi dengan universitas dan komunitas profesional</li>
+                <li>Penilaian portofolio pengembangan diri</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem; font-style: italic; opacity: 0.9;">
+                “Kami percaya bahwa kecerdasan bukan hanya tentang nilai, tetapi tentang bagaimana siswa memahami diri sendiri, memimpin orang lain, dan berkontribusi bagi dunia.”
+            </p>
+        </div>
+
+        <a href="6-bimbingan-karir.html" class="next-btn">
+            <i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya
+        </a>
+
+        <a href="index.html" class="back-link">← Kembali ke Menu Utama</a>
+    </div>
+</body>
+</html>
