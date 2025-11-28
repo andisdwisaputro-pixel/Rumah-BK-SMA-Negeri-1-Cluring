@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materi Ujian - SNBT | SMA Negeri 1 Cluring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e3a8a;
+            --secondary: #4f46e5;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --text-light: #1e293b;
+            --text-dark: #f8fafc;
+            --gradient-primary: linear-gradient(135deg, #1e40af, #4f46e5);
+            --shadow-light: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 15px 35px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(30, 64, 175, 0.3);
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            color: var(--text-light);
+            line-height: 1.7;
+            padding: 2.5rem;
+            min-height: 100vh;
+            transition: var(--transition);
+        }
+        body.dark-mode {
+            background: linear-gradient(135deg, #0c1427, #111827);
+            color: var(--text-dark);
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .header h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .header p {
+            opacity: 0.85;
+            font-size: 1.1rem;
+        }
+        .content {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 2.2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            margin-bottom: 2.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        body.dark-mode .content {
+            background: rgba(30, 41, 59, 0.75);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+        h2 {
+            font-size: 1.65rem;
+            margin: 1.6rem 0 1.1rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        body.dark-mode h2 {
+            color: #c7d2fe;
+        }
+        .subject-item {
+            background: rgba(241, 245, 249, 0.6);
+            padding: 1.3rem;
+            border-radius: 14px;
+            margin-bottom: 1.4rem;
+            border-left: 4px solid var(--primary);
+        }
+        body.dark-mode .subject-item {
+            background: rgba(26, 32, 44, 0.6);
+        }
+        .subject-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.6rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        body.dark-mode .subject-item h3 {
+            color: #a5b4fc;
+        }
+        p, li {
+            line-height: 1.65;
+            margin-bottom: 0.6rem;
+        }
+        ul {
+            padding-left: 1.6rem;
+            margin: 0.8rem 0 1.2rem;
+        }
+        .highlight {
+            background: #dbeafe;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+        body.dark-mode .highlight {
+            background: rgba(59, 130, 246, 0.2);
+            color: #bfdbfe;
+        }
+        .next-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.9rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            box-shadow: 0 6px 16px rgba(30, 64, 175, 0.35);
+            transition: var(--transition);
+        }
+        .next-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+        .back-link {
+            display: block;
+            margin-top: 1.4rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        body.dark-mode .back-link {
+            color: #a5b4fc;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .content {
+                padding: 1.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .next-btn {
+                padding: 0.7rem 1.6rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Materi Ujian SNBT</h1>
+            <p>SMA Negeri 1 Cluring</p>
+        </div>
+
+        <div class="content">
+            <p>Seleksi Nasional Berbasis Tes (SNBT) 2025 menguji kemampuan kognitif dan literasi melalui 5 komponen utama. Berikut cakupan materi lengkap berdasarkan panduan resmi dari <strong>Lembaga Tes Masuk Perguruan Tinggi (LTMPT)</strong>.</p>
+
+            <div class="subject-item">
+                <h3><i class="fas fa-language"></i> 1. Literasi Bahasa Indonesia</h3>
+                <p>Mengukur kemampuan memahami, menganalisis, mengevaluasi, dan mencipta teks dalam konteks akademik dan kehidupan sehari-hari.</p>
+                <ul>
+                    <li>Pemahaman isi teks eksposisi, argumentasi, dan persuasi</li>
+                    <li>Analisis struktur teks (gagasan utama, penjelas, kesimpulan)</li>
+                    <li>Kemampuan menyusun teks logis dan koheren</li>
+                    <li>Penalaran berbasis teks (inferensi, implikasi, kritik)</li>
+                </ul>
+            </div>
+
+            <div class="subject-item">
+                <h3><i class="fas fa-globe"></i> 2. Literasi Bahasa Inggris</h3>
+                <p>Mengukur kemampuan memahami teks ilmiah atau non-ilmiyah dalam bahasa Inggris.</p>
+                <ul>
+                    <li>Reading comprehension (artikel, esai, jurnal sederhana)</li>
+                    <li>Vocabulary in context</li>
+                    <li>Logical reasoning berbasis teks berbahasa Inggris</li>
+                    <li>Tidak menguji grammar atau listening</li>
+                </ul>
+            </div>
+
+            <div class="subject-item">
+                <h3><i class="fas fa-calculator"></i> 3. Penalaran Matematika</h3>
+                <p>Mengukur kemampuan berpikir logis, analitis, dan kritis dalam konteks matematis.</p>
+                <ul>
+                    <li>Model matematika dari permasalahan kontekstual</li>
+                    <li>Aljabar dasar (fungsi, persamaan, pertidaksamaan)</li>
+                    <li>Geometri dan pengukuran</li>
+                    <li>Statistika dan peluang sederhana</li>
+                    <li>Penalaran kuantitatif dan numerik</li>
+                </ul>
+            </div>
+
+            <div class="subject-item">
+                <h3><i class="fas fa-atom"></i> 4. Literasi Sains</h3>
+                <p>Mengukur kemampuan memahami konsep sains, menganalisis data eksperimen, dan menerapkannya dalam kehidupan.</p>
+                <ul>
+                    <li>Fisika: gerak, energi, gelombang</li>
+                    <li>Kimia: struktur materi, reaksi sederhana, larutan</li>
+                    <li>Biologi: sel, ekosistem, bioteknologi</li>
+                    <li>Interpretasi grafik, tabel, dan diagram sains</li>
+                </ul>
+            </div>
+
+            <div class="subject-item">
+                <h3><i class="fas fa-landmark"></i> 5. Literasi Sosial</h3>
+                <p>Mengukur pemahaman terhadap isu sosial, ekonomi, politik, dan budaya dalam masyarakat.</p>
+                <ul>
+                    <li>Sosiologi: interaksi sosial, stratifikasi, perubahan sosial</li>
+                    <li>Ekonomi: permintaan-penawaran, kebijakan fiskal/moneter</li>
+                    <li>Sejarah: peristiwa nasional & global, dampak sosial</li>
+                    <li>Geografi: lingkungan, pembangunan berkelanjutan</li>
+                </ul>
+            </div>
+
+            <h2><i class="fas fa-lightbulb"></i> Tips Belajar Efektif</h2>
+            <ul>
+                <li>Latih <span class="highlight">pemahaman teks</span> dengan membaca artikel ilmiah populer (Kompasiana, National Geographic, dll.)</li>
+                <li>Kuasai <span class="highlight">penalaran matematika kontekstual</span>, bukan hafalan rumus</li>
+                <li>Gunakan <strong>metode active recall</strong> dan <strong>spaced repetition</strong> untuk mengingat konsep sains/sosial</li>
+                <li>Ikuti <strong>try out berkala</strong> untuk simulasi kondisi ujian</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem; font-style: italic; opacity: 0.9;">
+                “SNBT bukan tentang seberapa banyak yang kamu hafal, tapi seberapa dalam kamu memahami dan menerapkan ilmu.”
+            </p>
+        </div>
+
+        <a href="11-try-out.html" class="next-btn">
+            <i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya
+        </a>
+
+        <a href="index.html" class="back-link">← Kembali ke Menu Utama</a>
+    </div>
+</body>
+</html>
