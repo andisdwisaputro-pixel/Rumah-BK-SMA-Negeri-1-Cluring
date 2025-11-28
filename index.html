@@ -6,7 +6,6 @@
     <title>SMA Negeri 1 Cluring - Dashboard Premium</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         :root {
             --primary: #1e40af;
@@ -28,14 +27,12 @@
             --border-radius: 16px;
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
         body {
             background: var(--light);
             color: var(--text-light);
@@ -43,30 +40,24 @@
             overflow-x: hidden;
             line-height: 1.6;
         }
-
         body.dark-mode {
             background: var(--dark);
             color: var(--text-dark);
         }
-
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
-
         ::-webkit-scrollbar-track {
             background: rgba(30, 64, 175, 0.1);
         }
-
         ::-webkit-scrollbar-thumb {
             background: var(--primary);
             border-radius: 4px;
         }
-
         .dark-mode ::-webkit-scrollbar-track {
             background: rgba(255, 255, 255, 0.1);
         }
-
         /* Navbar */
         .navbar {
             position: fixed;
@@ -83,18 +74,15 @@
             box-shadow: var(--shadow-light);
             transition: var(--transition);
         }
-
         .dark-mode .navbar {
             background: rgba(15, 23, 42, 0.9);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
-
         .logo-container {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
-
         .logo {
             width: 50px;
             height: 50px;
@@ -108,7 +96,6 @@
             box-shadow: var(--shadow-medium);
             transition: var(--transition);
         }
-
         .nav-title {
             font-size: 1.5rem;
             font-weight: 700;
@@ -118,19 +105,16 @@
             color: transparent;
             transition: var(--transition);
         }
-
         .dark-mode .nav-title {
             background: linear-gradient(to right, #f8fafc, #c7d2fe);
             -webkit-background-clip: text;
             background-clip: text;
         }
-
         .nav-controls {
             display: flex;
             gap: 1rem;
             align-items: center;
         }
-
         .theme-toggle, .menu-toggle {
             background: var(--gradient-primary);
             border: none;
@@ -146,16 +130,13 @@
             transition: var(--transition);
             box-shadow: var(--shadow-light);
         }
-
         .theme-toggle:hover, .menu-toggle:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-medium);
         }
-
         .menu-toggle {
             display: none;
         }
-
         /* Sidebar */
         .sidebar {
             position: fixed;
@@ -173,7 +154,6 @@
             transition: var(--transition);
             overflow-y: auto;
         }
-
         .sidebar-header {
             display: flex;
             align-items: center;
@@ -181,7 +161,6 @@
             padding: 1.5rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-
         .sidebar-logo {
             width: 60px;
             height: 60px;
@@ -194,14 +173,12 @@
             color: var(--primary);
             box-shadow: var(--shadow-medium);
         }
-
         .sidebar-title {
             font-size: 1.3rem;
             font-weight: 700;
             color: white;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
-
         .sidebar-nav {
             flex: 1;
             padding: 1.5rem;
@@ -210,7 +187,6 @@
             flex-direction: column;
             gap: 0.8rem;
         }
-
         .nav-link {
             display: flex;
             align-items: center;
@@ -225,7 +201,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .nav-link::before {
             content: '';
             position: absolute;
@@ -236,28 +211,23 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
             transition: left 0.7s;
         }
-
         .nav-link:hover::before {
             left: 100%;
         }
-
         .nav-link:hover {
             background: rgba(255, 255, 255, 0.1);
             transform: translateX(5px);
         }
-
         .nav-link i {
             width: 20px;
             text-align: center;
         }
-
         /* Main Content */
         .main-content {
             margin-left: 280px;
             padding-top: 80px;
             transition: var(--transition);
         }
-
         /* Hero Section */
         .hero {
             position: relative;
@@ -270,14 +240,12 @@
             background-position: center;
             background-attachment: fixed;
         }
-
         .hero-overlay {
             position: absolute;
             inset: 0;
             background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(2px);
         }
-
         .hero-content {
             position: relative;
             text-align: center;
@@ -286,7 +254,6 @@
             padding: 0 1rem;
             z-index: 1;
         }
-
         .hero-title {
             font-size: 3.5rem;
             font-weight: 800;
@@ -298,14 +265,12 @@
             color: transparent;
             animation: fadeInUp 1s ease-out;
         }
-
         .hero-subtitle {
             font-size: 1.3rem;
             opacity: 0.9;
             margin-bottom: 2rem;
             animation: fadeInUp 1s ease-out 0.3s both;
         }
-
         .hero-btn {
             display: inline-block;
             padding: 0.8rem 2rem;
@@ -321,12 +286,10 @@
             text-decoration: none;
             animation: fadeInUp 1s ease-out 0.6s both;
         }
-
         .hero-btn:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-dark);
         }
-
         /* Content Sections */
         .section {
             max-width: 72rem;
@@ -336,17 +299,14 @@
             transform: translateY(20px);
             transition: opacity 0.8s, transform 0.8s;
         }
-
         .section.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
         .section-header {
             text-align: center;
             margin-bottom: 3rem;
         }
-
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
@@ -356,33 +316,28 @@
             background-clip: text;
             color: transparent;
         }
-
         .dark-mode .section-title {
             background: linear-gradient(to right, #f8fafc, #c7d2fe);
             -webkit-background-clip: text;
             background-clip: text;
         }
-
         .section-subtitle {
             font-size: 1.2rem;
             opacity: 0.8;
             max-width: 600px;
             margin: 0 auto;
         }
-
         .section-text {
             line-height: 1.75;
             opacity: 0.8;
             font-size: 1.1rem;
         }
-
         .cards-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 2rem;
         }
-
         .card {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(15px);
@@ -394,17 +349,14 @@
             position: relative;
             overflow: hidden;
         }
-
         .dark-mode .card {
             background: rgba(30, 41, 59, 0.5);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
         .card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-medium);
         }
-
         .card-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
@@ -413,14 +365,12 @@
             background-clip: text;
             color: transparent;
         }
-
         .card-title {
             font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 1rem;
         }
-
-        .download-btn {
+        .next-btn {
             background: var(--gradient-primary);
             color: white;
             border: none;
@@ -435,12 +385,10 @@
             gap: 0.5rem;
             box-shadow: var(--shadow-light);
         }
-
-        .download-btn:hover {
+        .next-btn:hover {
             transform: translateY(-2px);
             box-shadow: var(--shadow-medium);
         }
-
         /* Dashboard Section */
         .dashboard {
             max-width: 80rem;
@@ -450,12 +398,10 @@
             transform: translateY(20px);
             transition: opacity 0.8s, transform 0.8s;
         }
-
         .dashboard.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
         .chart-container {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(20px);
@@ -465,31 +411,26 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
             margin-top: 2rem;
         }
-
         .dark-mode .chart-container {
             background: rgba(30, 41, 59, 0.5);
         }
-
         .chart-title {
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
             text-align: center;
         }
-
         .chart-wrapper {
             width: 100%;
             height: 400px;
             position: relative;
         }
-
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1.5rem;
             margin-top: 2rem;
         }
-
         .stat-card {
             background: var(--gradient-primary);
             border-radius: var(--border-radius);
@@ -499,80 +440,19 @@
             box-shadow: var(--shadow-medium);
             transition: var(--transition);
         }
-
         .stat-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-dark);
         }
-
         .stat-value {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
         }
-
         .stat-label {
             font-size: 1rem;
             opacity: 0.9;
         }
-
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background: var(--light);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            max-width: 600px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: var(--shadow-dark);
-            position: relative;
-        }
-
-        .dark-mode .modal-content {
-            background: var(--dark);
-            color: var(--text-dark);
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-light);
-        }
-
-        .dark-mode .modal-close {
-            color: var(--text-dark);
-        }
-
-        .modal-title {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-        }
-
-        .dark-mode .modal-title {
-            color: var(--primary-light);
-        }
-
         /* Footer */
         .footer {
             margin-top: 5rem;
@@ -582,25 +462,21 @@
             color: white;
             backdrop-filter: blur(20px);
         }
-
         .footer-content {
             max-width: 72rem;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
-
         .footer-text {
             opacity: 0.8;
             margin-bottom: 1rem;
         }
-
         .social-links {
             display: flex;
             justify-content: center;
             gap: 1.5rem;
             margin-top: 1.5rem;
         }
-
         .social-link {
             display: flex;
             align-items: center;
@@ -613,12 +489,10 @@
             font-size: 1.2rem;
             transition: var(--transition);
         }
-
         .social-link:hover {
             background: var(--primary-light);
             transform: translateY(-3px);
         }
-
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -630,65 +504,51 @@
                 transform: translateY(0);
             }
         }
-
         /* Responsive */
         @media (max-width: 1024px) {
             .sidebar {
                 transform: translateX(-100%);
             }
-
             .sidebar.active {
                 transform: translateX(0);
             }
-
             .main-content {
                 margin-left: 0;
             }
-
             .menu-toggle {
                 display: flex;
             }
-
             .hero-title {
                 font-size: 2.5rem;
             }
         }
-
         @media (max-width: 768px) {
             .navbar {
                 padding: 1rem;
             }
-
             .hero-title {
                 font-size: 2rem;
             }
-
             .hero-subtitle {
                 font-size: 1.1rem;
             }
-
             .section {
                 padding: 3rem 1rem;
             }
-
             .section-title {
                 font-size: 2rem;
             }
-
             .cards-container {
                 grid-template-columns: 1fr;
             }
-
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-
         @media (max-width: 480px) {
             .stats-grid {
                 grid-template-columns: 1fr;
             }
-
             .hero {
                 height: 60vh;
             }
@@ -711,7 +571,6 @@
             </button>
         </div>
     </nav>
-
     <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
@@ -719,72 +578,21 @@
             <h1 class="sidebar-title">SMA N 1 Cluring</h1>
         </div>
         <nav class="sidebar-nav">
-            <a href="#beranda" class="nav-link">
-                <i class="fas fa-home"></i>
-                <span>Beranda</span>
-            </a>
-            <a href="#profil" class="nav-link">
-                <i class="fas fa-school"></i>
-                <span>Profil Sekolah</span>
-            </a>
-            <a href="#bk" class="nav-link">
-                <i class="fas fa-hands-helping"></i>
-                <span>Bimbingan Konseling</span>
-            </a>
-            <a href="#datasiswa" class="nav-link">
-                <i class="fas fa-users"></i>
-                <span>Data Siswa</span>
-            </a>
-            <a href="#alumni" class="nav-link">
-                <i class="fas fa-user-graduate"></i>
-                <span>Data Alumni</span>
-            </a>
-            <a href="#snbp" class="nav-link">
-                <i class="fas fa-trophy"></i>
-                <span>SNBP</span>
-            </a>
-            <a href="#snbt" class="nav-link">
-                <i class="fas fa-pencil-alt"></i>
-                <span>SNBT</span>
-            </a>
-            <a href="#ptn" class="nav-link">
-                <i class="fas fa-university"></i>
-                <span>PTN</span>
-            </a>
-            <a href="#ptain" class="nav-link">
-                <i class="fas fa-mosque"></i>
-                <span>PTAIN</span>
-            </a>
-            <a href="#kedinasan" class="nav-link">
-                <i class="fas fa-shield-alt"></i>
-                <span>Kedinasan</span>
-            </a>
-            <a href="#lpk" class="nav-link">
-                <i class="fas fa-tools"></i>
-                <span>LPK</span>
-            </a>
-            <a href="#ptswasta" class="nav-link">
-                <i class="fas fa-building"></i>
-                <span>PT Swasta</span>
-            </a>
-            <a href="#dashboard" class="nav-link">
-                <i class="fas fa-chart-bar"></i>
-                <span>Dashboard</span>
-            </a>
+            <a href="#beranda" class="nav-link"><i class="fas fa-home"></i><span>Beranda</span></a>
+            <a href="#profil" class="nav-link"><i class="fas fa-school"></i><span>Profil Sekolah</span></a>
+            <a href="#bk" class="nav-link"><i class="fas fa-hands-helping"></i><span>Bimbingan Konseling</span></a>
+            <a href="#datasiswa" class="nav-link"><i class="fas fa-users"></i><span>Data Siswa</span></a>
+            <a href="#alumni" class="nav-link"><i class="fas fa-user-graduate"></i><span>Data Alumni</span></a>
+            <a href="#snbp" class="nav-link"><i class="fas fa-trophy"></i><span>SNBP</span></a>
+            <a href="#snbt" class="nav-link"><i class="fas fa-pencil-alt"></i><span>SNBT</span></a>
+            <a href="#ptn" class="nav-link"><i class="fas fa-university"></i><span>PTN</span></a>
+            <a href="#ptain" class="nav-link"><i class="fas fa-mosque"></i><span>PTAIN</span></a>
+            <a href="#kedinasan" class="nav-link"><i class="fas fa-shield-alt"></i><span>Kedinasan</span></a>
+            <a href="#lpk" class="nav-link"><i class="fas fa-tools"></i><span>LPK</span></a>
+            <a href="#ptswasta" class="nav-link"><i class="fas fa-building"></i><span>PT Swasta</span></a>
+            <a href="#dashboard" class="nav-link"><i class="fas fa-chart-bar"></i><span>Dashboard</span></a>
         </nav>
     </aside>
-
-    <!-- Modal -->
-    <div class="modal" id="pdfModal">
-        <div class="modal-content">
-            <button class="modal-close" id="modalClose">&times;</button>
-            <h3 class="modal-title" id="modalTitle">Download File</h3>
-            <p id="modalMessage">File PDF sedang dipersiapkan. Klik tombol di bawah untuk mengunduh.</p>
-            <button class="download-btn" id="modalDownloadBtn">
-                <i class="fas fa-download"></i> Unduh Sekarang
-            </button>
-        </div>
-    </div>
 
     <!-- Main Content -->
     <main class="main-content">
@@ -805,35 +613,23 @@
                 <p class="section-subtitle">Sekolah Unggul dengan Visi Membentuk Peserta Didik yang Berkarakter, Berprestasi, dan Berwawasan Global</p>
             </div>
             <div class="cards-container">
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
+                <div class="card" id="item-1">
+                    <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
                     <h4 class="card-title">Visi & Misi</h4>
                     <p class="section-text">Menjadi sekolah unggul dalam prestasi akademik dan non-akademik berdasarkan iman dan takwa.</p>
-                    <button class="download-btn" data-filename="visi-misi.pdf" data-title="Visi & Misi SMA Negeri 1 Cluring">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="2"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
+                <div class="card" id="item-2">
+                    <div class="card-icon"><i class="fas fa-award"></i></div>
                     <h4 class="card-title">Prestasi</h4>
                     <p class="section-text">Berbagai penghargaan di tingkat regional dan nasional dalam bidang akademik, olahraga, dan seni.</p>
-                    <button class="download-btn" data-filename="prestasi.pdf" data-title="Prestasi SMA Negeri 1 Cluring">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="3"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                    </div>
+                <div class="card" id="item-3">
+                    <div class="card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
                     <h4 class="card-title">Fasilitas</h4>
                     <p class="section-text">Fasilitas lengkap dan modern untuk mendukung proses belajar mengajar yang optimal.</p>
-                    <button class="download-btn" data-filename="fasilitas.pdf" data-title="Fasilitas SMA Negeri 1 Cluring">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="4"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
             </div>
         </section>
@@ -845,35 +641,23 @@
                 <p class="section-subtitle">Membantu Siswa Mengembangkan Potensi Diri Secara Optimal</p>
             </div>
             <div class="cards-container">
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
+                <div class="card" id="item-4">
+                    <div class="card-icon"><i class="fas fa-heart"></i></div>
                     <h4 class="card-title">Layanan Konseling</h4>
                     <p class="section-text">Konseling individu dan kelompok untuk membantu mengatasi masalah pribadi, sosial, belajar, dan karir.</p>
-                    <button class="download-btn" data-filename="layanan-konseling.pdf" data-title="Layanan Konseling BK">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="5"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
+                <div class="card" id="item-5">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
                     <h4 class="card-title">Pengembangan Diri</h4>
                     <p class="section-text">Program pengembangan diri untuk meningkatkan keterampilan sosial, kepemimpinan, dan karakter.</p>
-                    <button class="download-btn" data-filename="pengembangan-diri.pdf" data-title="Program Pengembangan Diri">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="6"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
+                <div class="card" id="item-6">
+                    <div class="card-icon"><i class="fas fa-briefcase"></i></div>
                     <h4 class="card-title">Bimbingan Karir</h4>
                     <p class="section-text">Panduan pemilihan jurusan dan karir sesuai dengan minat, bakat, dan kemampuan siswa.</p>
-                    <button class="download-btn" data-filename="bimbingan-karir.pdf" data-title="Bimbingan Karir">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="7"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
             </div>
         </section>
@@ -885,35 +669,23 @@
                 <p class="section-subtitle">Seleksi Nasional Berbasis Prestasi - Jalur Prestasi Menuju PTN</p>
             </div>
             <div class="cards-container">
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-clipboard-check"></i>
-                    </div>
+                <div class="card" id="item-7">
+                    <div class="card-icon"><i class="fas fa-clipboard-check"></i></div>
                     <h4 class="card-title">Persyaratan</h4>
                     <p class="section-text">Informasi lengkap tentang persyaratan akademik dan non-akademik untuk mendaftar SNBP.</p>
-                    <button class="download-btn" data-filename="persyaratan-snbp.pdf" data-title="Persyaratan SNBP">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="8"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
+                <div class="card" id="item-8">
+                    <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
                     <h4 class="card-title">Jadwal Penting</h4>
                     <p class="section-text">Timeline pendaftaran, pengumuman, dan proses administrasi SNBP.</p>
-                    <button class="download-btn" data-filename="jadwal-penting-snbp.pdf" data-title="Jadwal Penting SNBP">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="9"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
+                <div class="card" id="item-9">
+                    <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
                     <h4 class="card-title">Strategi Sukses</h4>
                     <p class="section-text">Tips dan strategi untuk meningkatkan peluang diterima melalui jalur SNBP.</p>
-                    <button class="download-btn" data-filename="strategi-sukses-snbp.pdf" data-title="Strategi Sukses SNBP">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="10"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
             </div>
         </section>
@@ -925,35 +697,23 @@
                 <p class="section-subtitle">Seleksi Nasional Berbasis Tes - Buktikan Kemampuanmu</p>
             </div>
             <div class="cards-container">
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
+                <div class="card" id="item-10">
+                    <div class="card-icon"><i class="fas fa-book"></i></div>
                     <h4 class="card-title">Materi Ujian</h4>
                     <p class="section-text">Cakupan materi tes SNBT dan tips belajar efektif untuk menghadapinya.</p>
-                    <button class="download-btn" data-filename="materi-ujian-snbt.pdf" data-title="Materi Ujian SNBT">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="11"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
+                <div class="card" id="item-11">
+                    <div class="card-icon"><i class="fas fa-clock"></i></div>
                     <h4 class="card-title">Try Out & Simulasi</h4>
                     <p class="section-text">Program try out dan simulasi ujian untuk mempersiapkan diri menghadapi SNBT.</p>
-                    <button class="download-btn" data-filename="try-out-simulasi.pdf" data-title="Try Out & Simulasi SNBT">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="12"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
+                <div class="card" id="item-12">
+                    <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
                     <h4 class="card-title">Analisis Soal</h4>
                     <p class="section-text">Pembahasan dan analisis pola soal SNBT tahun-tahun sebelumnya.</p>
-                    <button class="download-btn" data-filename="analisis-soal-snbt.pdf" data-title="Analisis Soal SNBT">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="13"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
             </div>
         </section>
@@ -964,7 +724,6 @@
                 <h3 class="section-title">Dashboard Statistik</h3>
                 <p class="section-subtitle">Data dan Analisis Prestasi Akademik Siswa SMA Negeri 1 Cluring</p>
             </div>
-
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-value">96%</div>
@@ -983,7 +742,6 @@
                     <div class="stat-label">Siswa Aktif</div>
                 </div>
             </div>
-
             <div class="chart-container">
                 <h4 class="chart-title">Jumlah Siswa Masuk PTN (5 Tahun Terakhir)</h4>
                 <div class="chart-wrapper">
@@ -999,35 +757,23 @@
                 <p class="section-subtitle">Database Terintegrasi Siswa SMA Negeri 1 Cluring</p>
             </div>
             <div class="cards-container">
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-user-friends"></i>
-                    </div>
+                <div class="card" id="item-13">
+                    <div class="card-icon"><i class="fas fa-user-friends"></i></div>
                     <h4 class="card-title">Profil Siswa</h4>
                     <p class="section-text">Informasi lengkap tentang data diri, prestasi, dan perkembangan akademik setiap siswa.</p>
-                    <button class="download-btn" data-filename="profil-siswa.pdf" data-title="Profil Siswa">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="14"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
+                <div class="card" id="item-14">
+                    <div class="card-icon"><i class="fas fa-chart-bar"></i></div>
                     <h4 class="card-title">Statistik Kelas</h4>
                     <p class="section-text">Data statistik per kelas untuk analisis perkembangan akademik dan non-akademik.</p>
-                    <button class="download-btn" data-filename="statistik-kelas.pdf" data-title="Statistik Kelas">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="15"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-clipboard-list"></i>
-                    </div>
+                <div class="card" id="item-15">
+                    <div class="card-icon"><i class="fas fa-clipboard-list"></i></div>
                     <h4 class="card-title">Rapor Digital</h4>
                     <p class="section-text">Akses rapor dan laporan perkembangan siswa secara online dan real-time.</p>
-                    <button class="download-btn" data-filename="rapor-digital.pdf" data-title="Rapor Digital">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="16"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
             </div>
         </section>
@@ -1039,35 +785,23 @@
                 <p class="section-subtitle">Jejak Prestasi Lulusan SMA Negeri 1 Cluring</p>
             </div>
             <div class="cards-container">
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
+                <div class="card" id="item-16">
+                    <div class="card-icon"><i class="fas fa-network-wired"></i></div>
                     <h4 class="card-title">Jaringan Alumni</h4>
                     <p class="section-text">Database alumni untuk membangun jaringan dan kolaborasi antar angkatan.</p>
-                    <button class="download-btn" data-filename="jaringan-alumni.pdf" data-title="Jaringan Alumni">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="17"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
+                <div class="card" id="item-17">
+                    <div class="card-icon"><i class="fas fa-briefcase"></i></div>
                     <h4 class="card-title">Karir & Pekerjaan</h4>
                     <p class="section-text">Informasi tentang karir dan pekerjaan alumni di berbagai bidang profesi.</p>
-                    <button class="download-btn" data-filename="karir-pekerjaan.pdf" data-title="Karir & Pekerjaan Alumni">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="18"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
+                <div class="card" id="item-18">
+                    <div class="card-icon"><i class="fas fa-handshake"></i></div>
                     <h4 class="card-title">Kontribusi</h4>
                     <p class="section-text">Berbagai kontribusi alumni terhadap pengembangan sekolah dan masyarakat.</p>
-                    <button class="download-btn" data-filename="kontribusi-alumni.pdf" data-title="Kontribusi Alumni">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="19"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
             </div>
         </section>
@@ -1079,35 +813,23 @@
                 <p class="section-subtitle">Daftar Siswa yang Diterima di Perguruan Tinggi Negeri</p>
             </div>
             <div class="cards-container">
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
+                <div class="card" id="item-19">
+                    <div class="card-icon"><i class="fas fa-trophy"></i></div>
                     <h4 class="card-title">Peringkat PTN</h4>
                     <p class="section-text">Data penerimaan siswa di berbagai PTN terbaik di Indonesia.</p>
-                    <button class="download-btn" data-filename="peringkat-ptn.pdf" data-title="Peringkat PTN">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="20"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
+                <div class="card" id="item-20">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
                     <h4 class="card-title">Trend Penerimaan</h4>
                     <p class="section-text">Analisis perkembangan jumlah siswa yang diterima di PTN setiap tahunnya.</p>
-                    <button class="download-btn" data-filename="trend-penerimaan.pdf" data-title="Trend Penerimaan PTN">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="21"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
-                <div class="card">
-                    <div class="card-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
+                <div class="card" id="item-21">
+                    <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
                     <h4 class="card-title">Program Studi</h4>
                     <p class="section-text">Distribusi program studi yang diminati oleh siswa di berbagai PTN.</p>
-                    <button class="download-btn" data-filename="program-studi.pdf" data-title="Program Studi PTN">
-                        <i class="fas fa-download"></i> Unduh PDF
-                    </button>
+                    <button class="next-btn" data-next="22"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
                 </div>
             </div>
         </section>
@@ -1119,9 +841,7 @@
                 <p class="section-subtitle">Penerimaan di Perguruan Tinggi Agama Islam Negeri</p>
             </div>
             <p class="section-text">Informasi tentang penerimaan siswa di berbagai Perguruan Tinggi Agama Islam Negeri (PTAIN) seperti UIN, IAIN, dan STAIN di seluruh Indonesia.</p>
-            <button class="download-btn" data-filename="ptain.pdf" data-title="PTAIN" style="margin-top: 2rem;">
-                <i class="fas fa-download"></i> Unduh PDF PTAIN
-            </button>
+            <button class="next-btn" id="item-22" data-next="23" style="margin-top: 2rem;"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
         </section>
 
         <!-- Kedinasan -->
@@ -1131,9 +851,7 @@
                 <p class="section-subtitle">Data Kelulusan Sekolah Kedinasan</p>
             </div>
             <p class="section-text">Informasi tentang siswa yang berhasil diterima di berbagai sekolah kedinasan seperti IPDN, STIS, STIN, AKPOL, dan lain-lain.</p>
-            <button class="download-btn" data-filename="sekolah-kedinasan.pdf" data-title="Sekolah Kedinasan" style="margin-top: 2rem;">
-                <i class="fas fa-download"></i> Unduh PDF Sekolah Kedinasan
-            </button>
+            <button class="next-btn" id="item-23" data-next="24" style="margin-top: 2rem;"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
         </section>
 
         <!-- LPK -->
@@ -1143,9 +861,7 @@
                 <p class="section-subtitle">Data Siswa Masuk Lembaga Pelatihan Kerja</p>
             </div>
             <p class="section-text">Informasi tentang siswa yang memilih untuk melanjutkan ke Lembaga Pelatihan Kerja (LPK) untuk mengembangkan keterampilan vokasional.</p>
-            <button class="download-btn" data-filename="lembaga-pelatihan-kerja.pdf" data-title="Lembaga Pelatihan Kerja" style="margin-top: 2rem;">
-                <i class="fas fa-download"></i> Unduh PDF LPK
-            </button>
+            <button class="next-btn" id="item-24" data-next="25" style="margin-top: 2rem;"><i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya</button>
         </section>
 
         <!-- PT Swasta -->
@@ -1155,9 +871,7 @@
                 <p class="section-subtitle">Data Siswa Diterima di Perguruan Tinggi Swasta</p>
             </div>
             <p class="section-text">Informasi tentang siswa yang diterima di berbagai Perguruan Tinggi Swasta (PTS) terkemuka di Indonesia.</p>
-            <button class="download-btn" data-filename="perguruan-tinggi-swasta.pdf" data-title="Perguruan Tinggi Swasta" style="margin-top: 2rem;">
-                <i class="fas fa-download"></i> Unduh PDF PT Swasta
-            </button>
+            <button class="next-btn" id="item-25" data-next="1" style="margin-top: 2rem;"><i class="fas fa-home"></i> Kembali ke Halaman Awal</button>
         </section>
     </main>
 
@@ -1179,7 +893,6 @@
         // Toggle Dark Mode
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
-        
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             const icon = themeToggle.querySelector('i');
@@ -1193,8 +906,6 @@
                 localStorage.setItem('theme', 'light');
             }
         });
-
-        // Check for saved theme preference
         if (localStorage.getItem('theme') === 'dark') {
             body.classList.add('dark-mode');
             themeToggle.querySelector('i').classList.remove('fa-moon');
@@ -1204,210 +915,54 @@
         // Toggle Sidebar on Mobile
         const menuToggle = document.getElementById('menuToggle');
         const sidebar = document.getElementById('sidebar');
-        
-        menuToggle.addEventListener('click', () => {
-            sidebar.classList.toggle('active');
-        });
-
-        // Close sidebar when clicking outside on mobile
+        menuToggle.addEventListener('click', () => sidebar.classList.toggle('active'));
         document.addEventListener('click', (e) => {
-            if (window.innerWidth <= 1024 && 
-                !sidebar.contains(e.target) && 
-                !menuToggle.contains(e.target) && 
-                sidebar.classList.contains('active')) {
+            if (window.innerWidth <= 1024 && !sidebar.contains(e.target) && !menuToggle.contains(e.target) && sidebar.classList.contains('active')) {
                 sidebar.classList.remove('active');
             }
         });
 
-        // Smooth scrolling for anchor links
+        // Smooth scroll for sidebar links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
+                    window.scrollTo({ top: targetElement.offsetTop - 80, behavior: 'smooth' });
+                    if (window.innerWidth <= 1024) sidebar.classList.remove('active');
+                }
+            });
+        });
+
+        // Section animation on scroll
+        const sections = document.querySelectorAll('.section, .dashboard');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        sections.forEach(section => observer.observe(section));
+
+        // Navigate to next section
+        document.querySelectorAll('.next-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const next = btn.getAttribute('data-next');
+                let targetId = next === '1' ? '#beranda' : `#item-${next}`;
+                const target = document.querySelector(targetId);
+                if (target) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: target.offsetTop - 80,
                         behavior: 'smooth'
                     });
-                    
-                    // Close sidebar on mobile after clicking a link
-                    if (window.innerWidth <= 1024) {
-                        sidebar.classList.remove('active');
-                    }
+                    if (window.innerWidth <= 1024) sidebar.classList.remove('active');
                 }
             });
         });
 
-        // Intersection Observer for section animations
-        const sections = document.querySelectorAll('.section, .dashboard');
-        
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-        
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
-        // PDF Download Functionality
-        const pdfModal = document.getElementById('pdfModal');
-        const modalClose = document.getElementById('modalClose');
-        const modalTitle = document.getElementById('modalTitle');
-        const modalMessage = document.getElementById('modalMessage');
-        const modalDownloadBtn = document.getElementById('modalDownloadBtn');
-
-        let currentPdfData = null;
-
-        // Function to generate PDF content based on filename
-        function getPdfContent(filename, title) {
-            const content = {
-                'visi-misi.pdf': {
-                    title: title,
-                    content: `VISI SMA NEGERI 1 CLURING:
-"Terwujudnya sekolah unggul dalam prestasi akademik dan non-akademik berdasarkan iman dan takwa"
-
-MISI SMA NEGERI 1 CLURING:
-1. Meningkatkan keimanan dan ketakwaan melalui pengamalan ajaran agama
-2. Mengembangkan potensi akademik siswa melalui pembelajaran berkualitas
-3. Membina karakter siswa yang berintegritas, disiplin, dan bertanggung jawab
-4. Mengembangkan bakat dan minat siswa dalam bidang seni, olahraga, dan sains
-5. Meningkatkan profesionalisme pendidik dan tenaga kependidikan
-6. Mengembangkan kemitraan dengan orang tua dan masyarakat`
-                },
-                'prestasi.pdf': {
-                    title: title,
-                    content: `PRESTASI SMA NEGERI 1 CLURING
-
-PRESTASI AKADEMIK:
-• Juara 1 Olimpiade Matematika Tingkat Nasional 2024
-• Juara 2 Olimpiade Fisika Tingkat Provinsi 2024
-• Juara 3 Olimpiade Kimia Tingkat Nasional 2024
-• Juara 1 Lomba Karya Tulis Ilmiah Tingkat Jawa Timur 2024
-
-PRESTASI NON-AKADEMIK:
-• Juara 1 Turnamen Basket Tingkat Kabupaten 2024
-• Juara 2 Festival Seni Tari Tradisional Tingkat Provinsi 2024
-• Juara 1 Lomba Debat Bahasa Inggris Tingkat Regional 2024
-• Juara 3 Paskibraka Tingkat Nasional 2024`
-                },
-                'fasilitas.pdf': {
-                    title: title,
-                    content: `FASILITAS SMA NEGERI 1 CLURING
-
-FASILITAS PEMBELAJARAN:
-• 30 Ruang Kelas Ber-AC
-• Laboratorium Komputer (40 unit)
-• Laboratorium Fisika, Kimia, Biologi
-• Perpustakaan Digital
-• Ruang Multimedia
-
-FASILITAS PENUNJANG:
-• Lapangan Olahraga (Basket, Voli, Futsal)
-• Masjid Sekolah
-• Kantin Sehat
-• Ruang BK
-• Koperasi Siswa
-• WiFi Area seluruh sekolah
-
-FASILITAS TEKNOLOGI:
-• Smart Classroom
-• CCTV 24 jam
-• Sistem Informasi Sekolah Terintegrasi
-• Aplikasi E-Learning`
-                },
-                // Add content for other PDF files similarly
-                'default.pdf': {
-                    title: title,
-                    content: `Dokumen ${title}
-
-Ini adalah konten default untuk dokumen ${title}. 
-Silakan hubungi administrator untuk informasi lebih lanjut.`
-                }
-            };
-
-            return content[filename] || content['default.pdf'];
-        }
-
-        // Function to generate and download PDF
-        function generatePDF(filename, title) {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            
-            const content = getPdfContent(filename, title);
-            
-            // Set font and add title
-            doc.setFont('helvetica', 'bold');
-            doc.setFontSize(16);
-            doc.text(content.title, 20, 20);
-            
-            // Add content
-            doc.setFont('helvetica', 'normal');
-            doc.setFontSize(12);
-            const lines = doc.splitTextToSize(content.content, 170);
-            doc.text(lines, 20, 40);
-            
-            // Add footer
-            doc.setFontSize(10);
-            doc.setTextColor(150);
-            doc.text(`Dokumen resmi SMA Negeri 1 Cluring - Generated on ${new Date().toLocaleDateString('id-ID')}`, 20, 280);
-            
-            // Save the PDF
-            doc.save(filename);
-        }
-
-        // Add event listeners to download buttons
-        document.querySelectorAll('.download-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const filename = this.getAttribute('data-filename');
-                const title = this.getAttribute('data-title');
-                
-                currentPdfData = { filename, title };
-                
-                // Show modal
-                modalTitle.textContent = `Download ${title}`;
-                modalMessage.textContent = `File ${filename} sedang dipersiapkan. Klik tombol di bawah untuk mengunduh.`;
-                pdfModal.style.display = 'flex';
-            });
-        });
-
-        // Modal download button
-        modalDownloadBtn.addEventListener('click', function() {
-            if (currentPdfData) {
-                generatePDF(currentPdfData.filename, currentPdfData.title);
-                pdfModal.style.display = 'none';
-            }
-        });
-
-        // Close modal
-        modalClose.addEventListener('click', function() {
-            pdfModal.style.display = 'none';
-        });
-
-        // Close modal when clicking outside
-        pdfModal.addEventListener('click', function(e) {
-            if (e.target === pdfModal) {
-                pdfModal.style.display = 'none';
-            }
-        });
-
-        // Initialize chart when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function() {
+        // Chart
+        document.addEventListener('DOMContentLoaded', () => {
             const ctx = document.getElementById('chart').getContext('2d');
-            
-            // Chart Data
             const data = {
                 labels: ['2019', '2020', '2021', '2022', '2023'],
                 datasets: [{
@@ -1420,8 +975,6 @@ Silakan hubungi administrator untuk informasi lebih lanjut.`
                     fill: true
                 }]
             };
-            
-            // Chart Configuration
             const config = {
                 type: 'line',
                 data: data,
@@ -1431,67 +984,21 @@ Silakan hubungi administrator untuk informasi lebih lanjut.`
                     plugins: {
                         legend: {
                             position: 'top',
-                            labels: {
-                                font: {
-                                    size: 14,
-                                    family: "'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
-                                },
-                                color: body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b'
-                            }
+                            labels: { font: { size: 14 }, color: body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b' }
                         },
                         tooltip: {
                             backgroundColor: body.classList.contains('dark-mode') ? 'rgba(15, 23, 42, 0.9)' : 'rgba(255, 255, 255, 0.9)',
                             titleColor: body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b',
-                            bodyColor: body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b',
-                            borderColor: 'rgba(59, 130, 246, 0.5)',
-                            borderWidth: 1
+                            bodyColor: body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b'
                         }
                     },
                     scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                color: body.classList.contains('dark-mode') ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
-                            },
-                            ticks: {
-                                color: body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b',
-                                font: {
-                                    size: 12
-                                }
-                            }
-                        },
-                        x: {
-                            grid: {
-                                color: body.classList.contains('dark-mode') ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
-                            },
-                            ticks: {
-                                color: body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b',
-                                font: {
-                                    size: 12
-                                }
-                            }
-                        }
+                        y: { beginAtZero: true, grid: { color: body.classList.contains('dark-mode') ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }, ticks: { color: body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b' } },
+                        x: { grid: { color: body.classList.contains('dark-mode') ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }, ticks: { color: body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b' } }
                     }
                 }
             };
-            
-            // Create Chart
-            const chart = new Chart(ctx, config);
-            
-            // Update chart colors when theme changes
-            themeToggle.addEventListener('click', () => {
-                setTimeout(() => {
-                    chart.options.plugins.legend.labels.color = body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b';
-                    chart.options.plugins.tooltip.backgroundColor = body.classList.contains('dark-mode') ? 'rgba(15, 23, 42, 0.9)' : 'rgba(255, 255, 255, 0.9)';
-                    chart.options.plugins.tooltip.titleColor = body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b';
-                    chart.options.plugins.tooltip.bodyColor = body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b';
-                    chart.options.scales.y.grid.color = body.classList.contains('dark-mode') ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
-                    chart.options.scales.y.ticks.color = body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b';
-                    chart.options.scales.x.grid.color = body.classList.contains('dark-mode') ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
-                    chart.options.scales.x.ticks.color = body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b';
-                    chart.update();
-                }, 300);
-            });
+            new Chart(ctx, config);
         });
     </script>
 </body>
