@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Persyaratan - SNBP | SMA Negeri 1 Cluring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e3a8a;
+            --secondary: #4f46e5;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --text-light: #1e293b;
+            --text-dark: #f8fafc;
+            --gradient-primary: linear-gradient(135deg, #1e40af, #4f46e5);
+            --shadow-light: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 15px 35px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(30, 64, 175, 0.3);
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            color: var(--text-light);
+            line-height: 1.7;
+            padding: 2.5rem;
+            min-height: 100vh;
+            transition: var(--transition);
+        }
+        body.dark-mode {
+            background: linear-gradient(135deg, #0c1427, #111827);
+            color: var(--text-dark);
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .header h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .header p {
+            opacity: 0.85;
+            font-size: 1.1rem;
+        }
+        .content {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 2.2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            margin-bottom: 2.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        body.dark-mode .content {
+            background: rgba(30, 41, 59, 0.75);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+        h2 {
+            font-size: 1.65rem;
+            margin: 1.6rem 0 1.1rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        body.dark-mode h2 {
+            color: #c7d2fe;
+        }
+        .requirement-item {
+            background: rgba(241, 245, 249, 0.6);
+            padding: 1.3rem;
+            border-radius: 14px;
+            margin-bottom: 1.4rem;
+            border-left: 4px solid var(--primary);
+        }
+        body.dark-mode .requirement-item {
+            background: rgba(26, 32, 44, 0.6);
+        }
+        .requirement-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.6rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        body.dark-mode .requirement-item h3 {
+            color: #a5b4fc;
+        }
+        ul {
+            padding-left: 1.6rem;
+            margin: 0.7rem 0 1rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+        .note {
+            background: #f0f9ff;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+        body.dark-mode .note {
+            background: rgba(30, 64, 175, 0.2);
+            border-left-color: #60a5fa;
+        }
+        .next-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.9rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            box-shadow: 0 6px 16px rgba(30, 64, 175, 0.35);
+            transition: var(--transition);
+        }
+        .next-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+        .back-link {
+            display: block;
+            margin-top: 1.4rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        body.dark-mode .back-link {
+            color: #a5b4fc;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .content {
+                padding: 1.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .next-btn {
+                padding: 0.7rem 1.6rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Persyaratan SNBP</h1>
+            <p>Seleksi Nasional Berbasis Prestasi – SMA Negeri 1 Cluring</p>
+        </div>
+
+        <div class="content">
+            <p>Berikut adalah persyaratan lengkap untuk mendaftar melalui jalur **SNBP (Seleksi Nasional Berbasis Prestasi)** sesuai ketentuan terbaru dari Kementerian Pendidikan, Kebudayaan, Riset, dan Teknologi (Kemendikbudristek).</p>
+
+            <div class="requirement-item">
+                <h3><i class="fas fa-user-check"></i> Persyaratan Umum</h3>
+                <ul>
+                    <li>Siswa SMA/MA/SMK kelas XII pada tahun ajaran berjalan.</li>
+                    <li>Memiliki NISN yang terdaftar di PDSS (Pangkalan Data Sekolah dan Siswa).</li>
+                    <li>Memiliki akun di portal SNBP resmi: <strong>snbp.bppp.kemdikbud.go.id</strong>.</li>
+                    <li>Dinyatakan <strong>memenuhi syarat oleh sekolah</strong> untuk mendaftar SNBP.</li>
+                </ul>
+            </div>
+
+            <div class="requirement-item">
+                <h3><i class="fas fa-chart-line"></i> Persyaratan Akademik</h3>
+                <ul>
+                    <li>Rata-rata nilai rapor semester 1–5 minimal <strong>80 (delapan puluh)</strong> untuk kelompok MIPA dan Campuran.</li>
+                    <li>Rata-rata nilai rapor semester 1–5 minimal <strong>75 (tujuh puluh lima)</strong> untuk kelompok SOSHUM.</li>
+                    <li>Mata pelajaran yang dinilai: Matematika, Bahasa Indonesia, Bahasa Inggris, dan mapel peminatan.</li>
+                    <li>Nilai rapor harus <strong>otentik dan tidak direkayasa</strong>.</li>
+                </ul>
+            </div>
+
+            <div class="requirement-item">
+                <h3><i class="fas fa-award"></i> Persyaratan Prestasi Non-Akademik</h3>
+                <p>Jika mendaftar berdasarkan prestasi non-akademik (seni, olahraga, riset, dll.), maka:</p>
+                <ul>
+                    <li>Memiliki sertifikat kejuaraan <strong>tingkat kabupaten/provinsi/nasional/internasional</strong>.</li>
+                    <li>Prestasi diperoleh selama di SMA (kelas X–XII).</li>
+                    <li>Portofolio karya (jika relevan) harus diunggah di sistem SNBP.</li>
+                    <li>Divalidasi oleh sekolah dan pihak berwenang.</li>
+                </ul>
+            </div>
+
+            <div class="requirement-item">
+                <h3><i class="fas fa-file-alt"></i> Dokumen yang Harus Disiapkan</h3>
+                <ul>
+                    <li>Foto berwarna terbaru (latar belakang biru).</li>
+                    <li>Scan rapor semester 1–5 yang telah dilegalisir.</li>
+                    <li>Scan sertifikat prestasi (jika ada).</li>
+                    <li>Scan KIP/Kartu PKH (jika ingin mendaftar sebagai penerima KIP-Kuliah).</li>
+                </ul>
+            </div>
+
+            <div class="note">
+                <strong>⚠️ Catatan Penting:</strong> Siswa hanya boleh memilih <strong>1 (satu) program studi</strong> di <strong>1 (satu) PTN</strong>. Pilihan tidak dapat diubah setelah dikunci.
+            </div>
+        </div>
+
+        <a href="8-jadwal-penting.html" class="next-btn">
+            <i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya
+        </a>
+
+        <a href="index.html" class="back-link">← Kembali ke Menu Utama</a>
+    </div>
+</body>
+</html>
