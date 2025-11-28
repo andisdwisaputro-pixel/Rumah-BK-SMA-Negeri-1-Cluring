@@ -1,116 +1,1189 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SMA Negeri 1 Cluring - Neon Logo Animation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMA Negeri 1 Cluring - Dashboard Premium</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e3a8a;
+            --secondary: #3730a3;
+            --accent: #8b5cf6;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --text-light: #1e293b;
+            --text-dark: #f8fafc;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --gradient-primary: linear-gradient(135deg, #1e40af, #3730a3, #4f46e5);
+            --gradient-dark: linear-gradient(135deg, #0f172a, #1e1b4b, #312e81);
+            --shadow-light: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 15px 35px rgba(0, 0, 0, 0.1);
+            --shadow-dark: 0 20px 40px rgba(0, 0, 0, 0.2);
+            --border-radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
 
-<style>
-    /* ====== GLOBAL ====== */
-    body {
-        margin: 0;
-        background: #070707;
-        font-family: "Poppins", Arial, sans-serif;
-        height: 200vh; /* untuk demo efek scroll */
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    /* ====== NAVBAR ====== */
-    nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        padding: 18px 40px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        z-index: 1000;
-        transition: background 0.4s ease, backdrop-filter 0.4s ease;
-        background: transparent;
-    }
+        body {
+            background: var(--light);
+            color: var(--text-light);
+            transition: var(--transition);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-    nav.scrolled {
-        background: rgba(0, 0, 0, 0.65);
-        backdrop-filter: blur(10px);
-    }
+        body.dark-mode {
+            background: var(--dark);
+            color: var(--text-dark);
+        }
 
-    nav a {
-        color: #ffffff;
-        text-decoration: none;
-        margin-left: 25px;
-        font-weight: 600;
-        transition: 0.3s;
-    }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
 
-    nav a:hover {
-        color: #00ffff;
-        text-shadow: 0 0 10px #00ffff;
-    }
+        ::-webkit-scrollbar-track {
+            background: rgba(30, 64, 175, 0.1);
+        }
 
-    /* ====== LOGO NEON ====== */
-    .logo {
-        font-size: 42px;
-        font-weight: 900;
-        letter-spacing: 1.5px;
-        color: #00faff;
-        text-shadow: 
-            0 0 10px #00faff,
-            0 0 20px #00faff,
-            0 0 40px #00faff;
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 1s ease-out, transform 1s ease-out, text-shadow 0.5s ease;
-    }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
 
-    /* Efek fade-in saat scroll */
-    .logo.show {
-        opacity: 1;
-        transform: translateY(0);
-    }
+        .dark-mode ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
 
-    /* Glow lebih kuat saat navbar aktif */
-    nav.scrolled .logo {
-        text-shadow:
-            0 0 15px #00eaff,
-            0 0 30px #00eaff,
-            0 0 60px #00eaff;
-    }
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(15px);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
 
-</style>
+        .dark-mode .navbar {
+            background: rgba(15, 23, 42, 0.9);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition);
+        }
+
+        .nav-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transition: var(--transition);
+        }
+
+        .dark-mode .nav-title {
+            background: linear-gradient(to right, #f8fafc, #c7d2fe);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .nav-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .theme-toggle, .menu-toggle {
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-light);
+        }
+
+        .theme-toggle:hover, .menu-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .menu-toggle {
+            display: none;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 280px;
+            background: var(--gradient-dark);
+            box-shadow: var(--shadow-dark);
+            z-index: 900;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            transition: var(--transition);
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .sidebar-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebar-nav {
+            flex: 1;
+            padding: 1.5rem;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.9rem 1.2rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.7s;
+        }
+
+        .nav-link:hover::before {
+            left: 100%;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .nav-link i {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            padding-top: 80px;
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(2px);
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            color: white;
+            max-width: 42rem;
+            padding: 0 1rem;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(to right, #ffffff, #c7d2fe);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-medium);
+            text-decoration: none;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-dark);
+        }
+
+        /* Content Sections */
+        .section {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 5rem 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .dark-mode .section-title {
+            background: linear-gradient(to right, #f8fafc, #c7d2fe);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-text {
+            line-height: 1.75;
+            opacity: 0.8;
+            font-size: 1.1rem;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-light);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+        .dark-mode .card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Dashboard Section */
+        .dashboard {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 5rem 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .dashboard.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .chart-container {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-medium);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 2rem;
+        }
+
+        .dark-mode .chart-container {
+            background: rgba(30, 41, 59, 0.5);
+        }
+
+        .chart-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .chart-wrapper {
+            width: 100%;
+            height: 400px;
+            position: relative;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: var(--gradient-primary);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            color: white;
+            text-align: center;
+            box-shadow: var(--shadow-medium);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-dark);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 5rem;
+            padding: 3rem 0;
+            text-align: center;
+            background: var(--gradient-dark);
+            color: white;
+            backdrop-filter: blur(20px);
+        }
+
+        .footer-content {
+            max-width: 72rem;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .footer-text {
+            opacity: 0.8;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                height: 60vh;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <div class="logo">SC</div>
+            <div class="nav-title">SMA Negeri 1 Cluring</div>
+        </div>
+        <div class="nav-controls">
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
 
-<!-- ====== NAVBAR ====== -->
-<nav id="navbar">
-    <div class="logo" id="logo">SMA CLURING</div>
-    <div>
-        <a href="#">Home</a>
-        <a href="#">Profil</a>
-        <a href="#">Guru</a>
-        <a href="#">Kontak</a>
-    </div>
-</nav>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">SC</div>
+            <h1 class="sidebar-title">SMA N 1 Cluring</h1>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#beranda" class="nav-link">
+                <i class="fas fa-home"></i>
+                <span>Beranda</span>
+            </a>
+            <a href="#profil" class="nav-link">
+                <i class="fas fa-school"></i>
+                <span>Profil Sekolah</span>
+            </a>
+            <a href="#bk" class="nav-link">
+                <i class="fas fa-hands-helping"></i>
+                <span>Bimbingan Konseling</span>
+            </a>
+            <a href="#datasiswa" class="nav-link">
+                <i class="fas fa-users"></i>
+                <span>Data Siswa</span>
+            </a>
+            <a href="#alumni" class="nav-link">
+                <i class="fas fa-user-graduate"></i>
+                <span>Data Alumni</span>
+            </a>
+            <a href="#snbp" class="nav-link">
+                <i class="fas fa-trophy"></i>
+                <span>SNBP</span>
+            </a>
+            <a href="#snbt" class="nav-link">
+                <i class="fas fa-pencil-alt"></i>
+                <span>SNBT</span>
+            </a>
+            <a href="#ptn" class="nav-link">
+                <i class="fas fa-university"></i>
+                <span>PTN</span>
+            </a>
+            <a href="#ptain" class="nav-link">
+                <i class="fas fa-mosque"></i>
+                <span>PTAIN</span>
+            </a>
+            <a href="#kedinasan" class="nav-link">
+                <i class="fas fa-shield-alt"></i>
+                <span>Kedinasan</span>
+            </a>
+            <a href="#lpk" class="nav-link">
+                <i class="fas fa-tools"></i>
+                <span>LPK</span>
+            </a>
+            <a href="#ptswasta" class="nav-link">
+                <i class="fas fa-building"></i>
+                <span>PT Swasta</span>
+            </a>
+            <a href="#dashboard" class="nav-link">
+                <i class="fas fa-chart-bar"></i>
+                <span>Dashboard</span>
+            </a>
+        </nav>
+    </aside>
 
-<!-- Konten Dummy untuk Scroll -->
-<div style="margin-top:140px; padding:40px; color:white; font-size:22px;">
-    Scroll ke bawah untuk melihat efek navbar & animasi logo neon glowing.<br>
-    <br><br><br><br><br><br><br><br>
-    (Konten halaman Anda nanti tempel di sini)
-</div>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="beranda">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h2 class="hero-title">SMA Negeri 1 Cluring</h2>
+                <p class="hero-subtitle">Mencerdaskan Kehidupan Bangsa dengan Pendidikan Berkualitas</p>
+                <a href="#profil" class="hero-btn">Jelajahi Sekolah Kami</a>
+            </div>
+        </section>
 
-<script>
-    const navbar = document.getElementById('navbar');
-    const logo = document.getElementById('logo');
+        <!-- Profil Section -->
+        <section class="section" id="profil">
+            <div class="section-header">
+                <h3 class="section-title">Profil Sekolah</h3>
+                <p class="section-subtitle">Sekolah Unggul dengan Visi Membentuk Peserta Didik yang Berkarakter, Berprestasi, dan Berwawasan Global</p>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4 class="card-title">Visi & Misi</h4>
+                    <p class="section-text">Menjadi sekolah unggul dalam prestasi akademik dan non-akademik berdasarkan iman dan takwa.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h4 class="card-title">Prestasi</h4>
+                    <p class="section-text">Berbagai penghargaan di tingkat regional dan nasional dalam bidang akademik, olahraga, dan seni.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h4 class="card-title">Fasilitas</h4>
+                    <p class="section-text">Fasilitas lengkap dan modern untuk mendukung proses belajar mengajar yang optimal.</p>
+                </div>
+            </div>
+        </section>
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-            logo.classList.add('show');
-        } else {
-            navbar.classList.remove('scrolled');
-            logo.classList.remove('show');
+        <!-- BK Section -->
+        <section class="section" id="bk">
+            <div class="section-header">
+                <h3 class="section-title">Bimbingan dan Konseling</h3>
+                <p class="section-subtitle">Membantu Siswa Mengembangkan Potensi Diri Secara Optimal</p>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4 class="card-title">Layanan Konseling</h4>
+                    <p class="section-text">Konseling individu dan kelompok untuk membantu mengatasi masalah pribadi, sosial, belajar, dan karir.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4 class="card-title">Pengembangan Diri</h4>
+                    <p class="section-text">Program pengembangan diri untuk meningkatkan keterampilan sosial, kepemimpinan, dan karakter.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h4 class="card-title">Bimbingan Karir</h4>
+                    <p class="section-text">Panduan pemilihan jurusan dan karir sesuai dengan minat, bakat, dan kemampuan siswa.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SNBP Section -->
+        <section class="section" id="snbp">
+            <div class="section-header">
+                <h3 class="section-title">SNBP</h3>
+                <p class="section-subtitle">Seleksi Nasional Berbasis Prestasi - Jalur Prestasi Menuju PTN</p>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h4 class="card-title">Persyaratan</h4>
+                    <p class="section-text">Informasi lengkap tentang persyaratan akademik dan non-akademik untuk mendaftar SNBP.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h4 class="card-title">Jadwal Penting</h4>
+                    <p class="section-text">Timeline pendaftaran, pengumuman, dan proses administrasi SNBP.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h4 class="card-title">Strategi Sukses</h4>
+                    <p class="section-text">Tips dan strategi untuk meningkatkan peluang diterima melalui jalur SNBP.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SNBT Section -->
+        <section class="section" id="snbt">
+            <div class="section-header">
+                <h3 class="section-title">SNBT</h3>
+                <p class="section-subtitle">Seleksi Nasional Berbasis Tes - Buktikan Kemampuanmu</p>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h4 class="card-title">Materi Ujian</h4>
+                    <p class="section-text">Cakupan materi tes SNBT dan tips belajar efektif untuk menghadapinya.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h4 class="card-title">Try Out & Simulasi</h4>
+                    <p class="section-text">Program try out dan simulasi ujian untuk mempersiapkan diri menghadapi SNBT.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h4 class="card-title">Analisis Soal</h4>
+                    <p class="section-text">Pembahasan dan analisis pola soal SNBT tahun-tahun sebelumnya.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section class="dashboard" id="dashboard">
+            <div class="section-header">
+                <h3 class="section-title">Dashboard Statistik</h3>
+                <p class="section-subtitle">Data dan Analisis Prestasi Akademik Siswa SMA Negeri 1 Cluring</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">96%</div>
+                    <div class="stat-label">Kelulusan</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">42</div>
+                    <div class="stat-label">Prestasi Nasional</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">78%</div>
+                    <div class="stat-label">Masuk PTN</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">1250+</div>
+                    <div class="stat-label">Siswa Aktif</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h4 class="chart-title">Jumlah Siswa Masuk PTN (5 Tahun Terakhir)</h4>
+                <div class="chart-wrapper">
+                    <canvas id="chart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Siswa -->
+        <section class="section" id="datasiswa">
+            <div class="section-header">
+                <h3 class="section-title">Data Siswa</h3>
+                <p class="section-subtitle">Database Terintegrasi Siswa SMA Negeri 1 Cluring</p>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <h4 class="card-title">Profil Siswa</h4>
+                    <p class="section-text">Informasi lengkap tentang data diri, prestasi, dan perkembangan akademik setiap siswa.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h4 class="card-title">Statistik Kelas</h4>
+                    <p class="section-text">Data statistik per kelas untuk analisis perkembangan akademik dan non-akademik.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h4 class="card-title">Rapor Digital</h4>
+                    <p class="section-text">Akses rapor dan laporan perkembangan siswa secara online dan real-time.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Alumni -->
+        <section class="section" id="alumni">
+            <div class="section-header">
+                <h3 class="section-title">Data Alumni</h3>
+                <p class="section-subtitle">Jejak Prestasi Lulusan SMA Negeri 1 Cluring</p>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h4 class="card-title">Jaringan Alumni</h4>
+                    <p class="section-text">Database alumni untuk membangun jaringan dan kolaborasi antar angkatan.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h4 class="card-title">Karir & Pekerjaan</h4>
+                    <p class="section-text">Informasi tentang karir dan pekerjaan alumni di berbagai bidang profesi.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h4 class="card-title">Kontribusi</h4>
+                    <p class="section-text">Berbagai kontribusi alumni terhadap pengembangan sekolah dan masyarakat.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PTN -->
+        <section class="section" id="ptn">
+            <div class="section-header">
+                <h3 class="section-title">Perguruan Tinggi Negeri</h3>
+                <p class="section-subtitle">Daftar Siswa yang Diterima di Perguruan Tinggi Negeri</p>
+            </div>
+            <div class="cards-container">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h4 class="card-title">Peringkat PTN</h4>
+                    <p class="section-text">Data penerimaan siswa di berbagai PTN terbaik di Indonesia.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4 class="card-title">Trend Penerimaan</h4>
+                    <p class="section-text">Analisis perkembangan jumlah siswa yang diterima di PTN setiap tahunnya.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h4 class="card-title">Program Studi</h4>
+                    <p class="section-text">Distribusi program studi yang diminati oleh siswa di berbagai PTN.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PTAIN -->
+        <section class="section" id="ptain">
+            <div class="section-header">
+                <h3 class="section-title">PTAIN</h3>
+                <p class="section-subtitle">Penerimaan di Perguruan Tinggi Agama Islam Negeri</p>
+            </div>
+            <p class="section-text">Informasi tentang penerimaan siswa di berbagai Perguruan Tinggi Agama Islam Negeri (PTAIN) seperti UIN, IAIN, dan STAIN di seluruh Indonesia.</p>
+        </section>
+
+        <!-- Kedinasan -->
+        <section class="section" id="kedinasan">
+            <div class="section-header">
+                <h3 class="section-title">Sekolah Kedinasan</h3>
+                <p class="section-subtitle">Data Kelulusan Sekolah Kedinasan</p>
+            </div>
+            <p class="section-text">Informasi tentang siswa yang berhasil diterima di berbagai sekolah kedinasan seperti IPDN, STIS, STIN, AKPOL, dan lain-lain.</p>
+        </section>
+
+        <!-- LPK -->
+        <section class="section" id="lpk">
+            <div class="section-header">
+                <h3 class="section-title">Lembaga Pelatihan Kerja</h3>
+                <p class="section-subtitle">Data Siswa Masuk Lembaga Pelatihan Kerja</p>
+            </div>
+            <p class="section-text">Informasi tentang siswa yang memilih untuk melanjutkan ke Lembaga Pelatihan Kerja (LPK) untuk mengembangkan keterampilan vokasional.</p>
+        </section>
+
+        <!-- PT Swasta -->
+        <section class="section" id="ptswasta">
+            <div class="section-header">
+                <h3 class="section-title">Perguruan Tinggi Swasta</h3>
+                <p class="section-subtitle">Data Siswa Diterima di Perguruan Tinggi Swasta</p>
+            </div>
+            <p class="section-text">Informasi tentang siswa yang diterima di berbagai Perguruan Tinggi Swasta (PTS) terkemuka di Indonesia.</p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">© 2025 SMA Negeri 1 Cluring • Website Premium Edition</p>
+            <p class="footer-text">Jl. Pendidikan No. 123, Cluring, Banyuwangi, Jawa Timur</p>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle Dark Mode
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            const icon = themeToggle.querySelector('i');
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.querySelector('i').classList.remove('fa-moon');
+            themeToggle.querySelector('i').classList.add('fa-sun');
         }
-    });
-</script>
 
+        // Toggle Sidebar on Mobile
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.getElementById('sidebar');
+        
+        menuToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 1024 && 
+                !sidebar.contains(e.target) && 
+                !menuToggle.contains(e.target) && 
+                sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close sidebar on mobile after clicking a link
+                    if (window.innerWidth <= 1024) {
+                        sidebar.classList.remove('active');
+                    }
+                }
+            });
+        });
+
+        // Intersection Observer for section animations
+        const sections = document.querySelectorAll('.section, .dashboard');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Initialize chart when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('chart').getContext('2d');
+            
+            // Chart Data
+            const data = {
+                labels: ['2019', '2020', '2021', '2022', '2023'],
+                datasets: [{
+                    label: 'Jumlah Siswa Masuk PTN',
+                    data: [320, 350, 380, 410, 460],
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                    borderColor: 'rgba(59, 130, 246, 1)',
+                    borderWidth: 3,
+                    tension: 0.4,
+                    fill: true
+                }]
+            };
+            
+            // Chart Configuration
+            const config = {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                font: {
+                                    size: 14,
+                                    family: "'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"
+                                },
+                                color: body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b'
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: body.classList.contains('dark-mode') ? 'rgba(15, 23, 42, 0.9)' : 'rgba(255, 255, 255, 0.9)',
+                            titleColor: body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b',
+                            bodyColor: body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b',
+                            borderColor: 'rgba(59, 130, 246, 0.5)',
+                            borderWidth: 1
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: body.classList.contains('dark-mode') ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
+                            },
+                            ticks: {
+                                color: body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b',
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: body.classList.contains('dark-mode') ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'
+                            },
+                            ticks: {
+                                color: body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b',
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+            
+            // Create Chart
+            const chart = new Chart(ctx, config);
+            
+            // Update chart colors when theme changes
+            themeToggle.addEventListener('click', () => {
+                setTimeout(() => {
+                    chart.options.plugins.legend.labels.color = body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b';
+                    chart.options.plugins.tooltip.backgroundColor = body.classList.contains('dark-mode') ? 'rgba(15, 23, 42, 0.9)' : 'rgba(255, 255, 255, 0.9)';
+                    chart.options.plugins.tooltip.titleColor = body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b';
+                    chart.options.plugins.tooltip.bodyColor = body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b';
+                    chart.options.scales.y.grid.color = body.classList.contains('dark-mode') ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+                    chart.options.scales.y.ticks.color = body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b';
+                    chart.options.scales.x.grid.color = body.classList.contains('dark-mode') ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+                    chart.options.scales.x.ticks.color = body.classList.contains('dark-mode') ? '#f8fafc' : '#1e293b';
+                    chart.update();
+                }, 300);
+            });
+        });
+    </script>
 </body>
 </html>
