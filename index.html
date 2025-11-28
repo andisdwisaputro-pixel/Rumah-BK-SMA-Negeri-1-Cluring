@@ -16,15 +16,16 @@
             --light: #f8fafc;
             --dark: #0f172a;
             --card-bg-light: rgba(255, 255, 255, 0.92);
-            --card-bg-dark: rgba(20, 25, 45, 0.82);
+            --card-bg-dark: rgba(30, 41, 59, 0.85);
             --text-light: #1e293b;
-            --text-dark: #f1f5f9;
+            --text-dark: #f8fafc;
             --gradient-primary: linear-gradient(135deg, #1e40af, #4f46e5);
             --gradient-hover: linear-gradient(135deg, #3b82f6, #7c3aed);
-            --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.07);
-            --shadow-hover: 0 16px 40px rgba(30, 64, 175, 0.3);
-            --border-radius: 22px;
-            --transition: all 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+            --gradient-background: linear-gradient(135deg, #f0f9ff, #e0f2fe, #f0f9ff);
+            --shadow-light: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 20px 40px rgba(30, 64, 175, 0.15);
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
         }
 
         * {
@@ -35,36 +36,88 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: linear-gradient(135deg, #f0f9ff, #e0f2fe, #dbeafe);
+            background: var(--gradient-background);
             color: var(--text-light);
             line-height: 1.65;
             padding: 2.5rem;
             min-height: 100vh;
             transition: var(--transition);
-            position: relative;
-            overflow-x: hidden;
         }
 
         body.dark-mode {
-            background: linear-gradient(135deg, #0c1427, #111827, #131a2f);
+            background: linear-gradient(135deg, #0c1427, #111827);
             color: var(--text-dark);
+            --gradient-background: linear-gradient(135deg, #0c1427, #111827);
         }
 
-        #particles-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            animation: fadeIn 0.8s ease-out;
+            position: relative;
+        }
+
+        .logo-container {
+            margin-bottom: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-light);
+            border: 4px solid white;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .logo img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 400;
         }
 
         .theme-toggle {
-            position: fixed;
-            top: 1.5rem;
-            right: 1.5rem;
-            background: rgba(255, 255, 255, 0.85);
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--card-bg-light);
             border: none;
             width: 48px;
             height: 48px;
@@ -72,97 +125,44 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
             cursor: pointer;
-            z-index: 100;
+            box-shadow: var(--shadow-light);
             transition: var(--transition);
+            backdrop-filter: blur(10px);
         }
 
         body.dark-mode .theme-toggle {
-            background: rgba(30, 41, 59, 0.85);
-            color: #cbd5e1;
+            background: var(--card-bg-dark);
         }
 
         .theme-toggle:hover {
-            transform: rotate(15deg) scale(1.1);
-        }
-
-        .theme-toggle i {
-            font-size: 1.3rem;
-        }
-
-        .container {
-            max-width: 1320px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 3.8rem;
-            position: relative;
-            animation: fadeIn 0.9s ease-out;
-        }
-
-        .logo {
-            width: 120px;
-            height: auto;
-            margin: 0 auto 1.4rem;
-            opacity: 0.95;
-            transition: transform 0.4s ease, opacity 0.3s;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
-        }
-
-        .logo:hover {
-            transform: scale(1.04);
-            opacity: 1;
-        }
-
-        .header h1 {
-            font-size: 2.9rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -0.6px;
-            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);
-        }
-
-        body.dark-mode .header h1 {
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.88;
-            max-width: 620px;
-            margin: 0 auto;
-            font-weight: 400;
-            line-height: 1.6;
+            transform: rotate(15deg);
+            box-shadow: var(--shadow-hover);
         }
 
         .cards-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2.2rem;
+            grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+            gap: 2rem;
+            animation: fadeIn 1s ease-out;
         }
 
         .card {
             position: relative;
             background: var(--card-bg-light);
-            backdrop-filter: blur(14px);
+            backdrop-filter: blur(12px);
             border-radius: var(--border-radius);
-            padding: 2.2rem;
+            padding: 2rem;
             box-shadow: var(--shadow-light);
-            border: 1px solid rgba(230, 242, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             transition: var(--transition);
             text-decoration: none;
             color: inherit;
             overflow: hidden;
             isolation: isolate;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .card::before {
@@ -170,19 +170,19 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(30,64,175,0.04), transparent);
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30,64,175,0.05), transparent);
             z-index: -1;
             opacity: 0;
             transition: opacity 0.4s;
         }
 
         .card:hover {
-            transform: translateY(-12px) scale(1.02);
+            transform: translateY(-10px) scale(1.02);
             box-shadow: var(--shadow-hover);
             background: white;
-            border-color: rgba(30, 64, 175, 0.25);
+            border-color: rgba(30, 64, 175, 0.2);
         }
 
         .card:hover::before {
@@ -191,20 +191,19 @@
 
         body.dark-mode .card {
             background: var(--card-bg-dark);
-            border-color: rgba(255, 255, 255, 0.1);
-            color: var(--text-dark);
+            border-color: rgba(255, 255, 255, 0.12);
         }
 
         body.dark-mode .card:hover {
-            background: #1a2235;
+            background: #1e293b;
         }
 
         .card-number {
             position: absolute;
-            top: 1.3rem;
-            right: 1.3rem;
-            width: 38px;
-            height: 38px;
+            top: 1.25rem;
+            right: 1.25rem;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             background: var(--gradient-primary);
             color: white;
@@ -212,144 +211,187 @@
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 1rem;
-            box-shadow: 0 5px 12px rgba(30, 64, 175, 0.35);
-            z-index: 2;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 10px rgba(30, 64, 175, 0.3);
+            transition: var(--transition);
+        }
+
+        .card:hover .card-number {
+            transform: scale(1.1);
         }
 
         .card-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1.3rem;
+            font-size: 2.4rem;
+            margin-bottom: 1.2rem;
             background: var(--gradient-primary);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            transition: transform 0.4s ease, filter 0.3s;
+            transition: var(--transition);
         }
 
         .card:hover .card-icon {
-            transform: scale(1.2) rotate(3deg);
-            filter: drop-shadow(0 4px 10px rgba(30, 64, 175, 0.3));
+            transform: scale(1.15);
+            filter: drop-shadow(0 2px 6px rgba(30, 64, 175, 0.3));
         }
 
         .card-title {
-            font-size: 1.45rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 1.1rem;
+            margin-bottom: 1rem;
             color: var(--primary-dark);
         }
 
         body.dark-mode .card-title {
-            color: #d1d9f0;
+            color: #e0e7ff;
         }
 
         .card-text {
-            font-size: 1rem;
-            opacity: 0.88;
-            line-height: 1.68;
-            margin-bottom: 1.4rem;
-            color: var(--text-light);
-        }
-
-        body.dark-mode .card-text {
-            color: #cbd5e1;
+            font-size: 0.98rem;
+            opacity: 0.85;
+            line-height: 1.65;
+            margin-bottom: 1.3rem;
+            flex-grow: 1;
         }
 
         .next-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.65rem;
+            gap: 0.6rem;
             background: var(--gradient-primary);
             color: white;
-            padding: 0.75rem 1.7rem;
-            border-radius: 52px;
+            padding: 0.7rem 1.6rem;
+            border-radius: 50px;
             font-weight: 600;
-            font-size: 1.02rem;
+            font-size: 1rem;
             text-decoration: none;
-            box-shadow: 0 5px 16px rgba(30, 64, 175, 0.38);
+            box-shadow: 0 4px 14px rgba(30, 64, 175, 0.35);
             transition: var(--transition);
             z-index: 2;
+            align-self: flex-start;
         }
 
         .next-btn:hover {
             background: var(--gradient-hover);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(30, 64, 175, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.45);
         }
 
         footer {
             text-align: center;
-            margin-top: 5rem;
-            padding-top: 2.4rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.08);
-            opacity: 0.85;
-            font-size: 1rem;
+            margin-top: 4.5rem;
+            padding-top: 2.2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.07);
+            opacity: 0.8;
+            font-size: 0.98rem;
             color: #475569;
-            line-height: 1.7;
         }
 
         body.dark-mode footer {
-            border-color: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.1);
             color: #cbd5e1;
         }
 
+        /* Animations */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
         .cards-container > * {
-            opacity: 0;
-            animation: fadeIn 0.65s ease-out forwards;
+            animation: fadeIn 0.6s ease-out backwards;
         }
 
-        .cards-container > *:nth-child(n) {
-            animation-delay: calc(0.12s * var(--i));
-        }
+        .cards-container > *:nth-child(1) { animation-delay: 0.1s; }
+        .cards-container > *:nth-child(2) { animation-delay: 0.15s; }
+        .cards-container > *:nth-child(3) { animation-delay: 0.2s; }
+        .cards-container > *:nth-child(4) { animation-delay: 0.25s; }
+        .cards-container > *:nth-child(5) { animation-delay: 0.3s; }
+        .cards-container > *:nth-child(6) { animation-delay: 0.35s; }
+        .cards-container > *:nth-child(7) { animation-delay: 0.4s; }
+        .cards-container > *:nth-child(8) { animation-delay: 0.45s; }
+        .cards-container > *:nth-child(9) { animation-delay: 0.5s; }
+        .cards-container > *:nth-child(10) { animation-delay: 0.55s; }
+        .cards-container > *:nth-child(11) { animation-delay: 0.6s; }
+        .cards-container > *:nth-child(12) { animation-delay: 0.65s; }
+        .cards-container > *:nth-child(13) { animation-delay: 0.7s; }
+        .cards-container > *:nth-child(14) { animation-delay: 0.75s; }
+        .cards-container > *:nth-child(15) { animation-delay: 0.8s; }
+        .cards-container > *:nth-child(16) { animation-delay: 0.85s; }
+        .cards-container > *:nth-child(17) { animation-delay: 0.9s; }
+        .cards-container > *:nth-child(18) { animation-delay: 0.95s; }
+        .cards-container > *:nth-child(19) { animation-delay: 1s; }
+        .cards-container > *:nth-child(20) { animation-delay: 1.05s; }
+        .cards-container > *:nth-child(21) { animation-delay: 1.1s; }
+        .cards-container > *:nth-child(22) { animation-delay: 1.15s; }
+        .cards-container > *:nth-child(23) { animation-delay: 1.2s; }
+        .cards-container > *:nth-child(24) { animation-delay: 1.25s; }
+        .cards-container > *:nth-child(25) { animation-delay: 1.3s; }
 
-        @media (max-width: 900px) {
+        /* Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem;
+            }
+            .header h1 {
+                font-size: 2.2rem;
+            }
             .cards-container {
-                grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+                grid-template-columns: 1fr;
+                gap: 1.7rem;
+            }
+            .card {
+                padding: 1.8rem;
+            }
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+            .theme-toggle {
+                position: relative;
+                margin: 0 auto 1.5rem;
             }
         }
 
-        @media (max-width: 768px) {
-            body { padding: 1.4rem; }
-            .header h1 { font-size: 2.3rem; }
-            .logo { width: 100px; }
-            .cards-container { grid-template-columns: 1fr; gap: 1.9rem; }
-            .card { padding: 1.9rem; }
-            .theme-toggle { top: 1rem; right: 1rem; width: 42px; height: 42px; }
-        }
-
         @media (max-width: 480px) {
-            .header h1 { font-size: 1.9rem; }
-            .header p { font-size: 1.05rem; }
-            .logo { width: 90px; }
-            .card-title { font-size: 1.3rem; }
-            .next-btn { padding: 0.68rem 1.5rem; font-size: 0.98rem; }
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .card-title {
+                font-size: 1.25rem;
+            }
+            .next-btn {
+                padding: 0.65rem 1.4rem;
+                font-size: 0.95rem;
+            }
+            .logo {
+                width: 80px;
+                height: 80px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Particles.js Container -->
-    <div id="particles-container"></div>
-
-    <!-- Dark/Light Mode Toggle -->
-    <button class="theme-toggle" id="theme-toggle">
-        <i class="fas fa-moon"></i>
-    </button>
-
     <div class="container">
         <div class="header">
-            <img src="https://i.ibb.co.com/xSLhdst5/Logo-SMA-1-Cluring-Ok.png" alt="Logo SMA Negeri 1 Cluring" class="logo">
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="https://i.ibb.co.com/xSLhdst5/Logo-SMA-1-Cluring-Ok.png" alt="Logo SMA Negeri 1 Cluring">
+                </div>
+            </div>
             <h1>SMA Negeri 1 Cluring</h1>
             <p>Temukan informasi lengkap melalui navigasi terstruktur berikut</p>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
         </div>
 
         <div class="cards-container">
-            <!-- Kartu tetap sama seperti sebelumnya -->
-            <!-- Contoh satu kartu (25 kartu lainnya tetap utuh) -->
             <a href="1-visi-misi.html" class="card">
                 <div class="card-number">1</div>
                 <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
@@ -357,11 +399,174 @@
                 <p class="card-text">Mewujudkan peserta didik yang berprestasi, berkarakter, berlandaskan IMTAQ dan berwawasan lingkungan.</p>
                 <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
             </a>
-            <!-- ... (lanjutkan semua 25 kartu seperti aslinya) ... -->
-            <!-- Untuk singkatnya, cukup pastekan ulang semua dari versi sebelumnya -->
-            <!-- Pastikan semua 25 tetap ada -->
-            <!-- Di bawah ini, saya hanya tampilkan 1 sebagai placeholder -->
-            <!-- Anda bisa salin semua dari kode sebelumnya mulai dari kartu 2 hingga 25 -->
+            <a href="2-prestasi.html" class="card">
+                <div class="card-number">2</div>
+                <div class="card-icon"><i class="fas fa-award"></i></div>
+                <h3 class="card-title">Prestasi</h3>
+                <p class="card-text">Berbagai penghargaan di tingkat regional dan nasional dalam bidang akademik, olahraga, dan seni.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="3-fasilitas.html" class="card">
+                <div class="card-number">3</div>
+                <div class="card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                <h3 class="card-title">Fasilitas</h3>
+                <p class="card-text">Fasilitas lengkap dan modern untuk mendukung proses belajar mengajar yang optimal.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="4-layanan-konseling.html" class="card">
+                <div class="card-number">4</div>
+                <div class="card-icon"><i class="fas fa-heart"></i></div>
+                <h3 class="card-title">Layanan Konseling</h3>
+                <p class="card-text">Konseling individu dan kelompok untuk membantu mengatasi masalah pribadi, sosial, belajar, dan karir.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="5-pengembangan-diri.html" class="card">
+                <div class="card-number">5</div>
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                <h3 class="card-title">Pengembangan Diri</h3>
+                <p class="card-text">Program pengembangan diri untuk meningkatkan keterampilan sosial, kepemimpinan, dan karakter.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="6-bimbingan-karir.html" class="card">
+                <div class="card-number">6</div>
+                <div class="card-icon"><i class="fas fa-briefcase"></i></div>
+                <h3 class="card-title">Bimbingan Karir</h3>
+                <p class="card-text">Panduan pemilihan jurusan dan karir sesuai dengan minat, bakat, dan kemampuan siswa.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="7-persyaratan.html" class="card">
+                <div class="card-number">7</div>
+                <div class="card-icon"><i class="fas fa-clipboard-check"></i></div>
+                <h3 class="card-title">Persyaratan</h3>
+                <p class="card-text">Informasi lengkap tentang persyaratan akademik dan non-akademik untuk mendaftar SNBP.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="8-jadwal-penting.html" class="card">
+                <div class="card-number">8</div>
+                <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
+                <h3 class="card-title">Jadwal Penting</h3>
+                <p class="card-text">Timeline pendaftaran, pengumuman, dan proses administrasi SNBP.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="9-strategi-sukses.html" class="card">
+                <div class="card-number">9</div>
+                <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
+                <h3 class="card-title">Strategi Sukses</h3>
+                <p class="card-text">Tips dan strategi untuk meningkatkan peluang diterima melalui jalur SNBP.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="10-materi-ujian.html" class="card">
+                <div class="card-number">10</div>
+                <div class="card-icon"><i class="fas fa-book"></i></div>
+                <h3 class="card-title">Materi Ujian</h3>
+                <p class="card-text">Cakupan materi tes SNBT dan tips belajar efektif untuk menghadapinya.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="11-try-out.html" class="card">
+                <div class="card-number">11</div>
+                <div class="card-icon"><i class="fas fa-clock"></i></div>
+                <h3 class="card-title">Try Out & Simulasi</h3>
+                <p class="card-text">Program try out dan simulasi ujian untuk mempersiapkan diri menghadapi SNBT.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="12-analisis-soal.html" class="card">
+                <div class="card-number">12</div>
+                <div class="card-icon"><i class="fas fa-chart-pie"></i></div>
+                <h3 class="card-title">Analisis Soal</h3>
+                <p class="card-text">Pembahasan dan analisis pola soal SNBT tahun-tahun sebelumnya.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="13-profil-siswa.html" class="card">
+                <div class="card-number">13</div>
+                <div class="card-icon"><i class="fas fa-user-friends"></i></div>
+                <h3 class="card-title">Profil Siswa</h3>
+                <p class="card-text">Informasi lengkap tentang data diri, prestasi, dan perkembangan akademik setiap siswa.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="14-statistik-kelas.html" class="card">
+                <div class="card-number">14</div>
+                <div class="card-icon"><i class="fas fa-chart-bar"></i></div>
+                <h3 class="card-title">Statistik Kelas</h3>
+                <p class="card-text">Data statistik per kelas untuk analisis perkembangan akademik dan non-akademik.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="15-rapor-digital.html" class="card">
+                <div class="card-number">15</div>
+                <div class="card-icon"><i class="fas fa-clipboard-list"></i></div>
+                <h3 class="card-title">Rapor Digital</h3>
+                <p class="card-text">Akses rapor dan laporan perkembangan siswa secara online dan real-time.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="16-jaringan-alumni.html" class="card">
+                <div class="card-number">16</div>
+                <div class="card-icon"><i class="fas fa-network-wired"></i></div>
+                <h3 class="card-title">Jaringan Alumni</h3>
+                <p class="card-text">Database alumni untuk membangun jaringan dan kolaborasi antar angkatan.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="17-karir-pekerjaan.html" class="card">
+                <div class="card-number">17</div>
+                <div class="card-icon"><i class="fas fa-briefcase"></i></div>
+                <h3 class="card-title">Karir & Pekerjaan</h3>
+                <p class="card-text">Informasi tentang karir dan pekerjaan alumni di berbagai bidang profesi.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="18-kontribusi.html" class="card">
+                <div class="card-number">18</div>
+                <div class="card-icon"><i class="fas fa-handshake"></i></div>
+                <h3 class="card-title">Kontribusi</h3>
+                <p class="card-text">Berbagai kontribusi alumni terhadap pengembangan sekolah dan masyarakat.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="19-peringkat-ptn.html" class="card">
+                <div class="card-number">19</div>
+                <div class="card-icon"><i class="fas fa-trophy"></i></div>
+                <h3 class="card-title">Peringkat PTN</h3>
+                <p class="card-text">Data penerimaan siswa di berbagai PTN terbaik di Indonesia.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="20-trend-penerimaan.html" class="card">
+                <div class="card-number">20</div>
+                <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                <h3 class="card-title">Trend Penerimaan</h3>
+                <p class="card-text">Analisis perkembangan jumlah siswa yang diterima di PTN setiap tahunnya.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="21-program-studi.html" class="card">
+                <div class="card-number">21</div>
+                <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h3 class="card-title">Program Studi</h3>
+                <p class="card-text">Distribusi program studi yang diminati oleh siswa di berbagai PTN.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="22-ptain.html" class="card">
+                <div class="card-number">22</div>
+                <div class="card-icon"><i class="fas fa-mosque"></i></div>
+                <h3 class="card-title">PTAIN</h3>
+                <p class="card-text">Penerimaan di Perguruan Tinggi Agama Islam Negeri seperti UIN, IAIN, dan STAIN.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="23-sekolah-kedinasan.html" class="card">
+                <div class="card-number">23</div>
+                <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                <h3 class="card-title">Sekolah Kedinasan</h3>
+                <p class="card-text">Data kelulusan di sekolah kedinasan seperti IPDN, STIS, AKPOL, dan lain-lain.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="24-lpk.html" class="card">
+                <div class="card-number">24</div>
+                <div class="card-icon"><i class="fas fa-tools"></i></div>
+                <h3 class="card-title">Lembaga Pelatihan Kerja</h3>
+                <p class="card-text">Data siswa yang melanjutkan ke Lembaga Pelatihan Kerja (LPK) untuk keterampilan vokasional.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="25-pt-swasta.html" class="card">
+                <div class="card-number">25</div>
+                <div class="card-icon"><i class="fas fa-building"></i></div>
+                <h3 class="card-title">Perguruan Tinggi Swasta</h3>
+                <p class="card-text">Data siswa yang diterima di berbagai Perguruan Tinggi Swasta (PTS) terkemuka di Indonesia.</p>
+                <span class="next-btn">Lanjut <i class="fas fa-arrow-right"></i></span>
+            </a>
         </div>
 
         <footer>
@@ -370,67 +575,33 @@
         </footer>
     </div>
 
-    <!-- tsParticles -->
-    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
     <script>
-        // Inisialisasi partikel
-        tsParticles.load("particles-container", {
-            fpsLimit: 60,
-            particles: {
-                number: { value: 40, density: { enable: true, area: 800 } },
-                color: { value: "#1e40af" },
-                opacity: { value: 0.15, animation: { enable: true, speed: 1, minimumValue: 0.05 } },
-                size: { value: { min: 1, max: 4 } },
-                links: {
-                    enable: true,
-                    distance: 120,
-                    color: "#1e40af",
-                    opacity: 0.12,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 1.2,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    outModes: { default: "out" }
-                }
-            },
-            interactivity: {
-                detectsOn: "canvas",
-                events: {
-                    onHover: { enable: true, mode: "repulse" },
-                    onClick: { enable: false },
-                    resize: true
-                }
-            },
-            detectRetina: true
-        });
-
-        // Dark Mode Toggle
-        const toggleBtn = document.getElementById('theme-toggle');
-        const body = document.body;
-
-        // Cek preferensi tema dari localStorage
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            body.classList.add('dark-mode');
-            toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+        // Dark mode toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Check for saved theme preference or respect OS preference
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        const currentTheme = localStorage.getItem('theme');
+        
+        if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
         }
-
-        toggleBtn.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            const isDark = body.classList.contains('dark-mode');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-            toggleBtn.innerHTML = isDark 
-                ? '<i class="fas fa-sun"></i>' 
-                : '<i class="fas fa-moon"></i>';
-        });
-
-        // Animasi delay untuk kartu
-        document.querySelectorAll('.cards-container > *').forEach((el, i) => {
-            el.style.setProperty('--i', i + 1);
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
         });
     </script>
 </body>
