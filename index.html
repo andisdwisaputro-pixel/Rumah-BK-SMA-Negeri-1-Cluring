@@ -6,6 +6,7 @@
     <title>SMA Negeri 1 Cluring - Dashboard Premium</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         :root {
             --primary: #1e40af;
@@ -390,6 +391,8 @@
             box-shadow: var(--shadow-light);
             border: 1px solid rgba(255, 255, 255, 0.2);
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
         .dark-mode .card {
@@ -415,6 +418,27 @@
             font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 1rem;
+        }
+
+        .download-btn {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: var(--shadow-light);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
         }
 
         /* Dashboard Section */
@@ -490,6 +514,63 @@
         .stat-label {
             font-size: 1rem;
             opacity: 0.9;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--light);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-dark);
+            position: relative;
+        }
+
+        .dark-mode .modal-content {
+            background: var(--dark);
+            color: var(--text-dark);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .dark-mode .modal-close {
+            color: var(--text-dark);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .dark-mode .modal-title {
+            color: var(--primary-light);
         }
 
         /* Footer */
@@ -693,6 +774,18 @@
         </nav>
     </aside>
 
+    <!-- Modal -->
+    <div class="modal" id="pdfModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h3 class="modal-title" id="modalTitle">Download File</h3>
+            <p id="modalMessage">File PDF sedang dipersiapkan. Klik tombol di bawah untuk mengunduh.</p>
+            <button class="download-btn" id="modalDownloadBtn">
+                <i class="fas fa-download"></i> Unduh Sekarang
+            </button>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <main class="main-content">
         <!-- Hero Section -->
@@ -718,6 +811,9 @@
                     </div>
                     <h4 class="card-title">Visi & Misi</h4>
                     <p class="section-text">Menjadi sekolah unggul dalam prestasi akademik dan non-akademik berdasarkan iman dan takwa.</p>
+                    <button class="download-btn" data-filename="visi-misi.pdf" data-title="Visi & Misi SMA Negeri 1 Cluring">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
                 <div class="card">
                     <div class="card-icon">
@@ -725,6 +821,9 @@
                     </div>
                     <h4 class="card-title">Prestasi</h4>
                     <p class="section-text">Berbagai penghargaan di tingkat regional dan nasional dalam bidang akademik, olahraga, dan seni.</p>
+                    <button class="download-btn" data-filename="prestasi.pdf" data-title="Prestasi SMA Negeri 1 Cluring">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
                 <div class="card">
                     <div class="card-icon">
@@ -732,6 +831,9 @@
                     </div>
                     <h4 class="card-title">Fasilitas</h4>
                     <p class="section-text">Fasilitas lengkap dan modern untuk mendukung proses belajar mengajar yang optimal.</p>
+                    <button class="download-btn" data-filename="fasilitas.pdf" data-title="Fasilitas SMA Negeri 1 Cluring">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
             </div>
         </section>
@@ -749,6 +851,9 @@
                     </div>
                     <h4 class="card-title">Layanan Konseling</h4>
                     <p class="section-text">Konseling individu dan kelompok untuk membantu mengatasi masalah pribadi, sosial, belajar, dan karir.</p>
+                    <button class="download-btn" data-filename="layanan-konseling.pdf" data-title="Layanan Konseling BK">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
                 <div class="card">
                     <div class="card-icon">
@@ -756,6 +861,9 @@
                     </div>
                     <h4 class="card-title">Pengembangan Diri</h4>
                     <p class="section-text">Program pengembangan diri untuk meningkatkan keterampilan sosial, kepemimpinan, dan karakter.</p>
+                    <button class="download-btn" data-filename="pengembangan-diri.pdf" data-title="Program Pengembangan Diri">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
                 <div class="card">
                     <div class="card-icon">
@@ -763,6 +871,9 @@
                     </div>
                     <h4 class="card-title">Bimbingan Karir</h4>
                     <p class="section-text">Panduan pemilihan jurusan dan karir sesuai dengan minat, bakat, dan kemampuan siswa.</p>
+                    <button class="download-btn" data-filename="bimbingan-karir.pdf" data-title="Bimbingan Karir">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
             </div>
         </section>
@@ -780,6 +891,9 @@
                     </div>
                     <h4 class="card-title">Persyaratan</h4>
                     <p class="section-text">Informasi lengkap tentang persyaratan akademik dan non-akademik untuk mendaftar SNBP.</p>
+                    <button class="download-btn" data-filename="persyaratan-snbp.pdf" data-title="Persyaratan SNBP">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
                 <div class="card">
                     <div class="card-icon">
@@ -787,6 +901,9 @@
                     </div>
                     <h4 class="card-title">Jadwal Penting</h4>
                     <p class="section-text">Timeline pendaftaran, pengumuman, dan proses administrasi SNBP.</p>
+                    <button class="download-btn" data-filename="jadwal-penting-snbp.pdf" data-title="Jadwal Penting SNBP">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
                 <div class="card">
                     <div class="card-icon">
@@ -794,6 +911,9 @@
                     </div>
                     <h4 class="card-title">Strategi Sukses</h4>
                     <p class="section-text">Tips dan strategi untuk meningkatkan peluang diterima melalui jalur SNBP.</p>
+                    <button class="download-btn" data-filename="strategi-sukses-snbp.pdf" data-title="Strategi Sukses SNBP">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
             </div>
         </section>
@@ -811,6 +931,9 @@
                     </div>
                     <h4 class="card-title">Materi Ujian</h4>
                     <p class="section-text">Cakupan materi tes SNBT dan tips belajar efektif untuk menghadapinya.</p>
+                    <button class="download-btn" data-filename="materi-ujian-snbt.pdf" data-title="Materi Ujian SNBT">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
                 <div class="card">
                     <div class="card-icon">
@@ -818,6 +941,9 @@
                     </div>
                     <h4 class="card-title">Try Out & Simulasi</h4>
                     <p class="section-text">Program try out dan simulasi ujian untuk mempersiapkan diri menghadapi SNBT.</p>
+                    <button class="download-btn" data-filename="try-out-simulasi.pdf" data-title="Try Out & Simulasi SNBT">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
                 <div class="card">
                     <div class="card-icon">
@@ -825,6 +951,9 @@
                     </div>
                     <h4 class="card-title">Analisis Soal</h4>
                     <p class="section-text">Pembahasan dan analisis pola soal SNBT tahun-tahun sebelumnya.</p>
+                    <button class="download-btn" data-filename="analisis-soal-snbt.pdf" data-title="Analisis Soal SNBT">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
             </div>
         </section>
@@ -876,6 +1005,9 @@
                     </div>
                     <h4 class="card-title">Profil Siswa</h4>
                     <p class="section-text">Informasi lengkap tentang data diri, prestasi, dan perkembangan akademik setiap siswa.</p>
+                    <button class="download-btn" data-filename="profil-siswa.pdf" data-title="Profil Siswa">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
                 <div class="card">
                     <div class="card-icon">
@@ -883,6 +1015,9 @@
                     </div>
                     <h4 class="card-title">Statistik Kelas</h4>
                     <p class="section-text">Data statistik per kelas untuk analisis perkembangan akademik dan non-akademik.</p>
+                    <button class="download-btn" data-filename="statistik-kelas.pdf" data-title="Statistik Kelas">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
                 <div class="card">
                     <div class="card-icon">
@@ -890,6 +1025,9 @@
                     </div>
                     <h4 class="card-title">Rapor Digital</h4>
                     <p class="section-text">Akses rapor dan laporan perkembangan siswa secara online dan real-time.</p>
+                    <button class="download-btn" data-filename="rapor-digital.pdf" data-title="Rapor Digital">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
             </div>
         </section>
@@ -907,6 +1045,9 @@
                     </div>
                     <h4 class="card-title">Jaringan Alumni</h4>
                     <p class="section-text">Database alumni untuk membangun jaringan dan kolaborasi antar angkatan.</p>
+                    <button class="download-btn" data-filename="jaringan-alumni.pdf" data-title="Jaringan Alumni">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
                 <div class="card">
                     <div class="card-icon">
@@ -914,6 +1055,9 @@
                     </div>
                     <h4 class="card-title">Karir & Pekerjaan</h4>
                     <p class="section-text">Informasi tentang karir dan pekerjaan alumni di berbagai bidang profesi.</p>
+                    <button class="download-btn" data-filename="karir-pekerjaan.pdf" data-title="Karir & Pekerjaan Alumni">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
                 <div class="card">
                     <div class="card-icon">
@@ -921,6 +1065,9 @@
                     </div>
                     <h4 class="card-title">Kontribusi</h4>
                     <p class="section-text">Berbagai kontribusi alumni terhadap pengembangan sekolah dan masyarakat.</p>
+                    <button class="download-btn" data-filename="kontribusi-alumni.pdf" data-title="Kontribusi Alumni">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
             </div>
         </section>
@@ -938,6 +1085,9 @@
                     </div>
                     <h4 class="card-title">Peringkat PTN</h4>
                     <p class="section-text">Data penerimaan siswa di berbagai PTN terbaik di Indonesia.</p>
+                    <button class="download-btn" data-filename="peringkat-ptn.pdf" data-title="Peringkat PTN">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
                 <div class="card">
                     <div class="card-icon">
@@ -945,6 +1095,9 @@
                     </div>
                     <h4 class="card-title">Trend Penerimaan</h4>
                     <p class="section-text">Analisis perkembangan jumlah siswa yang diterima di PTN setiap tahunnya.</p>
+                    <button class="download-btn" data-filename="trend-penerimaan.pdf" data-title="Trend Penerimaan PTN">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
                 <div class="card">
                     <div class="card-icon">
@@ -952,6 +1105,9 @@
                     </div>
                     <h4 class="card-title">Program Studi</h4>
                     <p class="section-text">Distribusi program studi yang diminati oleh siswa di berbagai PTN.</p>
+                    <button class="download-btn" data-filename="program-studi.pdf" data-title="Program Studi PTN">
+                        <i class="fas fa-download"></i> Unduh PDF
+                    </button>
                 </div>
             </div>
         </section>
@@ -963,6 +1119,9 @@
                 <p class="section-subtitle">Penerimaan di Perguruan Tinggi Agama Islam Negeri</p>
             </div>
             <p class="section-text">Informasi tentang penerimaan siswa di berbagai Perguruan Tinggi Agama Islam Negeri (PTAIN) seperti UIN, IAIN, dan STAIN di seluruh Indonesia.</p>
+            <button class="download-btn" data-filename="ptain.pdf" data-title="PTAIN" style="margin-top: 2rem;">
+                <i class="fas fa-download"></i> Unduh PDF PTAIN
+            </button>
         </section>
 
         <!-- Kedinasan -->
@@ -972,6 +1131,9 @@
                 <p class="section-subtitle">Data Kelulusan Sekolah Kedinasan</p>
             </div>
             <p class="section-text">Informasi tentang siswa yang berhasil diterima di berbagai sekolah kedinasan seperti IPDN, STIS, STIN, AKPOL, dan lain-lain.</p>
+            <button class="download-btn" data-filename="sekolah-kedinasan.pdf" data-title="Sekolah Kedinasan" style="margin-top: 2rem;">
+                <i class="fas fa-download"></i> Unduh PDF Sekolah Kedinasan
+            </button>
         </section>
 
         <!-- LPK -->
@@ -981,6 +1143,9 @@
                 <p class="section-subtitle">Data Siswa Masuk Lembaga Pelatihan Kerja</p>
             </div>
             <p class="section-text">Informasi tentang siswa yang memilih untuk melanjutkan ke Lembaga Pelatihan Kerja (LPK) untuk mengembangkan keterampilan vokasional.</p>
+            <button class="download-btn" data-filename="lembaga-pelatihan-kerja.pdf" data-title="Lembaga Pelatihan Kerja" style="margin-top: 2rem;">
+                <i class="fas fa-download"></i> Unduh PDF LPK
+            </button>
         </section>
 
         <!-- PT Swasta -->
@@ -990,6 +1155,9 @@
                 <p class="section-subtitle">Data Siswa Diterima di Perguruan Tinggi Swasta</p>
             </div>
             <p class="section-text">Informasi tentang siswa yang diterima di berbagai Perguruan Tinggi Swasta (PTS) terkemuka di Indonesia.</p>
+            <button class="download-btn" data-filename="perguruan-tinggi-swasta.pdf" data-title="Perguruan Tinggi Swasta" style="margin-top: 2rem;">
+                <i class="fas fa-download"></i> Unduh PDF PT Swasta
+            </button>
         </section>
     </main>
 
@@ -1092,6 +1260,147 @@
         
         sections.forEach(section => {
             observer.observe(section);
+        });
+
+        // PDF Download Functionality
+        const pdfModal = document.getElementById('pdfModal');
+        const modalClose = document.getElementById('modalClose');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalMessage = document.getElementById('modalMessage');
+        const modalDownloadBtn = document.getElementById('modalDownloadBtn');
+
+        let currentPdfData = null;
+
+        // Function to generate PDF content based on filename
+        function getPdfContent(filename, title) {
+            const content = {
+                'visi-misi.pdf': {
+                    title: title,
+                    content: `VISI SMA NEGERI 1 CLURING:
+"Terwujudnya sekolah unggul dalam prestasi akademik dan non-akademik berdasarkan iman dan takwa"
+
+MISI SMA NEGERI 1 CLURING:
+1. Meningkatkan keimanan dan ketakwaan melalui pengamalan ajaran agama
+2. Mengembangkan potensi akademik siswa melalui pembelajaran berkualitas
+3. Membina karakter siswa yang berintegritas, disiplin, dan bertanggung jawab
+4. Mengembangkan bakat dan minat siswa dalam bidang seni, olahraga, dan sains
+5. Meningkatkan profesionalisme pendidik dan tenaga kependidikan
+6. Mengembangkan kemitraan dengan orang tua dan masyarakat`
+                },
+                'prestasi.pdf': {
+                    title: title,
+                    content: `PRESTASI SMA NEGERI 1 CLURING
+
+PRESTASI AKADEMIK:
+• Juara 1 Olimpiade Matematika Tingkat Nasional 2024
+• Juara 2 Olimpiade Fisika Tingkat Provinsi 2024
+• Juara 3 Olimpiade Kimia Tingkat Nasional 2024
+• Juara 1 Lomba Karya Tulis Ilmiah Tingkat Jawa Timur 2024
+
+PRESTASI NON-AKADEMIK:
+• Juara 1 Turnamen Basket Tingkat Kabupaten 2024
+• Juara 2 Festival Seni Tari Tradisional Tingkat Provinsi 2024
+• Juara 1 Lomba Debat Bahasa Inggris Tingkat Regional 2024
+• Juara 3 Paskibraka Tingkat Nasional 2024`
+                },
+                'fasilitas.pdf': {
+                    title: title,
+                    content: `FASILITAS SMA NEGERI 1 CLURING
+
+FASILITAS PEMBELAJARAN:
+• 30 Ruang Kelas Ber-AC
+• Laboratorium Komputer (40 unit)
+• Laboratorium Fisika, Kimia, Biologi
+• Perpustakaan Digital
+• Ruang Multimedia
+
+FASILITAS PENUNJANG:
+• Lapangan Olahraga (Basket, Voli, Futsal)
+• Masjid Sekolah
+• Kantin Sehat
+• Ruang BK
+• Koperasi Siswa
+• WiFi Area seluruh sekolah
+
+FASILITAS TEKNOLOGI:
+• Smart Classroom
+• CCTV 24 jam
+• Sistem Informasi Sekolah Terintegrasi
+• Aplikasi E-Learning`
+                },
+                // Add content for other PDF files similarly
+                'default.pdf': {
+                    title: title,
+                    content: `Dokumen ${title}
+
+Ini adalah konten default untuk dokumen ${title}. 
+Silakan hubungi administrator untuk informasi lebih lanjut.`
+                }
+            };
+
+            return content[filename] || content['default.pdf'];
+        }
+
+        // Function to generate and download PDF
+        function generatePDF(filename, title) {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            const content = getPdfContent(filename, title);
+            
+            // Set font and add title
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(16);
+            doc.text(content.title, 20, 20);
+            
+            // Add content
+            doc.setFont('helvetica', 'normal');
+            doc.setFontSize(12);
+            const lines = doc.splitTextToSize(content.content, 170);
+            doc.text(lines, 20, 40);
+            
+            // Add footer
+            doc.setFontSize(10);
+            doc.setTextColor(150);
+            doc.text(`Dokumen resmi SMA Negeri 1 Cluring - Generated on ${new Date().toLocaleDateString('id-ID')}`, 20, 280);
+            
+            // Save the PDF
+            doc.save(filename);
+        }
+
+        // Add event listeners to download buttons
+        document.querySelectorAll('.download-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const filename = this.getAttribute('data-filename');
+                const title = this.getAttribute('data-title');
+                
+                currentPdfData = { filename, title };
+                
+                // Show modal
+                modalTitle.textContent = `Download ${title}`;
+                modalMessage.textContent = `File ${filename} sedang dipersiapkan. Klik tombol di bawah untuk mengunduh.`;
+                pdfModal.style.display = 'flex';
+            });
+        });
+
+        // Modal download button
+        modalDownloadBtn.addEventListener('click', function() {
+            if (currentPdfData) {
+                generatePDF(currentPdfData.filename, currentPdfData.title);
+                pdfModal.style.display = 'none';
+            }
+        });
+
+        // Close modal
+        modalClose.addEventListener('click', function() {
+            pdfModal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside
+        pdfModal.addEventListener('click', function(e) {
+            if (e.target === pdfModal) {
+                pdfModal.style.display = 'none';
+            }
         });
 
         // Initialize chart when DOM is loaded
