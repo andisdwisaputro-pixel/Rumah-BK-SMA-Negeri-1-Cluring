@@ -4,48 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visi & Misi - SMA Negeri 1 Cluring</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #1e40af;
             --primary-light: #3b82f6;
             --primary-dark: #1e3a8a;
-            --secondary: #3730a3;
-            --accent: #8b5cf6;
+            --secondary: #4f46e5;
             --light: #f8fafc;
             --dark: #0f172a;
             --text-light: #1e293b;
             --text-dark: #f8fafc;
-            --gradient-primary: linear-gradient(135deg, #1e40af, #3730a3, #4f46e5);
+            --gradient-primary: linear-gradient(135deg, #1e40af, #4f46e5);
             --shadow-light: 0 10px 25px rgba(0, 0, 0, 0.05);
             --shadow-medium: 0 15px 35px rgba(0, 0, 0, 0.1);
-            --border-radius: 16px;
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --shadow-hover: 0 20px 40px rgba(30, 64, 175, 0.3);
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
         }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
         body {
-            background: var(--light);
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
             color: var(--text-light);
             line-height: 1.7;
-            padding: 2rem;
-            max-width: 900px;
-            margin: 0 auto;
+            padding: 2.5rem;
+            min-height: 100vh;
+            transition: var(--transition);
         }
         body.dark-mode {
-            background: var(--dark);
+            background: linear-gradient(135deg, #0c1427, #111827);
             color: var(--text-dark);
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
         }
         .header {
             text-align: center;
             margin-bottom: 2.5rem;
         }
         .header h1 {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
             background: var(--gradient-primary);
@@ -54,132 +59,176 @@
             color: transparent;
         }
         .header p {
-            opacity: 0.8;
+            opacity: 0.85;
             font-size: 1.1rem;
         }
         .content {
-            background: white;
-            padding: 2rem;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 2.2rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-light);
-            margin-bottom: 2rem;
+            margin-bottom: 2.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
-        .dark-mode .content {
-            background: #1e293b;
+        body.dark-mode .content {
+            background: rgba(30, 41, 59, 0.75);
+            border-color: rgba(255, 255, 255, 0.12);
         }
         h2 {
-            font-size: 1.6rem;
-            margin: 1.5rem 0 1rem;
+            font-size: 1.65rem;
+            margin: 1.6rem 0 1.1rem;
+            color: var(--primary-dark);
+        }
+        body.dark-mode h2 {
+            color: #c7d2fe;
+        }
+        h3 {
+            font-size: 1.35rem;
+            margin: 1.4rem 0 0.8rem;
             color: var(--primary);
         }
-        .dark-mode h2 {
-            color: var(--primary-light);
+        body.dark-mode h3 {
+            color: #a5b4fc;
         }
         ol {
-            padding-left: 1.5rem;
-            margin-bottom: 1.2rem;
+            padding-left: 1.6rem;
+            margin-bottom: 1.3rem;
+        }
+        ul {
+            padding-left: 1.4rem;
+            margin-top: 0.5rem;
         }
         li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.55rem;
+            line-height: 1.6;
         }
         .next-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
             background: var(--gradient-primary);
             color: white;
-            border: none;
-            padding: 0.8rem 1.8rem;
+            text-decoration: none;
+            padding: 0.8rem 1.9rem;
             border-radius: 50px;
             font-weight: 600;
-            text-decoration: none;
-            box-shadow: var(--shadow-medium);
+            font-size: 1.05rem;
+            box-shadow: 0 6px 16px rgba(30, 64, 175, 0.35);
             transition: var(--transition);
         }
         .next-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px rgba(30, 64, 175, 0.3);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--shadow-hover);
         }
         .back-link {
             display: block;
-            margin-top: 1.5rem;
+            margin-top: 1.4rem;
             color: var(--primary);
             text-decoration: none;
             font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        body.dark-mode .back-link {
+            color: #a5b4fc;
         }
         .back-link:hover {
             text-decoration: underline;
+            opacity: 0.9;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .content {
+                padding: 1.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .next-btn {
+                padding: 0.7rem 1.6rem;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Visi & Misi</h1>
-        <p>SMA Negeri 1 Cluring</p>
+    <div class="container">
+        <div class="header">
+            <h1>Visi & Misi</h1>
+            <p>SMA Negeri 1 Cluring</p>
+        </div>
+
+        <div class="content">
+            <h2>Visi Satuan Pendidikan</h2>
+            <p>“Mewujudkan peserta didik yang berprestasi, berkarakter, berlandaskan IMTAQ dan berwawasan lingkungan.”</p>
+
+            <h2>Misi Satuan Pendidikan</h2>
+            <p>Untuk mewujudkan visi tersebut, sekolah melaksanakan langkah-langkah strategis melalui misi berikut:</p>
+
+            <h3>1. Mewujudkan Peserta Didik yang Ber-IMTAQ</h3>
+            <ol>
+                <li>Mengawali dan mengakhiri kegiatan pembelajaran dengan senyum, salam, dan doa.</li>
+                <li>Melaksanakan pembiasaan ibadah sesuai agama dan kepercayaan masing-masing.</li>
+                <li>Menyelenggarakan peringatan hari besar keagamaan.</li>
+                <li>Menjalankan program Siswa Asuh Sebaya (SAS).</li>
+                <li>Membiasakan siswa untuk bersedekah (<em>bersodaqoh</em>).</li>
+                <li>Menyelenggarakan salat Jumat di masjid sekolah.</li>
+                <li>Melaksanakan salat Dhuha bersama terjadwal.</li>
+                <li>Salat Dzuhur dan Ashar berjamaah.</li>
+                <li>Ibadah puasa dan Pondok Ramadhan tertib &amp; khusyuk.</li>
+            </ol>
+
+            <h3>2. Mewujudkan Prestasi Akademik dan Nonakademik</h3>
+            <ol>
+                <li>Menerapkan pembelajaran berdiferensiasi.</li>
+                <li>Melaksanakan PAIKEM, STEAM, HOTS.</li>
+                <li>Try Out &amp; latihan soal USP, PSAJ, BKS, TOBK.</li>
+                <li>Mengikutsertakan siswa lomba kabupaten s.d. nasional.</li>
+                <li>Pembinaan ekstrakurikuler efektif &amp; kreatif.</li>
+                <li>Pengelompokan siswa bakat, minat, rencana karir.</li>
+                <li>Pembimbingan Karya Tulis Ilmiah (KTI).</li>
+            </ol>
+
+            <h3>3. Mewujudkan Karakter Positif dalam Sikap dan Perilaku</h3>
+            <ol>
+                <li>Mengembangkan PPK (Penguatan Pendidikan Karakter).</li>
+                <li>Penyambutan siswa di gerbang sekolah.</li>
+                <li>Pelaksanaan PSE (Pembelajaran Sosial &amp; Emosional).</li>
+                <li>Membiasakan 5S: Salam, Senyum, Sapa, Sopan, Santun.</li>
+                <li>Membaca Asmaul Husna sebelum KBM.</li>
+                <li>Menyanyikan Indonesia Raya, Mars Smaring, lagu nasional/daerah.</li>
+                <li>Literasi: Smaring Gemar Membaca (SGM).</li>
+                <li>Peduli lingkungan: membuang sampah di tempatnya.</li>
+                <li>Program Jumat Bersih rutin.</li>
+                <li>Bakti sosial ke masyarakat sekitar.</li>
+            </ol>
+
+            <h3>4. Mewujudkan Wawasan dan Kepedulian terhadap Lingkungan</h3>
+            <ol>
+                <li>Sekolah peduli, berbudaya, dan berwawasan lingkungan.</li>
+                <li>Membangun lingkungan berkelanjutan.</li>
+                <li>Mengurangi emisi karbon:
+                    <ul>
+                        <li>Mematikan mesin kendaraan di lingkungan sekolah.</li>
+                        <li>Penghijauan lingkungan sekolah.</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <a href="2-prestasi.html" class="next-btn">
+            <i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya
+        </a>
+
+        <a href="index.html" class="back-link">← Kembali ke Menu Utama</a>
     </div>
-
-    <div class="content">
-        <h2>Visi Satuan Pendidikan</h2>
-        <p>“Mewujudkan peserta didik yang berprestasi, berkarakter, berlandaskan IMTAQ dan berwawasan lingkungan.”</p>
-
-        <h2>Misi Satuan Pendidikan</h2>
-        <p>Untuk mewujudkan visi tersebut, sekolah melaksanakan langkah-langkah strategis melalui misi berikut:</p>
-
-        <h3>1. Mewujudkan Peserta Didik yang Ber-IMTAQ</h3>
-        <ol>
-            <li>Mengawali dan mengakhiri kegiatan pembelajaran dengan senyum, salam, dan doa.</li>
-            <li>Melaksanakan pembiasaan ibadah sesuai agama dan kepercayaan masing-masing.</li>
-            <li>Menyelenggarakan peringatan hari besar keagamaan.</li>
-            <li>Menjalankan program Siswa Asuh Sebaya (SAS).</li>
-            <li>Membiasakan siswa untuk bersedekah (<em>bersodaqoh</em>).</li>
-            <li>Menyelenggarakan salat Jumat di masjid sekolah.</li>
-            <li>Melaksanakan salat Dhuha bersama terjadwal.</li>
-            <li>Salat Dzuhur dan Ashar berjamaah.</li>
-            <li>Ibadah puasa dan Pondok Ramadhan tertib &amp; khusyuk.</li>
-        </ol>
-
-        <h3>2. Mewujudkan Prestasi Akademik dan Nonakademik</h3>
-        <ol>
-            <li>Menerapkan pembelajaran berdiferensiasi.</li>
-            <li>Melaksanakan PAIKEM, STEAM, HOTS.</li>
-            <li>Try Out &amp; latihan soal USP, PSAJ, BKS, TOBK.</li>
-            <li>Mengikutsertakan siswa lomba kabupaten s.d. nasional.</li>
-            <li>Pembinaan ekstrakurikuler efektif &amp; kreatif.</li>
-            <li>Pengelompokan siswa bakat, minat, rencana karir.</li>
-            <li>Pembimbingan Karya Tulis Ilmiah (KTI).</li>
-        </ol>
-
-        <h3>3. Mewujudkan Karakter Positif dalam Sikap dan Perilaku</h3>
-        <ol>
-            <li>Mengembangkan PPK (Penguatan Pendidikan Karakter).</li>
-            <li>Penyambutan siswa di gerbang sekolah.</li>
-            <li>Pelaksanaan PSE (Pembelajaran Sosial &amp; Emosional).</li>
-            <li>Membiasakan 5S: Salam, Senyum, Sapa, Sopan, Santun.</li>
-            <li>Membaca Asmaul Husna sebelum KBM.</li>
-            <li>Menyanyikan Indonesia Raya, Mars Smaring, lagu nasional/daerah.</li>
-            <li>Literasi: Smaring Gemar Membaca (SGM).</li>
-            <li>Peduli lingkungan: membuang sampah di tempatnya.</li>
-            <li>Program Jumat Bersih rutin.</li>
-            <li>Bakti sosial ke masyarakat sekitar.</li>
-        </ol>
-
-        <h3>4. Mewujudkan Wawasan dan Kepedulian terhadap Lingkungan</h3>
-        <ol>
-            <li>Sekolah peduli, berbudaya, dan berwawasan lingkungan.</li>
-            <li>Membangun lingkungan berkelanjutan.</li>
-            <li>Mengurangi emisi karbon:
-                <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
-                    <li>Mematikan mesin kendaraan di lingkungan sekolah.</li>
-                    <li>Penghijauan lingkungan sekolah.</li>
-                </ul>
-            </li>
-        </ol>
-    </div>
-
-    <a href="2-prestasi.html" class="next-btn">
-        <i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya
-    </a>
-
-    <a href="index.html" class="back-link">← Kembali ke Menu Utama</a>
 </body>
 </html>
