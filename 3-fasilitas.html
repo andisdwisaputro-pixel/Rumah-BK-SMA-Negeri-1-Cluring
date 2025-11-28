@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fasilitas - SMA Negeri 1 Cluring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e3a8a;
+            --secondary: #4f46e5;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --text-light: #1e293b;
+            --text-dark: #f8fafc;
+            --gradient-primary: linear-gradient(135deg, #1e40af, #4f46e5);
+            --shadow-light: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 15px 35px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(30, 64, 175, 0.3);
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            color: var(--text-light);
+            line-height: 1.7;
+            padding: 2.5rem;
+            min-height: 100vh;
+            transition: var(--transition);
+        }
+        body.dark-mode {
+            background: linear-gradient(135deg, #0c1427, #111827);
+            color: var(--text-dark);
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .header h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .header p {
+            opacity: 0.85;
+            font-size: 1.1rem;
+        }
+        .content {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 2.2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            margin-bottom: 2.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        body.dark-mode .content {
+            background: rgba(30, 41, 59, 0.75);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+        h2 {
+            font-size: 1.65rem;
+            margin: 1.6rem 0 1.1rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        body.dark-mode h2 {
+            color: #c7d2fe;
+        }
+        .facility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.4rem;
+            margin: 1.5rem 0 2rem;
+        }
+        .facility-item {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 1.2rem;
+            border-radius: 14px;
+            border-left: 4px solid var(--primary);
+        }
+        body.dark-mode .facility-item {
+            background: rgba(26, 32, 44, 0.6);
+        }
+        .facility-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+            color: var(--primary);
+        }
+        body.dark-mode .facility-item h3 {
+            color: #a5b4fc;
+        }
+        .facility-item p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        .next-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.9rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            box-shadow: 0 6px 16px rgba(30, 64, 175, 0.35);
+            transition: var(--transition);
+        }
+        .next-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+        .back-link {
+            display: block;
+            margin-top: 1.4rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        body.dark-mode .back-link {
+            color: #a5b4fc;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .content {
+                padding: 1.8rem;
+            }
+            .facility-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .next-btn {
+                padding: 0.7rem 1.6rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Fasilitas</h1>
+            <p>SMA Negeri 1 Cluring</p>
+        </div>
+
+        <div class="content">
+            <p>SMA Negeri 1 Cluring dilengkapi dengan fasilitas modern dan representatif yang mendukung proses pembelajaran aktif, kreatif, dan inovatif. Semua fasilitas dirancang untuk menciptakan lingkungan belajar yang aman, nyaman, dan inspiratif.</p>
+
+            <h2><i class="fas fa-chalkboard-teacher"></i> Fasilitas Akademik</h2>
+            <div class="facility-grid">
+                <div class="facility-item">
+                    <h3>Ruang Kelas Ber-AC</h3>
+                    <p>30 ruang kelas full AC dengan smart board, proyektor, dan sistem suara terintegrasi.</p>
+                </div>
+                <div class="facility-item">
+                    <h3>Laboratorium IPA</h3>
+                    <p>Laboratorium Fisika, Kimia, dan Biologi yang lengkap dengan peralatan standar nasional.</p>
+                </div>
+                <div class="facility-item">
+                    <h3>Laboratorium Komputer</h3>
+                    <p>2 laboratorium komputer berisi 80 unit PC terbaru, jaringan internet 1 Gbps, dan software edukasi.</p>
+                </div>
+                <div class="facility-item">
+                    <h3>Perpustakaan Digital</h3>
+                    <p>Koleksi 10.000+ buku fisik dan akses ke 50.000+ e-book serta jurnal akademik nasional.</p>
+                </div>
+            </div>
+
+            <h2><i class="fas fa-dumbbell"></i> Fasilitas Non-Akademik</h2>
+            <div class="facility-grid">
+                <div class="facility-item">
+                    <h3>Lapangan Serbaguna</h3>
+                    <p>Lapangan futsal, basket, voli, dan atletik berstandar kompetisi.</p>
+                </div>
+                <div class="facility-item">
+                    <h3>Gedung Serba Guna (GSG)</h3>
+                    <p>Kapasitas 500 orang, dilengkapi panggung, sound system, dan AC — digunakan untuk seminar, pentas seni, dan upacara.</p>
+                </div>
+                <div class="facility-item">
+                    <h3>Masjid Al-Hikmah</h3>
+                    <p>Masjid sekolah berkapasitas 300 jamaah, dilengkapi ruang wudhu, perpustakaan keagamaan, dan audio digital.</p>
+                </div>
+                <div class="facility-item">
+                    <h3>Studio Seni & Musik</h3>
+                    <p>Ruang khusus untuk ekskul tari, teater, paduan suara, dan band sekolah.</p>
+                </div>
+            </div>
+
+            <h2><i class="fas fa-wifi"></i> Infrastruktur Teknologi</h2>
+            <div class="facility-grid">
+                <div class="facility-item">
+                    <h3>WiFi 24/7</h3>
+                    <p>Akses internet gratis di seluruh area sekolah dengan bandwidth khusus pembelajaran.</p>
+                </div>
+                <div class="facility-item">
+                    <h3>Sistem Informasi Sekolah (SIS)</h3>
+                    <p>Platform digital terintegrasi untuk rapor, absensi, pembayaran, dan komunikasi orang tua-guru.</p>
+                </div>
+                <div class="facility-item">
+                    <h3>Smart Classroom</h3>
+                    <p>Kelas berbasis teknologi dengan e-learning, QR code materi, dan LMS internal.</p>
+                </div>
+                <div class="facility-item">
+                    <h3>Keamanan Digital</h3>
+                    <p>CCTV 24 jam, sistem absensi biometrik, dan cybersecurity untuk perlindungan data.</p>
+                </div>
+            </div>
+
+            <h2><i class="fas fa-tree"></i> Lingkungan Sekolah</h2>
+            <p>Sekolah kami merupakan <strong>Adiwiyata Nasional</strong> dengan taman edukatif, bank sampah, pengolahan limbah organik, dan program penghijauan yang melibatkan seluruh warga sekolah.</p>
+        </div>
+
+        <a href="4-layanan-konseling.html" class="next-btn">
+            <i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya
+        </a>
+
+        <a href="index.html" class="back-link">← Kembali ke Menu Utama</a>
+    </div>
+</body>
+</html>
