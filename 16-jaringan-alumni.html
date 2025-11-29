@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaringan Alumni - SMA Negeri 1 Cluring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e3a8a;
+            --secondary: #4f46e5;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --text-light: #1e293b;
+            --text-dark: #f8fafc;
+            --gradient-primary: linear-gradient(135deg, #1e40af, #4f46e5);
+            --shadow-light: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 15px 35px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(30, 64, 175, 0.3);
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            color: var(--text-light);
+            line-height: 1.7;
+            padding: 2.5rem;
+            min-height: 100vh;
+            transition: var(--transition);
+        }
+        body.dark-mode {
+            background: linear-gradient(135deg, #0c1427, #111827);
+            color: var(--text-dark);
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .header h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .header p {
+            opacity: 0.85;
+            font-size: 1.1rem;
+        }
+        .content {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 2.2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            margin-bottom: 2.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        body.dark-mode .content {
+            background: rgba(30, 41, 59, 0.75);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+        h2 {
+            font-size: 1.65rem;
+            margin: 1.6rem 0 1.1rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        body.dark-mode h2 {
+            color: #c7d2fe;
+        }
+        .feature-item {
+            background: rgba(241, 245, 249, 0.6);
+            padding: 1.3rem;
+            border-radius: 14px;
+            margin-bottom: 1.4rem;
+            border-left: 4px solid var(--primary);
+        }
+        body.dark-mode .feature-item {
+            background: rgba(26, 32, 44, 0.6);
+        }
+        .feature-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.6rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        body.dark-mode .feature-item h3 {
+            color: #a5b4fc;
+        }
+        p, li {
+            line-height: 1.65;
+            margin-bottom: 0.6rem;
+        }
+        ul {
+            padding-left: 1.6rem;
+            margin: 0.8rem 0 1.2rem;
+        }
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+        .platform-card {
+            background: #dbeafe;
+            padding: 1rem;
+            border-radius: 12px;
+            border-left: 3px solid var(--primary);
+        }
+        body.dark-mode .platform-card {
+            background: rgba(30, 64, 175, 0.2);
+        }
+        .platform-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+            color: var(--primary-dark);
+        }
+        body.dark-mode .platform-card h4 {
+            color: #bfdbfe;
+        }
+        .next-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.9rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            box-shadow: 0 6px 16px rgba(30, 64, 175, 0.35);
+            transition: var(--transition);
+        }
+        .next-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+        .back-link {
+            display: block;
+            margin-top: 1.4rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        body.dark-mode .back-link {
+            color: #a5b4fc;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .content {
+                padding: 1.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .next-btn {
+                padding: 0.7rem 1.6rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Jaringan Alumni</h1>
+            <p>SMA Negeri 1 Cluring</p>
+        </div>
+
+        <div class="content">
+            <p><strong>Jaringan Alumni SMA Negeri 1 Cluring</strong> adalah ekosistem kolaboratif yang menghubungkan lebih dari <strong>5.000 alumni</strong> lintas angkatan sejak 1985. Jaringan ini menjadi wadah untuk berkontribusi, berbagi peluang, dan memperkuat ikatan kekeluargaan “Smaring” di seluruh Indonesia dan mancanegara.</p>
+
+            <h2><i class="fas fa-network-wired"></i> Platform Jaringan</h2>
+            <div class="platform-grid">
+                <div class="platform-card">
+                    <h4>Portal Alumni Resmi</h4>
+                    <p><code>alumni.sman1cluring.sch.id</code></p>
+                    <p>Database terverifikasi, lowongan kerja, dan berita terkini.</p>
+                </div>
+                <div class="platform-card">
+                    <h4>WhatsApp Group Angkatan</h4>
+                    <p>1 grup per angkatan (1985–2024)</p>
+                    <p>Koordinasi acara dan silaturahmi virtual.</p>
+                </div>
+                <div class="platform-card">
+                    <h4>Instagram @alumni_smaring</h4>
+                    <p>Highlight kegiatan dan profil alumni inspiratif.</p>
+                </div>
+                <div class="platform-card">
+                    <h4>LinkedIn Alumni Group</h4>
+                    <p>Jaringan profesional dan rekrutmen khusus alumni.</p>
+                </div>
+            </div>
+
+            <h2><i class="fas fa-handshake"></i> Program Unggulan</h2>
+            <div class="feature-item">
+                <h3><i class="fas fa-chalkboard-teacher"></i> Mentoring Karier</h3>
+                <p>Alumni sukses menjadi mentor bagi siswa kelas XII dalam pemilihan jurusan, persiapan kuliah, dan pengembangan soft skills.</p>
+            </div>
+            <div class="feature-item">
+                <h3><i class="fas fa-briefcase"></i> Bursa Kerja Alumni</h3>
+                <p>Lowongan eksklusif dari perusahaan yang dipimpin atau diisi oleh alumni, dengan prioritas perekrutan sesama “Smaring”.</p>
+            </div>
+            <div class="feature-item">
+                <h3><i class="fas fa-calendar-alt"></i> Reuni Nasional</h3>
+                <p>Diadakan setiap 5 tahun, terakhir: Reuni Akbar 2023 dengan 800+ alumni hadir dari 25 provinsi.</p>
+            </div>
+            <div class="feature-item">
+                <h3><i class="fas fa-donate"></i> Beasiswa “Smaring Peduli”</h3>
+                <p>Program beasiswa penuh dari alumni untuk adik kelas yang berprestasi namun kurang mampu.</p>
+            </div>
+
+            <h2><i class="fas fa-users"></i> Data Alumni (2024)</h2>
+            <ul>
+                <li><strong>87%</strong> melanjutkan ke perguruan tinggi</li>
+                <li><strong>42%</strong> bekerja di sektor swasta (IT, keuangan, manufaktur)</li>
+                <li><strong>28%</strong> menjadi ASN, guru, atau TNI/Polri</li>
+                <li><strong>18%</strong> wirausaha sukses (UMKM hingga startup)</li>
+                <li><strong>12%</strong> studi lanjut S2/S3 di luar negeri</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem; font-style: italic; opacity: 0.9;">
+                “Dari Cluring untuk Indonesia — alumni bukan akhir, tapi awal dari kontribusi nyata.”
+            </p>
+        </div>
+
+        <a href="17-karir-pekerjaan.html" class="next-btn">
+            <i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya
+        </a>
+
+        <a href="index.html" class="back-link">← Kembali ke Menu Utama</a>
+    </div>
+</body>
+</html>
