@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peringkat PTN - SMA Negeri 1 Cluring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e3a8a;
+            --secondary: #4f46e5;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --text-light: #1e293b;
+            --text-dark: #f8fafc;
+            --gradient-primary: linear-gradient(135deg, #1e40af, #4f46e5);
+            --shadow-light: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 15px 35px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(30, 64, 175, 0.3);
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            color: var(--text-light);
+            line-height: 1.7;
+            padding: 2.5rem;
+            min-height: 100vh;
+            transition: var(--transition);
+        }
+        body.dark-mode {
+            background: linear-gradient(135deg, #0c1427, #111827);
+            color: var(--text-dark);
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .header h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .header p {
+            opacity: 0.85;
+            font-size: 1.1rem;
+        }
+        .content {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 2.2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            margin-bottom: 2.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        body.dark-mode .content {
+            background: rgba(30, 41, 59, 0.75);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+        h2 {
+            font-size: 1.65rem;
+            margin: 1.6rem 0 1.1rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        body.dark-mode h2 {
+            color: #c7d2fe;
+        }
+        .ranking-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+        .ranking-table th,
+        .ranking-table td {
+            padding: 0.8rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        body.dark-mode .ranking-table th,
+        body.dark-mode .ranking-table td {
+            border-bottom-color: rgba(255, 255, 255, 0.1);
+        }
+        .ranking-table th {
+            background: rgba(30, 64, 175, 0.08);
+            font-weight: 600;
+        }
+        body.dark-mode .ranking-table th {
+            background: rgba(30, 64, 175, 0.2);
+        }
+        .ranking-row.top-3 {
+            background: rgba(59, 130, 246, 0.08);
+        }
+        body.dark-mode .ranking-row.top-3 {
+            background: rgba(59, 130, 246, 0.15);
+        }
+        .medal {
+            display: inline-block;
+            width: 24px;
+            text-align: center;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        .gold { color: #d4af37; }
+        .silver { color: #c0c0c0; }
+        .bronze { color: #cd7f32; }
+        .next-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.9rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            box-shadow: 0 6px 16px rgba(30, 64, 175, 0.35);
+            transition: var(--transition);
+        }
+        .next-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+        .back-link {
+            display: block;
+            margin-top: 1.4rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        body.dark-mode .back-link {
+            color: #a5b4fc;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .content {
+                padding: 1.8rem;
+            }
+            .ranking-table th,
+            .ranking-table td {
+                padding: 0.6rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .next-btn {
+                padding: 0.7rem 1.6rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Peringkat PTN</h1>
+            <p>SMA Negeri 1 Cluring</p>
+        </div>
+
+        <div class="content">
+            <p>Berdasarkan data penerimaan 5 tahun terakhir (2020–2024), berikut adalah daftar **Perguruan Tinggi Negeri (PTN)** yang paling banyak menerima lulusan SMA Negeri 1 Cluring. Data ini mencerminkan kepercayaan institusi pendidikan tinggi terhadap kualitas lulusan kami.</p>
+
+            <h2><i class="fas fa-trophy"></i> Top 10 PTN Tujuan Alumni (2020–2024)</h2>
+            <table class="ranking-table">
+                <thead>
+                    <tr>
+                        <th>Peringkat</th>
+                        <th>Perguruan Tinggi Negeri</th>
+                        <th>Jumlah Siswa Diterima</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="ranking-row top-3">
+                        <td><span class="medal gold">🥇</span> 1</td>
+                        <td>Universitas Brawijaya (UB)</td>
+                        <td>128</td>
+                    </tr>
+                    <tr class="ranking-row top-3">
+                        <td><span class="medal silver">🥈</span> 2</td>
+                        <td>Universitas Airlangga (UNAIR)</td>
+                        <td>94</td>
+                    </tr>
+                    <tr class="ranking-row top-3">
+                        <td><span class="medal bronze">🥉</span> 3</td>
+                        <td>Institut Teknologi Sepuluh Nopember (ITS)</td>
+                        <td>87</td>
+                    </tr>
+                    <tr class="ranking-row">
+                        <td>4</td>
+                        <td>Universitas Indonesia (UI)</td>
+                        <td>72</td>
+                    </tr>
+                    <tr class="ranking-row">
+                        <td>5</td>
+                        <td>Universitas Gadjah Mada (UGM)</td>
+                        <td>68</td>
+                    </tr>
+                    <tr class="ranking-row">
+                        <td>6</td>
+                        <td>Universitas Jember (UNEJ)</td>
+                        <td>63</td>
+                    </tr>
+                    <tr class="ranking-row">
+                        <td>7</td>
+                        <td>Universitas Negeri Malang (UM)</td>
+                        <td>59</td>
+                    </tr>
+                    <tr class="ranking-row">
+                        <td>8</td>
+                        <td>Institut Pertanian Bogor (IPB)</td>
+                        <td>45</td>
+                    </tr>
+                    <tr class="ranking-row">
+                        <td>9</td>
+                        <td>Universitas Padjadjaran (UNPAD)</td>
+                        <td>38</td>
+                    </tr>
+                    <tr class="ranking-row">
+                        <td>10</td>
+                        <td>Universitas Diponegoro (UNDIP)</td>
+                        <td>33</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2><i class="fas fa-chart-line"></i> Distribusi Fakultas & Program Studi</h2>
+            <ul>
+                <li><strong>42%</strong> – Ilmu Komputer & Teknik Informatika</li>
+                <li><strong>18%</strong> – Kedokteran & Ilmu Kesehatan</li>
+                <li><strong>15%</strong> – Teknik (Sipil, Mesin, Elektro)</li>
+                <li><strong>12%</strong> – Ekonomi & Manajemen</li>
+                <li><strong>8%</strong> – Ilmu Pendidikan & Keguruan</li>
+                <li><strong>5%</strong> – Ilmu Sosial & Politik</li>
+            </ul>
+
+            <h2><i class="fas fa-star"></i> Prestasi di PTN</h2>
+            <p>Banyak alumni kami yang tidak hanya diterima, tetapi juga meraih prestasi di PTN, seperti:</p>
+            <ul>
+                <li>Mahasiswa Berprestasi Tingkat Nasional (UI, 2023)</li>
+                <li>Juara Karya Tulis Ilmiah (UB, 2024)</li>
+                <li>Peraih Beasiswa LPDP sejak semester pertama (UGM, ITS, UNAIR)</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem; font-style: italic; opacity: 0.9;">
+                “Diterima di PTN bukan akhir, tapi awal dari perjalanan akademik yang lebih tinggi.”
+            </p>
+        </div>
+
+        <a href="20-trend-penerimaan.html" class="next-btn">
+            <i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya
+        </a>
+
+        <a href="index.html" class="back-link">← Kembali ke Menu Utama</a>
+    </div>
+</body>
+</html>
