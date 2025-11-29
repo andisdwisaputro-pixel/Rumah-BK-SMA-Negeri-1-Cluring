@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Studi - PTN | SMA Negeri 1 Cluring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e3a8a;
+            --secondary: #4f46e5;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --text-light: #1e293b;
+            --text-dark: #f8fafc;
+            --gradient-primary: linear-gradient(135deg, #1e40af, #4f46e5);
+            --shadow-light: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 15px 35px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(30, 64, 175, 0.3);
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            color: var(--text-light);
+            line-height: 1.7;
+            padding: 2.5rem;
+            min-height: 100vh;
+            transition: var(--transition);
+        }
+        body.dark-mode {
+            background: linear-gradient(135deg, #0c1427, #111827);
+            color: var(--text-dark);
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .header h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .header p {
+            opacity: 0.85;
+            font-size: 1.1rem;
+        }
+        .content {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 2.2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            margin-bottom: 2.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        body.dark-mode .content {
+            background: rgba(30, 41, 59, 0.75);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+        h2 {
+            font-size: 1.65rem;
+            margin: 1.6rem 0 1.1rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        body.dark-mode h2 {
+            color: #c7d2fe;
+        }
+        .study-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+        .study-card {
+            background: #dbeafe;
+            padding: 1.1rem;
+            border-radius: 12px;
+            border-left: 3px solid var(--primary);
+        }
+        body.dark-mode .study-card {
+            background: rgba(30, 64, 175, 0.2);
+        }
+        .study-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+            color: var(--primary-dark);
+        }
+        body.dark-mode .study-card h4 {
+            color: #bfdbfe;
+        }
+        .rank-tag {
+            display: inline-block;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .next-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.9rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            box-shadow: 0 6px 16px rgba(30, 64, 175, 0.35);
+            transition: var(--transition);
+        }
+        .next-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+        .back-link {
+            display: block;
+            margin-top: 1.4rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        body.dark-mode .back-link {
+            color: #a5b4fc;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .content {
+                padding: 1.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .next-btn {
+                padding: 0.7rem 1.6rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Program Studi</h1>
+            <p>Pilihan di Perguruan Tinggi Negeri – SMA Negeri 1 Cluring</p>
+        </div>
+
+        <div class="content">
+            <p>Berdasarkan data penerimaan 2020–2024, berikut adalah distribusi **program studi** yang paling diminati oleh lulusan SMA Negeri 1 Cluring di berbagai Perguruan Tinggi Negeri (PTN). Pemilihan jurusan mencerminkan minat, bakat, dan strategi karir jangka panjang siswa kami.</p>
+
+            <h2><i class="fas fa-graduation-cap"></i> Top 10 Program Studi Pilihan Alumni</h2>
+            <div class="study-grid">
+                <div class="study-card">
+                    <span class="rank-tag">#1</span>
+                    <h4>Teknik Informatika</h4>
+                    <p>28% alumni PTN → UI, ITB, ITS, UB</p>
+                </div>
+                <div class="study-card">
+                    <span class="rank-tag">#2</span>
+                    <h4>Kedokteran Umum</h4>
+                    <p>18% alumni PTN → UNAIR, UGM, UNDIP</p>
+                </div>
+                <div class="study-card">
+                    <span class="rank-tag">#3</span>
+                    <h4>Manajemen</h4>
+                    <p>12% alumni PTN → UB, UNPAD, UI</p>
+                </div>
+                <div class="study-card">
+                    <span class="rank-tag">#4</span>
+                    <h4>Pendidikan Dokter Gigi</h4>
+                    <p>9% alumni PTN → UNAIR, UGM</p>
+                </div>
+                <div class="study-card">
+                    <span class="rank-tag">#5</span>
+                    <h4>Teknik Elektro</h4>
+                    <p>7% alumni PTN → ITB, ITS, UI</p>
+                </div>
+                <div class="study-card">
+                    <span class="rank-tag">#6</span>
+                    <h4>Ilmu Komputer</h4>
+                    <p>6% alumni PTN → UGM, IPB, UB</p>
+                </div>
+                <div class="study-card">
+                    <span class="rank-tag">#7</span>
+                    <h4>Akuntansi</h4>
+                    <p>5% alumni PTN → UNPAD, UB, UNEJ</p>
+                </div>
+                <div class="study-card">
+                    <span class="rank-tag">#8</span>
+                    <h4>Teknik Sipil</h4>
+                    <p>4% alumni PTN → ITS, UNDIP, UI</p>
+                </div>
+                <div class="study-card">
+                    <span class="rank-tag">#9</span>
+                    <h4>Psikologi</h4>
+                    <p>3% alumni PTN → UGM, UNPAD, UB</p>
+                </div>
+                <div class="study-card">
+                    <span class="rank-tag">#10</span>
+                    <h4>Biologi</h4>
+                    <p>2% alumni PTN → UGM, UNAIR, UB</p>
+                </div>
+            </div>
+
+            <h2><i class="fas fa-chart-pie"></i> Distribusi Berdasarkan Kelompok Ilmu</h2>
+            <ul>
+                <li><strong>65%</strong> – Ilmu Komputer & Teknik (MIPA/Campuran)</li>
+                <li><strong>22%</strong> – Kesehatan & Kedokteran (MIPA)</li>
+                <li><strong>10%</strong> – Ekonomi & Sosial (Soshum)</li>
+                <li><strong>3%</strong> – Pendidikan & Humaniora (Soshum)</li>
+            </ul>
+
+            <h2><i class="fas fa-lightbulb"></i> Strategi Pemilihan Program Studi</h2>
+            <p>SMA Negeri 1 Cluring membantu siswa memilih jurusan melalui:</p>
+            <ul>
+                <li><strong>Asesmen Minat & Bakat</strong> sejak kelas XI</li>
+                <li><strong>Workshop Eksplorasi Jurusan</strong> dengan narasumber dari PTN</li>
+                <li><strong>Konsultasi 1-on-1</strong> dengan guru BK dan alumni</li>
+                <li>Analisis <strong>daya tampung vs peminat</strong> tahun sebelumnya</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem; font-style: italic; opacity: 0.9;">
+                “Memilih program studi bukan hanya soal nilai, tapi tentang visi hidupmu 10 tahun ke depan.”
+            </p>
+        </div>
+
+        <a href="22-ptain.html" class="next-btn">
+            <i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya
+        </a>
+
+        <a href="index.html" class="back-link">← Kembali ke Menu Utama</a>
+    </div>
+</body>
+</html>
