@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karir & Pekerjaan - Alumni | SMA Negeri 1 Cluring</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e40af;
+            --primary-light: #3b82f6;
+            --primary-dark: #1e3a8a;
+            --secondary: #4f46e5;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --text-light: #1e293b;
+            --text-dark: #f8fafc;
+            --gradient-primary: linear-gradient(135deg, #1e40af, #4f46e5);
+            --shadow-light: 0 10px 25px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 15px 35px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 20px 40px rgba(30, 64, 175, 0.3);
+            --border-radius: 20px;
+            --transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            color: var(--text-light);
+            line-height: 1.7;
+            padding: 2.5rem;
+            min-height: 100vh;
+            transition: var(--transition);
+        }
+        body.dark-mode {
+            background: linear-gradient(135deg, #0c1427, #111827);
+            color: var(--text-dark);
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .header h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .header p {
+            opacity: 0.85;
+            font-size: 1.1rem;
+        }
+        .content {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 2.2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+            margin-bottom: 2.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        body.dark-mode .content {
+            background: rgba(30, 41, 59, 0.75);
+            border-color: rgba(255, 255, 255, 0.12);
+        }
+        h2 {
+            font-size: 1.65rem;
+            margin: 1.6rem 0 1.1rem;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        body.dark-mode h2 {
+            color: #c7d2fe;
+        }
+        .career-item {
+            background: rgba(241, 245, 249, 0.6);
+            padding: 1.3rem;
+            border-radius: 14px;
+            margin-bottom: 1.4rem;
+            border-left: 4px solid var(--primary);
+        }
+        body.dark-mode .career-item {
+            background: rgba(26, 32, 44, 0.6);
+        }
+        .career-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.6rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        body.dark-mode .career-item h3 {
+            color: #a5b4fc;
+        }
+        p, li {
+            line-height: 1.65;
+            margin-bottom: 0.6rem;
+        }
+        ul {
+            padding-left: 1.6rem;
+            margin: 0.8rem 0 1.2rem;
+        }
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .stat-box {
+            background: #dbeafe;
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        body.dark-mode .stat-box {
+            background: rgba(30, 64, 175, 0.2);
+        }
+        .stat-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+        body.dark-mode .stat-value {
+            color: #bfdbfe;
+        }
+        .next-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.9rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            box-shadow: 0 6px 16px rgba(30, 64, 175, 0.35);
+            transition: var(--transition);
+        }
+        .next-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+        .back-link {
+            display: block;
+            margin-top: 1.4rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        body.dark-mode .back-link {
+            color: #a5b4fc;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+            opacity: 0.9;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 1.5rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .content {
+                padding: 1.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .next-btn {
+                padding: 0.7rem 1.6rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Karir & Pekerjaan</h1>
+            <p>Alumni SMA Negeri 1 Cluring</p>
+        </div>
+
+        <div class="content">
+            <p>Jejak karir alumni SMA Negeri 1 Cluring tersebar di berbagai sektor profesi — dari teknologi, pendidikan, pemerintahan, hingga wirausaha. Data menunjukkan bahwa **87% alumni bekerja sesuai bidang minat**, dan **73% mengalami promosi dalam 5 tahun pertama** karier mereka.</p>
+
+            <h2><i class="fas fa-chart-pie"></i> Distribusi Sektor Pekerjaan (Angkatan 2015–2023)</h2>
+            <div class="stat-grid">
+                <div class="stat-box">
+                    <div class="stat-value">32%</div>
+                    <div>IT & Teknologi</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">18%</div>
+                    <div>Pendidikan & Riset</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">15%</div>
+                    <div>Keuangan & Perbankan</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">12%</div>
+                    <div>ASN & BUMN</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">10%</div>
+                    <div>Kesehatan & Farmasi</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">13%</div>
+                    <div>Wirausaha & Lainnya</div>
+                </div>
+            </div>
+
+            <h2><i class="fas fa-briefcase"></i> Profil Karir Inspiratif</h2>
+            <div class="career-item">
+                <h3><i class="fas fa-laptop-code"></i> Ahmad Fauzi (Angkatan 2017)</h3>
+                <p>Software Engineer di GoTo Group, Jakarta. Mengembangkan sistem keamanan digital untuk layanan fintech. Lulusan Teknik Informatika ITB.</p>
+            </div>
+            <div class="career-item">
+                <h3><i class="fas fa-stethoscope"></i> dr. Rani Putri (Angkatan 2015)</h3>
+                <p>Dokter umum di RSUD Banyuwangi, sedang menempuh spesialisasi di Universitas Airlangga. Aktif dalam program kesehatan desa.</p>
+            </div>
+            <div class="career-item">
+                <h3><i class="fas fa-graduation-cap"></i> Dian Prasetyo, M.Pd. (Angkatan 2014)</h3>
+                <p>Guru Fisika sekaligus Kepala Laboratorium di SMAN 1 Jember. Juara Guru Berprestasi Tingkat Provinsi 2023.</p>
+            </div>
+            <div class="career-item">
+                <h3><i class="fas fa-store"></i> Rina Sari (Angkatan 2018)</h3>
+                <p>Pengusaha UMKM “Rina Batik” yang mengekspor produk ke Malaysia dan Singapura. Juara Wirausaha Muda Mandiri 2022.</p>
+            </div>
+
+            <h2><i class="fas fa-network-wired"></i> Kolaborasi Dunia Kerja</h2>
+            <ul>
+                <li>Alumni aktif dalam **program magang** untuk adik kelas di perusahaan mereka.</li>
+                <li>Kemitraan dengan **12 perusahaan nasional** untuk rekrutmen prioritas alumni "Smaring".</li>
+                <li>Webinar karir bulanan: <em>“From Cluring to Career”</em> bersama alumni sukses.</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem; font-style: italic; opacity: 0.9;">
+                “Karir bukan hanya tentang pekerjaan, tapi tentang dampak yang kamu ciptakan bagi dunia.”
+            </p>
+        </div>
+
+        <a href="18-kontribusi.html" class="next-btn">
+            <i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya
+        </a>
+
+        <a href="index.html" class="back-link">← Kembali ke Menu Utama</a>
+    </div>
+</body>
+</html>
