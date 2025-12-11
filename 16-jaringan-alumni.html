@@ -71,50 +71,6 @@
             margin-bottom: 2.2rem;
             border: 1px solid rgba(255, 255, 255, 0.5);
         }
-        body.dark-mode .content {
-            background: rgba(30, 41, 59, 0.75);
-            border-color: rgba(255, 255, 255, 0.12);
-        }
-        h2 {
-            font-size: 1.65rem;
-            margin: 1.6rem 0 1.1rem;
-            color: var(--primary-dark);
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-        body.dark-mode h2 {
-            color: #c7d2fe;
-        }
-        .feature-item {
-            background: rgba(241, 245, 249, 0.6);
-            padding: 1.3rem;
-            border-radius: 14px;
-            margin-bottom: 1.4rem;
-            border-left: 4px solid var(--primary);
-        }
-        body.dark-mode .feature-item {
-            background: rgba(26, 32, 44, 0.6);
-        }
-        .feature-item h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.6rem;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        body.dark-mode .feature-item h3 {
-            color: #a5b4fc;
-        }
-        p, li {
-            line-height: 1.65;
-            margin-bottom: 0.6rem;
-        }
-        ul {
-            padding-left: 1.6rem;
-            margin: 0.8rem 0 1.2rem;
-        }
         .platform-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -127,16 +83,10 @@
             border-radius: 12px;
             border-left: 3px solid var(--primary);
         }
-        body.dark-mode .platform-card {
-            background: rgba(30, 64, 175, 0.2);
-        }
         .platform-card h4 {
             font-size: 1.1rem;
             margin-bottom: 0.4rem;
             color: var(--primary-dark);
-        }
-        body.dark-mode .platform-card h4 {
-            color: #bfdbfe;
         }
         .next-btn {
             display: inline-flex;
@@ -165,33 +115,6 @@
             font-size: 1rem;
             transition: var(--transition);
         }
-        body.dark-mode .back-link {
-            color: #a5b4fc;
-        }
-        .back-link:hover {
-            text-decoration: underline;
-            opacity: 0.9;
-        }
-        @media (max-width: 768px) {
-            body {
-                padding: 1.5rem;
-            }
-            .header h1 {
-                font-size: 2rem;
-            }
-            .content {
-                padding: 1.8rem;
-            }
-        }
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 1.8rem;
-            }
-            .next-btn {
-                padding: 0.7rem 1.6rem;
-                font-size: 1rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -202,60 +125,32 @@
         </div>
 
         <div class="content">
-            <p><strong>Jaringan Alumni SMA Negeri 1 Cluring</strong> adalah ekosistem kolaboratif yang menghubungkan lebih dari <strong>5.000 alumni</strong> lintas angkatan sejak 1985. Jaringan ini menjadi wadah untuk berkontribusi, berbagi peluang, dan memperkuat ikatan kekeluargaan “Smaring” di seluruh Indonesia dan mancanegara.</p>
+            <p><strong>Jaringan Alumni SMA Negeri 1 Cluring</strong> adalah ekosistem kolaboratif yang menghubungkan lebih dari <strong>5.000 alumni</strong> lintas angkatan sejak 1985.</p>
 
             <h2><i class="fas fa-network-wired"></i> Platform Jaringan</h2>
             <div class="platform-grid">
+                
                 <div class="platform-card">
                     <h4>Portal Alumni Resmi</h4>
                     <p><code>alumni.sman1cluring.sch.id</code></p>
-                    <p>Database terverifikasi, lowongan kerja, dan berita terkini.</p>
                 </div>
+
                 <div class="platform-card">
                     <h4>WhatsApp Group Angkatan</h4>
-                    <p>1 grup per angkatan (1985–2024)</p>
-                    <p>Koordinasi acara dan silaturahmi virtual.</p>
+                    <p><a href="https://wa.link/mfaua0" target="_blank">Klik untuk bergabung</a></p>
                 </div>
+
                 <div class="platform-card">
-                    <h4>Instagram @alumni_smaring</h4>
-                    <p>Highlight kegiatan dan profil alumni inspiratif.</p>
+                    <h4>Instagram Alumni</h4>
+                    <p><a href="https://www.instagram.com/andisdwisaputro?igsh=MXU4dDNobXp4dmRqZQ==" target="_blank">@alumni_smaring</a></p>
                 </div>
+
                 <div class="platform-card">
                     <h4>LinkedIn Alumni Group</h4>
-                    <p>Jaringan profesional dan rekrutmen khusus alumni.</p>
+                    <p>Jaringan profesional alumni.</p>
                 </div>
             </div>
 
-            <h2><i class="fas fa-handshake"></i> Program Unggulan</h2>
-            <div class="feature-item">
-                <h3><i class="fas fa-chalkboard-teacher"></i> Mentoring Karier</h3>
-                <p>Alumni sukses menjadi mentor bagi siswa kelas XII dalam pemilihan jurusan, persiapan kuliah, dan pengembangan soft skills.</p>
-            </div>
-            <div class="feature-item">
-                <h3><i class="fas fa-briefcase"></i> Bursa Kerja Alumni</h3>
-                <p>Lowongan eksklusif dari perusahaan yang dipimpin atau diisi oleh alumni, dengan prioritas perekrutan sesama “Smaring”.</p>
-            </div>
-            <div class="feature-item">
-                <h3><i class="fas fa-calendar-alt"></i> Reuni Nasional</h3>
-                <p>Diadakan setiap 5 tahun, terakhir: Reuni Akbar 2023 dengan 800+ alumni hadir dari 25 provinsi.</p>
-            </div>
-            <div class="feature-item">
-                <h3><i class="fas fa-donate"></i> Beasiswa “Smaring Peduli”</h3>
-                <p>Program beasiswa penuh dari alumni untuk adik kelas yang berprestasi namun kurang mampu.</p>
-            </div>
-
-            <h2><i class="fas fa-users"></i> Data Alumni (2024)</h2>
-            <ul>
-                <li><strong>87%</strong> melanjutkan ke perguruan tinggi</li>
-                <li><strong>42%</strong> bekerja di sektor swasta (IT, keuangan, manufaktur)</li>
-                <li><strong>28%</strong> menjadi ASN, guru, atau TNI/Polri</li>
-                <li><strong>18%</strong> wirausaha sukses (UMKM hingga startup)</li>
-                <li><strong>12%</strong> studi lanjut S2/S3 di luar negeri</li>
-            </ul>
-
-            <p style="margin-top: 1.5rem; font-style: italic; opacity: 0.9;">
-                “Dari Cluring untuk Indonesia — alumni bukan akhir, tapi awal dari kontribusi nyata.”
-            </p>
         </div>
 
         <a href="17-karir-pekerjaan.html" class="next-btn">
