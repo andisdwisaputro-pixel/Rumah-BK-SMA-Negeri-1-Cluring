@@ -1,163 +1,185 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaringan Alumni - SMA Negeri 1 Cluring</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #1e40af;
-            --primary-light: #3b82f6;
-            --primary-dark: #1e3a8a;
-            --secondary: #4f46e5;
-            --light: #f8fafc;
-            --dark: #0f172a;
-            --text-light: #1e293b;
-            --text-dark: #f8fafc;
-            --gradient-primary: linear-gradient(135deg, #1e40af, #4f46e5);
-            --shadow-light: 0 10px 25px rgba(0, 0, 0, 0.05);
-            --shadow-medium: 0 15px 35px rgba(0, 0, 0, 0.1);
-            --shadow-hover: 0 20px 40px rgba(30, 64, 175, 0.3);
-            --border-radius: 20px;
-            --transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
-        body {
-            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
-            color: var(--text-light);
-            line-height: 1.7;
-            padding: 2.5rem;
-            min-height: 100vh;
-            transition: var(--transition);
-        }
-        body.dark-mode {
-            background: linear-gradient(135deg, #0c1427, #111827);
-            color: var(--text-dark);
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-        .header h1 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .header p {
-            opacity: 0.85;
-            font-size: 1.1rem;
-        }
-        .content {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            padding: 2.2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-light);
-            margin-bottom: 2.2rem;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-        .platform-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.2rem;
-            margin: 1.5rem 0;
-        }
-        .platform-card {
-            background: #dbeafe;
-            padding: 1rem;
-            border-radius: 12px;
-            border-left: 3px solid var(--primary);
-        }
-        .platform-card h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.4rem;
-            color: var(--primary-dark);
-        }
-        .next-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: var(--gradient-primary);
-            color: white;
-            text-decoration: none;
-            padding: 0.8rem 1.9rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.05rem;
-            box-shadow: 0 6px 16px rgba(30, 64, 175, 0.35);
-            transition: var(--transition);
-        }
-        .next-btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: var(--shadow-hover);
-        }
-        .back-link {
-            display: block;
-            margin-top: 1.4rem;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jaringan Alumni - SMA Negeri 1 Cluring</title>
+
+<!-- Font dan Icon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --primary: #1e40af;
+        --primary-light: #3b82f6;
+        --primary-dark: #1e3a8a;
+        --light: #f8fafc;
+        --dark: #0f172a;
+        --glass-light: rgba(255, 255, 255, 0.35);
+        --glass-dark: rgba(20, 20, 30, 0.4);
+        --neon: #60a5fa;
+        --transition: all .45s ease;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Inter', sans-serif;
+    }
+
+    body {
+        background: linear-gradient(135deg, #e0f2fe, #f0f9ff);
+        color: var(--dark);
+        padding: 2rem;
+        transition: var(--transition);
+        animation: fadeIn 1s ease;
+    }
+
+    body.dark-mode {
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+        color: var(--light);
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+        animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+    @keyframes fadeInUp {
+        from {opacity:0; transform: translateY(25px);}
+        to {opacity:1; transform: translateY(0);}
+    }
+
+    .platform-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.3rem;
+        margin-top: 1.5rem;
+    }
+
+    .platform-card {
+        padding: 1.4rem;
+        border-radius: 16px;
+        backdrop-filter: blur(16px);
+        background: var(--glass-light);
+        border: 2px solid rgba(255,255,255,0.5);
+        box-shadow: 0 12px 26px rgba(0,0,0,0.08);
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+    }
+
+    body.dark-mode .platform-card {
+        background: var(--glass-dark);
+        border-color: rgba(255,255,255,0.15);
+    }
+
+    /* Neon glowing border */
+    .platform-card:hover {
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 0 18px var(--neon), 0 0 32px rgba(96,165,250,0.5);
+        border-color: var(--neon);
+    }
+
+    .platform-card h4 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+    }
+
+    .btn-link {
+        display: inline-block;
+        margin-top: .5rem;
+        padding: 8px 15px;
+        background: var(--primary);
+        color: white;
+        border-radius: 10px;
+        text-decoration: none;
+        font-size: .9rem;
+        transition: var(--transition);
+    }
+
+    .btn-link:hover {
+        background: var(--primary-light);
+        transform: translateY(-3px);
+    }
+
+    /* Toggle Dark Mode */
+    .toggle-dark {
+        position: fixed;
+        top: 22px;
+        right: 22px;
+        background: var(--primary);
+        color: white;
+        padding: 10px 14px;
+        border-radius: 50px;
+        cursor: pointer;
+        font-size: 1.1rem;
+        box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+        transition: var(--transition);
+    }
+    .toggle-dark:hover {
+        transform: scale(1.1);
+        background: var(--primary-light);
+    }
+</style>
+
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Jaringan Alumni</h1>
-            <p>SMA Negeri 1 Cluring</p>
+
+<button class="toggle-dark" onclick="toggleDarkMode()">
+    <i class="fas fa-moon"></i>
+</button>
+
+<div class="container">
+
+    <h2><i class="fas fa-network-wired"></i> Platform Jaringan Alumni</h2>
+
+    <div class="platform-grid">
+
+        <div class="platform-card">
+            <h4><i class="fas fa-globe"></i> Portal Alumni Resmi</h4>
+            <p>Database alumni & berita resmi.</p>
+            <a class="btn-link" href="#" target="_blank">Kunjungi Portal</a>
         </div>
 
-        <div class="content">
-            <p><strong>Jaringan Alumni SMA Negeri 1 Cluring</strong> adalah ekosistem kolaboratif yang menghubungkan lebih dari <strong>5.000 alumni</strong> lintas angkatan sejak 1985.</p>
-
-            <h2><i class="fas fa-network-wired"></i> Platform Jaringan</h2>
-            <div class="platform-grid">
-                
-                <div class="platform-card">
-                    <h4>Portal Alumni Resmi</h4>
-                    <p><code>alumni.sman1cluring.sch.id</code></p>
-                </div>
-
-                <div class="platform-card">
-                    <h4>WhatsApp Group Angkatan</h4>
-                    <p><a href="https://wa.link/mfaua0" target="_blank">Klik untuk bergabung</a></p>
-                </div>
-
-                <div class="platform-card">
-                    <h4>Instagram Alumni</h4>
-                    <p><a href="https://www.instagram.com/andisdwisaputro?igsh=MXU4dDNobXp4dmRqZQ==" target="_blank">@alumni_smaring</a></p>
-                </div>
-
-                <div class="platform-card">
-                    <h4>LinkedIn Alumni Group</h4>
-                    <p>Jaringan profesional alumni.</p>
-                </div>
-            </div>
-
+        <div class="platform-card">
+            <h4><i class="fab fa-whatsapp"></i> WhatsApp Group Angkatan</h4>
+            <p>Grup koordinasi & silaturahmi alumni per angkatan.</p>
+            <a class="btn-link" href="https://wa.link/mfaua0" target="_blank">Gabung Grup</a>
         </div>
 
-        <a href="17-karir-pekerjaan.html" class="next-btn">
-            <i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya
-        </a>
+        <div class="platform-card">
+            <h4><i class="fab fa-instagram"></i> Instagram Alumni</h4>
+            <p>Dokumentasi kegiatan dan profil alumni.</p>
+            <a class="btn-link" href="https://www.instagram.com/andisdwisaputro?igsh=MXU4dDNobXp4dmRqZQ==" target="_blank">
+                Lihat Instagram
+            </a>
+        </div>
 
-        <a href="index.html" class="back-link">← Kembali ke Menu Utama</a>
     </div>
+
+</div>
+
+<script>
+    // Auto detect dark mode
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.body.classList.add("dark-mode");
+    }
+
+    function toggleDarkMode() {
+        document.body.classList.toggle("dark-mode");
+    }
+</script>
+
 </body>
 </html>
