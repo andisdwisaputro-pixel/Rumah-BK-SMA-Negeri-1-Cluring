@@ -124,11 +124,12 @@ li{margin-bottom:.6rem}
 </a>
 </div>
 
-<!-- TANGGAL + COUNTDOWN -->
+<!-- JADWAL & COUNTDOWN -->
 <div class="card">
 <h2><i class="fas fa-calendar-alt"></i> Jadwal Penting & Hitung Mundur</h2>
 
 <div class="timeline">
+
     <div class="timeline-item">
         <div class="timeline-date">06 – 31 Januari 2025</div>
         Registrasi Akun SNPMB Sekolah
@@ -146,6 +147,7 @@ li{margin-bottom:.6rem}
         Registrasi Akun SNPMB Siswa (SNBT)
         <div id="cd-snbt" class="countdown"></div>
     </div>
+
 </div>
 </div>
 
@@ -208,8 +210,18 @@ function countdown(endDate, elementId){
         return;
     }
 
-    const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-    el.innerHTML = "⏳ Sisa waktu: " + days + " hari";
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    el.innerHTML =
+        "⏳ Sisa waktu: " +
+        days + " hari " +
+        hours + " jam " +
+        minutes + " menit " +
+        seconds + " detik";
+
     el.className = "countdown open";
 }
 
