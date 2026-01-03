@@ -16,37 +16,39 @@
     --warning:#f59e0b;
     --danger:#dc2626;
     --bg:#f0f9ff;
+    --card:#ffffff;
 }
 *{box-sizing:border-box;font-family:'Inter',sans-serif}
-body{background:var(--bg);padding:2rem;color:#1e293b}
-.container{max-width:900px;margin:auto}
+body{
+    background:var(--bg);
+    padding:2rem;
+    color:#1e293b;
+}
+.container{max-width:950px;margin:auto}
 .header{text-align:center;margin-bottom:2rem}
 .header h1{
-    font-size:2.3rem;
+    font-size:2.4rem;
     background:linear-gradient(135deg,var(--primary),var(--secondary));
     -webkit-background-clip:text;
     color:transparent;
 }
 .card{
-    background:#fff;
+    background:var(--card);
     padding:2rem;
     border-radius:18px;
     box-shadow:0 12px 30px rgba(0,0,0,.08);
-    margin-bottom:1.5rem;
+    margin-bottom:1.8rem;
 }
-h2{color:var(--primary);margin-bottom:.6rem}
-.timeline-item{
-    border-left:5px solid var(--secondary);
-    padding-left:1rem;
-    margin-bottom:1.3rem;
+h2{
+    color:var(--primary);
+    display:flex;
+    gap:.6rem;
+    align-items:center;
 }
-.countdown{
-    font-weight:700;
-    margin-top:.4rem;
-}
-.open{color:var(--success)}
-.closed{color:var(--danger)}
+ul,ol{margin-left:1.2rem;margin-top:.8rem}
+li{margin-bottom:.6rem}
 
+/* BUTTON */
 .btn{
     display:inline-flex;
     align-items:center;
@@ -57,11 +59,43 @@ h2{color:var(--primary);margin-bottom:.6rem}
     font-weight:600;
     color:#fff;
     margin:.3rem 0;
+    transition:.3s;
 }
-.btn-wa{background:#25D366}
-.btn-wa:hover{background:#1ebe5d}
 .btn-primary{background:var(--primary)}
 .btn-primary:hover{background:#1e3a8a}
+.btn-success{background:var(--success)}
+.btn-success:hover{background:#15803d}
+.btn-warning{background:var(--warning)}
+.btn-warning:hover{background:#d97706}
+.btn-wa{background:#25D366}
+.btn-wa:hover{background:#1ebe5d}
+
+/* TIMELINE */
+.timeline{
+    border-left:4px solid var(--secondary);
+    padding-left:1.5rem;
+    margin-top:1rem;
+}
+.timeline-item{margin-bottom:1.3rem}
+.timeline-date{font-weight:700;color:var(--secondary)}
+.countdown{font-weight:700;margin-top:.3rem}
+.open{color:var(--success)}
+.closed{color:var(--danger)}
+
+/* NOTE */
+.note{
+    background:#fef3c7;
+    padding:1rem;
+    border-radius:12px;
+    border-left:5px solid var(--warning);
+    margin-top:1.5rem;
+}
+.contact{
+    background:#eff6ff;
+    padding:1rem;
+    border-radius:12px;
+    border-left:5px solid var(--primary);
+}
 </style>
 </head>
 
@@ -73,28 +107,80 @@ h2{color:var(--primary);margin-bottom:.6rem}
     <p>SMA Negeri 1 Cluring</p>
 </div>
 
+<!-- AKUN -->
 <div class="card">
-<h2><i class="fas fa-calendar-alt"></i> Tanggal Penting & Hitung Mundur</h2>
+<h2><i class="fas fa-user-check"></i> Akun SNPMB</h2>
+<ul>
+    <li>Akun SNPMB <strong>Sekolah</strong> untuk pengisian PDSS</li>
+    <li>Akun SNPMB <strong>Siswa</strong> untuk SNBP & UTBK-SNBT</li>
+</ul>
+<p style="font-style:italic">
+* Sekolah yang sudah memiliki akun tidak perlu registrasi ulang.<br>
+** Lulusan <em>gap year</em> wajib membuat akun baru.
+</p>
 
-<div class="timeline-item">
-    <strong>Registrasi Akun SNPMB Sekolah</strong><br>
-    06 – 31 Januari 2025
-    <div id="cd-sekolah" class="countdown"></div>
+<a class="btn btn-primary" href="https://portal-snpmb.bppp.kemdikbud.go.id" target="_blank">
+    <i class="fas fa-globe"></i> Portal Resmi SNPMB
+</a>
 </div>
 
-<div class="timeline-item">
-    <strong>Registrasi Akun SNPMB Siswa (SNBP)</strong><br>
-    13 Januari – 18 Februari 2025
-    <div id="cd-snbp" class="countdown"></div>
+<!-- TANGGAL + COUNTDOWN -->
+<div class="card">
+<h2><i class="fas fa-calendar-alt"></i> Jadwal Penting & Hitung Mundur</h2>
+
+<div class="timeline">
+    <div class="timeline-item">
+        <div class="timeline-date">06 – 31 Januari 2025</div>
+        Registrasi Akun SNPMB Sekolah
+        <div id="cd-sekolah" class="countdown"></div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">13 Januari – 18 Februari 2025</div>
+        Registrasi Akun SNPMB Siswa (SNBP)
+        <div id="cd-snbp" class="countdown"></div>
+    </div>
+
+    <div class="timeline-item">
+        <div class="timeline-date">13 Januari – 27 Maret 2025</div>
+        Registrasi Akun SNPMB Siswa (SNBT)
+        <div id="cd-snbt" class="countdown"></div>
+    </div>
+</div>
 </div>
 
-<div class="timeline-item">
-    <strong>Registrasi Akun SNPMB Siswa (SNBT)</strong><br>
-    13 Januari – 27 Maret 2025
-    <div id="cd-snbt" class="countdown"></div>
+<!-- KEWAJIBAN -->
+<div class="card">
+<h2><i class="fas fa-tasks"></i> Kewajiban Siswa</h2>
+<ol>
+    <li>
+        Akses Portal SNPMB<br>
+        <a class="btn btn-primary" href="https://portal-snpmb.bppp.kemdikbud.go.id" target="_blank">
+            Portal SNPMB
+        </a>
+    </li>
+    <li>
+        Ikuti Panduan Registrasi<br>
+        <a class="btn btn-success" href="https://drive.google.com/file/d/1NIf68YaWfau6PsAK0ahaTmHA7Xex1bD4/view" target="_blank">
+            Panduan Registrasi
+        </a>
+    </li>
+    <li>Gunakan email aktif dan password yang mudah diingat</li>
+    <li>
+        Verifikasi Akun<br>
+        <a class="btn btn-warning" href="https://drive.google.com/file/d/1RdNGvtQPTpSUC_Gi29zs9grgcsaz7wYn/view" target="_blank">
+            Panduan Verifikasi
+        </a>
+    </li>
+    <li>Simpan data akun dengan baik</li>
+</ol>
+
+<div class="note">
+<strong>Catatan:</strong> Penyimpanan permanen akun diperkirakan bulan Februari dan akan diinformasikan kembali.
 </div>
 </div>
 
+<!-- KONTAK -->
 <div class="card">
 <h2><i class="fab fa-whatsapp"></i> Layanan Bantuan BK</h2>
 
