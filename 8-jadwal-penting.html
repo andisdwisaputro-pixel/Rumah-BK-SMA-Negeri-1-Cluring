@@ -1,236 +1,549 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Registrasi & Jadwal SNPMB 2025 | SMAN 1 Cluring</title>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-:root{
-    --primary:#1e40af;
-    --secondary:#4f46e5;
-    --success:#16a34a;
-    --warning:#f59e0b;
-    --danger:#dc2626;
-    --bg:#f0f9ff;
-    --card:#ffffff;
-}
-*{box-sizing:border-box;font-family:'Inter',sans-serif}
-body{
-    background:var(--bg);
-    padding:2rem;
-    color:#1e293b;
-}
-.container{max-width:950px;margin:auto}
-.header{text-align:center;margin-bottom:2rem}
-.header h1{
-    font-size:2.4rem;
-    background:linear-gradient(135deg,var(--primary),var(--secondary));
-    -webkit-background-clip:text;
-    color:transparent;
-}
-.card{
-    background:var(--card);
-    padding:2rem;
-    border-radius:18px;
-    box-shadow:0 12px 30px rgba(0,0,0,.08);
-    margin-bottom:1.8rem;
-}
-h2{
-    color:var(--primary);
-    display:flex;
-    gap:.6rem;
-    align-items:center;
-}
-ul,ol{margin-left:1.2rem;margin-top:.8rem}
-li{margin-bottom:.6rem}
-
-/* BUTTON */
-.btn{
-    display:inline-flex;
-    align-items:center;
-    gap:.5rem;
-    padding:.6rem 1.3rem;
-    border-radius:10px;
-    text-decoration:none;
-    font-weight:600;
-    color:#fff;
-    margin:.3rem 0;
-    transition:.3s;
-}
-.btn-primary{background:var(--primary)}
-.btn-primary:hover{background:#1e3a8a}
-.btn-success{background:var(--success)}
-.btn-success:hover{background:#15803d}
-.btn-warning{background:var(--warning)}
-.btn-warning:hover{background:#d97706}
-.btn-wa{background:#25D366}
-.btn-wa:hover{background:#1ebe5d}
-
-/* TIMELINE */
-.timeline{
-    border-left:4px solid var(--secondary);
-    padding-left:1.5rem;
-    margin-top:1rem;
-}
-.timeline-item{margin-bottom:1.3rem}
-.timeline-date{font-weight:700;color:var(--secondary)}
-.countdown{font-weight:700;margin-top:.3rem}
-.open{color:var(--success)}
-.closed{color:var(--danger)}
-
-/* NOTE */
-.note{
-    background:#fef3c7;
-    padding:1rem;
-    border-radius:12px;
-    border-left:5px solid var(--warning);
-    margin-top:1.5rem;
-}
-.contact{
-    background:#eff6ff;
-    padding:1rem;
-    border-radius:12px;
-    border-left:5px solid var(--primary);
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Informasi registrasi akun SNPMB 2025 dan jadwal penting untuk siswa SMA Negeri 1 Cluring">
+    <meta name="author" content="SMAN 1 Cluring">
+    <title>Registrasi & Jadwal SNPMB 2025 | SMAN 1 Cluring</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== VARIABLES & RESET ===== */
+        :root {
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --secondary: #4f46e5;
+            --secondary-dark: #4338ca;
+            --success: #16a34a;
+            --success-dark: #15803d;
+            --warning: #f59e0b;
+            --warning-dark: #d97706;
+            --danger: #dc2626;
+            --danger-dark: #b91c1c;
+            --bg: #f0f9ff;
+            --card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+            --radius: 18px;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 1rem;
+            min-height: 100vh;
+        }
+        
+        /* ===== LAYOUT ===== */
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+        
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-top: 1rem;
+        }
+        
+        .header h1 {
+            font-size: 2.4rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .header-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+        
+        /* ===== CARDS ===== */
+        .card {
+            background: var(--card);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 1.8rem;
+            transition: var(--transition);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-title {
+            color: var(--primary);
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            font-size: 1.5rem;
+        }
+        
+        .card-title i {
+            font-size: 1.4rem;
+        }
+        
+        /* ===== LISTS ===== */
+        ul, ol {
+            margin-left: 1.5rem;
+            margin-top: 0.8rem;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            padding-left: 0.3rem;
+        }
+        
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            color: #fff;
+            margin: 0.4rem 0.5rem 0.4rem 0;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        
+        .btn i {
+            font-size: 1.1rem;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-success {
+            background: var(--success);
+        }
+        
+        .btn-success:hover {
+            background: var(--success-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-warning {
+            background: var(--warning);
+        }
+        
+        .btn-warning:hover {
+            background: var(--warning-dark);
+            transform: translateY(-2px);
+        }
+        
+        .btn-wa {
+            background: #25D366;
+        }
+        
+        .btn-wa:hover {
+            background: #1ebe5d;
+            transform: translateY(-2px);
+        }
+        
+        .btn-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.2rem;
+        }
+        
+        /* ===== TIMELINE ===== */
+        .timeline {
+            border-left: 4px solid var(--secondary);
+            padding-left: 1.8rem;
+            margin-top: 1rem;
+            position: relative;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: var(--secondary);
+            border-radius: 50%;
+        }
+        
+        .timeline:after {
+            content: '';
+            position: absolute;
+            left: -7px;
+            bottom: 0;
+            width: 10px;
+            height: 10px;
+            background: var(--secondary);
+            border-radius: 50%;
+        }
+        
+        .timeline-item {
+            margin-bottom: 1.8rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -1.95rem;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--card);
+            border: 3px solid var(--secondary);
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .timeline-date {
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .countdown {
+            font-weight: 700;
+            margin-top: 0.5rem;
+            padding: 0.5rem 0.8rem;
+            border-radius: 8px;
+            display: inline-block;
+        }
+        
+        .open {
+            background: rgba(22, 163, 74, 0.1);
+            color: var(--success);
+        }
+        
+        .closed {
+            background: rgba(220, 38, 38, 0.1);
+            color: var(--danger);
+        }
+        
+        /* ===== NOTES & ALERTS ===== */
+        .note {
+            background: #fef3c7;
+            padding: 1.2rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--warning);
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .note strong {
+            color: var(--warning-dark);
+        }
+        
+        .contact {
+            background: #eff6ff;
+            padding: 1.2rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary);
+            margin-top: 1.5rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1.5rem 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+            
+            .card-title {
+                font-size: 1.3rem;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+                margin: 0.3rem 0;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            body {
+                padding: 0.5rem;
+            }
+            
+            .header h1 {
+                font-size: 1.7rem;
+            }
+            
+            .timeline {
+                padding-left: 1.2rem;
+            }
+            
+            .timeline-item:before {
+                left: -1.55rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
-<div class="container">
+    <div class="container">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-logo">
+                <i class="fas fa-graduation-cap logo-icon"></i>
+            </div>
+            <h1>REGISTRASI AKUN SNPMB 2025</h1>
+            <p>SMA Negeri 1 Cluring</p>
+        </header>
 
-<div class="header">
-    <h1>REGISTRASI AKUN SNPMB 2025</h1>
-    <p>SMA Negeri 1 Cluring</p>
-</div>
+        <!-- INFORMASI AKUN SNPMB -->
+        <section class="card">
+            <h2 class="card-title"><i class="fas fa-user-check"></i> Akun SNPMB</h2>
+            <ul>
+                <li><strong>Akun SNPMB Sekolah</strong> - untuk pengisian PDSS (Pangkalan Data Sekolah dan Siswa)</li>
+                <li><strong>Akun SNPMB Siswa</strong> - untuk pendaftaran SNBP & UTBK-SNBT</li>
+            </ul>
+            <p style="font-style: italic; margin-top: 1rem; color: var(--text-secondary);">
+                <i class="fas fa-info-circle" style="color: var(--primary);"></i> 
+                <strong>Catatan Penting:</strong> Sekolah yang sudah memiliki akun tidak perlu registrasi ulang.<br>
+                <i class="fas fa-exclamation-triangle" style="color: var(--warning);"></i>
+                <strong>Lulusan gap year</strong> wajib membuat akun baru.
+            </p>
+            
+            <div class="btn-container">
+                <a class="btn btn-primary" href="https://portal-snpmb.bppp.kemdikbud.go.id" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-globe"></i> Portal Resmi SNPMB
+                </a>
+            </div>
+        </section>
 
-<!-- AKUN -->
-<div class="card">
-<h2><i class="fas fa-user-check"></i> Akun SNPMB</h2>
-<ul>
-    <li>Akun SNPMB <strong>Sekolah</strong> untuk pengisian PDSS</li>
-    <li>Akun SNPMB <strong>Siswa</strong> untuk SNBP & UTBK-SNBT</li>
-</ul>
-<p style="font-style:italic">
-* Sekolah yang sudah memiliki akun tidak perlu registrasi ulang.<br>
-** Lulusan <em>gap year</em> wajib membuat akun baru.
-</p>
+        <!-- JADWAL & COUNTDOWN -->
+        <section class="card">
+            <h2 class="card-title"><i class="fas fa-calendar-alt"></i> Jadwal Penting & Hitung Mundur</h2>
+            <p>Pastikan Anda mendaftar dalam waktu yang ditentukan:</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">06 – 31 Januari 2025</div>
+                    <p>Registrasi Akun SNPMB Sekolah</p>
+                    <div id="cd-sekolah" class="countdown open">⏳ Memuat hitung mundur...</div>
+                </div>
 
-<a class="btn btn-primary" href="https://portal-snpmb.bppp.kemdikbud.go.id" target="_blank">
-    <i class="fas fa-globe"></i> Portal Resmi SNPMB
-</a>
-</div>
+                <div class="timeline-item">
+                    <div class="timeline-date">13 Januari – 18 Februari 2025</div>
+                    <p>Registrasi Akun SNPMB Siswa (SNBP)</p>
+                    <div id="cd-snbp" class="countdown open">⏳ Memuat hitung mundur...</div>
+                </div>
 
-<!-- JADWAL & COUNTDOWN -->
-<div class="card">
-<h2><i class="fas fa-calendar-alt"></i> Jadwal Penting & Hitung Mundur</h2>
+                <div class="timeline-item">
+                    <div class="timeline-date">13 Januari – 27 Maret 2025</div>
+                    <p>Registrasi Akun SNPMB Siswa (SNBT)</p>
+                    <div id="cd-snbt" class="countdown open">⏳ Memuat hitung mundur...</div>
+                </div>
+            </div>
+            
+            <div class="note">
+                <strong><i class="fas fa-clock"></i> Perhatian:</strong> Hitung mundur diperbarui secara real-time. Pastikan Anda menyelesaikan registrasi sebelum waktu habis.
+            </div>
+        </section>
 
-<div class="timeline">
+        <!-- KEWAJIBAN SISWA -->
+        <section class="card">
+            <h2 class="card-title"><i class="fas fa-tasks"></i> Kewajiban Siswa</h2>
+            <ol>
+                <li>
+                    <strong>Akses Portal SNPMB</strong> melalui link resmi di bawah
+                    <div class="btn-container">
+                        <a class="btn btn-primary" href="https://portal-snpmb.bppp.kemdikbud.go.id" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-external-link-alt"></i> Portal SNPMB
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <strong>Ikuti Panduan Registrasi</strong> dengan seksama
+                    <div class="btn-container">
+                        <a class="btn btn-success" href="https://drive.google.com/file/d/1NIf68YaWfau6PsAK0ahaTmHA7Xex1bD4/view" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-book"></i> Panduan Registrasi
+                        </a>
+                    </div>
+                </li>
+                <li><strong>Gunakan email aktif</strong> dan buat password yang mudah diingat namun kuat</li>
+                <li>
+                    <strong>Verifikasi Akun</strong> melalui email yang didaftarkan
+                    <div class="btn-container">
+                        <a class="btn btn-warning" href="https://drive.google.com/file/d/1RdNGvtQPTpSUC_Gi29zs9grgcsaz7wYn/view" target="_blank" rel="noopener noreferrer">
+                            <i class="fas fa-check-circle"></i> Panduan Verifikasi
+                        </a>
+                    </div>
+                </li>
+                <li><strong>Simpan data akun</strong> dengan baik (email, password, dan Lembar Bukti Pendaftaran)</li>
+            </ol>
+            
+            <div class="note">
+                <strong><i class="fas fa-sticky-note"></i> Informasi Penting:</strong> Penyimpanan permanen akun diperkirakan akan dilakukan pada bulan Februari 2025. Informasi lebih lanjut akan disampaikan kemudian.
+            </div>
+        </section>
 
-    <div class="timeline-item">
-        <div class="timeline-date">06 – 31 Januari 2025</div>
-        Registrasi Akun SNPMB Sekolah
-        <div id="cd-sekolah" class="countdown"></div>
+        <!-- KONTAK & BANTUAN -->
+        <section class="card">
+            <h2 class="card-title"><i class="fab fa-whatsapp"></i> Layanan Bantuan BK</h2>
+            <p>Untuk pertanyaan atau bantuan teknis, hubungi konselor BK kami:</p>
+            
+            <div class="contact-info">
+                <a class="btn btn-wa" href="https://wa.me/6282233322388" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i> Chat P. Syam (0822-3332-2388)
+                </a>
+                
+                <a class="btn btn-wa" href="https://wa.me/6281358228225" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i> Chat P. Andis (0813-5822-8225)
+                </a>
+            </div>
+            
+            <div class="contact">
+                <p><strong><i class="fas fa-clock"></i> Waktu Respons:</strong> Senin-Jumat, 08.00-15.00 WIB</p>
+                <p><strong><i class="fas fa-info-circle"></i> Siapkan:</strong> NISN, Nama Lengkap, dan kendala yang dihadapi saat menghubungi.</p>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>© 2024 SMA Negeri 1 Cluring. Semua hak dilindungi.</p>
+            <p>Laman informasi resmi registrasi SNPMB 2025.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.85rem;">
+                <i class="fas fa-sync-alt"></i> Terakhir diperbarui: Desember 2024
+            </p>
+        </footer>
     </div>
 
-    <div class="timeline-item">
-        <div class="timeline-date">13 Januari – 18 Februari 2025</div>
-        Registrasi Akun SNPMB Siswa (SNBP)
-        <div id="cd-snbp" class="countdown"></div>
-    </div>
-
-    <div class="timeline-item">
-        <div class="timeline-date">13 Januari – 27 Maret 2025</div>
-        Registrasi Akun SNPMB Siswa (SNBT)
-        <div id="cd-snbt" class="countdown"></div>
-    </div>
-
-</div>
-</div>
-
-<!-- KEWAJIBAN -->
-<div class="card">
-<h2><i class="fas fa-tasks"></i> Kewajiban Siswa</h2>
-<ol>
-    <li>
-        Akses Portal SNPMB<br>
-        <a class="btn btn-primary" href="https://portal-snpmb.bppp.kemdikbud.go.id" target="_blank">
-            Portal SNPMB
-        </a>
-    </li>
-    <li>
-        Ikuti Panduan Registrasi<br>
-        <a class="btn btn-success" href="https://drive.google.com/file/d/1NIf68YaWfau6PsAK0ahaTmHA7Xex1bD4/view" target="_blank">
-            Panduan Registrasi
-        </a>
-    </li>
-    <li>Gunakan email aktif dan password yang mudah diingat</li>
-    <li>
-        Verifikasi Akun<br>
-        <a class="btn btn-warning" href="https://drive.google.com/file/d/1RdNGvtQPTpSUC_Gi29zs9grgcsaz7wYn/view" target="_blank">
-            Panduan Verifikasi
-        </a>
-    </li>
-    <li>Simpan data akun dengan baik</li>
-</ol>
-
-<div class="note">
-<strong>Catatan:</strong> Penyimpanan permanen akun diperkirakan bulan Februari dan akan diinformasikan kembali.
-</div>
-</div>
-
-<!-- KONTAK -->
-<div class="card">
-<h2><i class="fab fa-whatsapp"></i> Layanan Bantuan BK</h2>
-
-<a class="btn btn-wa" href="https://wa.me/6282233322388" target="_blank">
-    <i class="fab fa-whatsapp"></i> Chat P. Syam
-</a><br>
-
-<a class="btn btn-wa" href="https://wa.me/6281358228225" target="_blank">
-    <i class="fab fa-whatsapp"></i> Chat P. Andis
-</a>
-</div>
-
-</div>
-
-<script>
-function countdown(endDate, elementId){
-    const end = new Date(endDate).getTime();
-    const now = new Date().getTime();
-    const diff = end - now;
-    const el = document.getElementById(elementId);
-
-    if(diff <= 0){
-        el.innerHTML = "⛔ DITUTUP";
-        el.className = "countdown closed";
-        return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    el.innerHTML =
-        "⏳ Sisa waktu: " +
-        days + " hari " +
-        hours + " jam " +
-        minutes + " menit " +
-        seconds + " detik";
-
-    el.className = "countdown open";
-}
-
-setInterval(() => {
-    countdown("2025-01-31", "cd-sekolah");
-    countdown("2025-02-18", "cd-snbp");
-    countdown("2025-03-27", "cd-snbt");
-}, 1000);
-</script>
-
+    <script>
+        // Fungsi hitung mundur
+        function countdown(endDate, elementId, label) {
+            const end = new Date(endDate).getTime();
+            const now = new Date().getTime();
+            const diff = end - now;
+            const el = document.getElementById(elementId);
+            
+            // Jika waktu sudah habis
+            if (diff <= 0) {
+                el.innerHTML = "⛔ PERIODE DITUTUP";
+                el.className = "countdown closed";
+                return;
+            }
+            
+            // Hitung waktu tersisa
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            // Tampilkan dengan format yang rapi
+            el.innerHTML = `
+                <span style="display: inline-block; margin-right: 10px;">⏳</span>
+                <strong>Sisa waktu:</strong> ${days} hari, ${hours} jam, ${minutes} menit, ${seconds} detik
+            `;
+            
+            el.className = "countdown open";
+        }
+        
+        // Update hitung mundur setiap detik
+        function updateCountdowns() {
+            countdown("2025-01-31T23:59:59", "cd-sekolah", "Registrasi Sekolah");
+            countdown("2025-02-18T23:59:59", "cd-snbp", "Registrasi SNBP");
+            countdown("2025-03-27T23:59:59", "cd-snbt", "Registrasi SNBT");
+        }
+        
+        // Jalankan sekali saat load, kemudian setiap detik
+        updateCountdowns();
+        setInterval(updateCountdowns, 1000);
+        
+        // Efek tambahan: highlight card saat dihover
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
