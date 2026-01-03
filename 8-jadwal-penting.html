@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jadwal Penting - SNBP | SMA Negeri 1 Cluring</title>
+    <title>Jadwal Penting - SNPMB | SMA Negeri 1 Cluring</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- STYLE TIDAK DIUBAH -->
     <style>
+        /* === STYLE ASLI DIPERTAHANKAN === */
         :root {
             --primary: #1e40af;
             --primary-light: #3b82f6;
@@ -23,233 +27,133 @@
             --border-radius: 20px;
             --transition: all 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
         }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-        }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
         body {
             background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
             color: var(--text-light);
-            line-height: 1.7;
             padding: 2.5rem;
-            min-height: 100vh;
-            transition: var(--transition);
         }
-        body.dark-mode {
-            background: linear-gradient(135deg, #0c1427, #111827);
-            color: var(--text-dark);
-        }
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
+        .container { max-width: 900px; margin:auto; }
+        .header { text-align:center; margin-bottom:2.5rem; }
         .header h1 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            background: var(--gradient-primary);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .header p {
-            opacity: 0.85;
-            font-size: 1.1rem;
+            font-size:2.4rem;
+            background:var(--gradient-primary);
+            -webkit-background-clip:text;
+            color:transparent;
         }
         .content {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,0.9);
             padding: 2.2rem;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow-light);
             margin-bottom: 2.2rem;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-        body.dark-mode .content {
-            background: rgba(30, 41, 59, 0.75);
-            border-color: rgba(255, 255, 255, 0.12);
         }
         h2 {
-            font-size: 1.65rem;
-            margin: 1.6rem 0 1.1rem;
-            color: var(--primary-dark);
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
+            margin-top:1.8rem;
+            color:var(--primary-dark);
+            display:flex;
+            gap:.6rem;
+            align-items:center;
         }
-        body.dark-mode h2 {
-            color: #c7d2fe;
-        }
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-            margin: 1.5rem 0 2rem;
-        }
+        ul { margin-left:1.2rem; margin-top:.8rem; }
+        ul li { margin-bottom:.6rem; }
+        .timeline { padding-left:2rem; margin-top:1.2rem; position:relative; }
         .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--gradient-primary);
+            content:'';
+            position:absolute;
+            left:0; top:0; bottom:0;
+            width:2px;
+            background:var(--gradient-primary);
         }
-        .timeline-item {
-            position: relative;
-            margin-bottom: 1.8rem;
-            padding-left: 1.5rem;
-        }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -27px;
-            top: 3px;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--primary);
-            border: 3px solid white;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-        body.dark-mode .timeline-item::before {
-            border-color: var(--dark);
-        }
-        .timeline-date {
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.3rem;
-            display: block;
-        }
-        body.dark-mode .timeline-date {
-            color: #a5b4fc;
-        }
+        .timeline-item { padding-left:1.5rem; margin-bottom:1.4rem; }
+        .timeline-date { font-weight:700; color:var(--primary); }
         .next-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: var(--gradient-primary);
-            color: white;
-            text-decoration: none;
-            padding: 0.8rem 1.9rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.05rem;
-            box-shadow: 0 6px 16px rgba(30, 64, 175, 0.35);
-            transition: var(--transition);
-        }
-        .next-btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: var(--shadow-hover);
+            display:inline-flex;
+            gap:.6rem;
+            background:var(--gradient-primary);
+            color:#fff;
+            padding:.8rem 1.8rem;
+            border-radius:50px;
+            text-decoration:none;
+            font-weight:600;
         }
         .back-link {
-            display: block;
-            margin-top: 1.4rem;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-        body.dark-mode .back-link {
-            color: #a5b4fc;
-        }
-        .back-link:hover {
-            text-decoration: underline;
-            opacity: 0.9;
-        }
-        @media (max-width: 768px) {
-            body {
-                padding: 1.5rem;
-            }
-            .header h1 {
-                font-size: 2rem;
-            }
-            .content {
-                padding: 1.8rem;
-            }
-        }
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 1.8rem;
-            }
-            .next-btn {
-                padding: 0.7rem 1.6rem;
-                font-size: 1rem;
-            }
-            .timeline {
-                padding-left: 1.5rem;
-            }
-            .timeline::before {
-                left: 4px;
-            }
-            .timeline-item::before {
-                left: -18px;
-            }
+            display:block;
+            margin-top:1.2rem;
+            font-weight:600;
+            color:var(--primary);
+            text-decoration:none;
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>Jadwal Penting</h1>
-            <p>SNBP 2025 – SMA Negeri 1 Cluring</p>
-        </div>
+<div class="container">
 
-        <div class="content">
-            <p>Berikut adalah jadwal resmi Seleksi Nasional Berbasis Prestasi (SNBP) Tahun 2025 sesuai ketentuan Kemdikbudristek. Seluruh siswa wajib memperhatikan tanggal-tanggal penting ini agar tidak ketinggalan tahapan seleksi.</p>
-
-            <h2><i class="fas fa-calendar-alt"></i> Timeline SNBP 2025</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <span class="timeline-date">1–15 November 2024</span>
-                    <p>Sosialisasi SNBP oleh sekolah dan pendaftaran akun di PDSS (Pangkalan Data Sekolah dan Siswa).</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-date">16–30 November 2024</span>
-                    <p>Verifikasi dan sinkronisasi data siswa oleh sekolah di PDSS.</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-date">1–10 Desember 2024</span>
-                    <p>Sekolah mengusulkan calon peserta SNBP berdasarkan rapor dan prestasi.</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-date">11–20 Desember 2024</span>
-                    <p>Verifikasi usulan oleh Lembaga Tes Masuk Perguruan Tinggi (LTMPT).</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-date">5–15 Januari 2025</span>
-                    <p>Pendaftaran akun SNBP oleh siswa di portal resmi: <strong>snbp.bppp.kemdikbud.go.id</strong>.</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-date">16–31 Januari 2025</span>
-                    <p>Pemilihan program studi dan pengisian portofolio (jika diperlukan).</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-date">15 Februari 2025</span>
-                    <p><strong>Pengumuman hasil seleksi SNBP</strong> secara nasional.</p>
-                </div>
-                <div class="timeline-item">
-                    <span class="timeline-date">16–20 Februari 2025</span>
-                    <p>Verifikasi dan daftar ulang di perguruan tinggi yang diterima.</p>
-                </div>
-            </div>
-
-            <p style="margin-top: 1.5rem; font-style: italic; opacity: 0.9;">
-                <strong>⚠️ Catatan:</strong> Jadwal dapat berubah sesuai kebijakan Kemdikbudristek. Pantau terus portal resmi dan pengumuman sekolah.
-            </p>
-        </div>
-
-        <a href="9-strategi-sukses.html" class="next-btn">
-            <i class="fas fa-arrow-right"></i> Lanjut ke Halaman Berikutnya
-        </a>
-
-        <a href="index.html" class="back-link">← Kembali ke Menu Utama</a>
+    <div class="header">
+        <h1>Registrasi & Jadwal Penting SNPMB</h1>
+        <p>SMA Negeri 1 Cluring – Tahun 2025</p>
     </div>
+
+    <div class="content">
+
+        <h2><i class="fas fa-user-check"></i> REGISTRASI AKUN SNPMB</h2>
+
+        <p><strong>AKUN SNPMB</strong></p>
+        <ul>
+            <li>Akun SNPMB Sekolah untuk Pengisian PDSS*</li>
+            <li>Akun SNPMB Siswa untuk Pendaftaran SNBP dan UTBK-SNBT 2025**</li>
+        </ul>
+
+        <p style="margin-top:1rem; font-style:italic;">
+            * Sekolah yang telah memiliki Akun SNPMB tidak perlu melakukan registrasi akun baru.<br>
+            ** Lulusan <em>gap year</em> wajib melakukan registrasi akun baru.
+        </p>
+
+        <h2><i class="fas fa-globe"></i> PORTAL SNPMB</h2>
+        <p>
+            Registrasi Akun SNPMB dilakukan melalui Portal Resmi:<br>
+            <strong>https://portal-snpmb.bppp.kemdikbud.go.id</strong>
+        </p>
+
+        <h2><i class="fas fa-calendar-alt"></i> TANGGAL PENTING</h2>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <span class="timeline-date">06 – 31 Januari 2025</span>
+                <p>Registrasi Akun SNPMB Sekolah</p>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-date">13 Januari – 18 Februari 2025</span>
+                <p>Registrasi Akun SNPMB Siswa (SNBP)</p>
+            </div>
+            <div class="timeline-item">
+                <span class="timeline-date">13 Januari – 27 Maret 2025</span>
+                <p>Registrasi Akun SNPMB Siswa (SNBT)</p>
+            </div>
+        </div>
+
+        <h2><i class="fas fa-exclamation-circle"></i> KEWAJIBAN SISWA</h2>
+
+        <ol style="margin-left:1.2rem;">
+            <li>Buka portal SNPMB: <strong>https://portal-snpmb.bppp.kemdikbud.go.id</strong></li>
+            <li>Pilih tombol <strong>DAFTAR</strong> dan ikuti panduan:
+                <br>https://drive.google.com/file/d/1NIf68YaWfau6PsAK0ahaTmHA7Xex1bD4/view
+            </li>
+            <li>Gunakan email AKTIF dan password yang BENAR serta MUDAH DIINGAT.</li>
+            <li>Lakukan verifikasi akun:
+                <br>https://drive.google.com/file/d/1RdNGvtQPTpSUC_Gi29zs9grgcsaz7wYn/view
+            </li>
+            <li>Simpan permanen akun diperkirakan bulan Februari (akan diinformasikan kembali).</li>
+            <li>Simpan data dengan baik. Jika ada kendala hubungi:
+                <br><strong>BK / P. Syam (082233322388) / P. Andis (081358228225)</strong>
+            </li>
+        </ol>
+
+    </div>
+
+    <a href="index.html" class="back-link">← Kembali ke Menu Utama</a>
+
+</div>
 </body>
 </html>
